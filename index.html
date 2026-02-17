@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iwtsyddd | google sans edition</title>
+  <meta name="description" content="🫩🫩🫩🫩🫩">
+
+  <!-- google sans flex variable -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@100..900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --md-sys-color-primary: #6750a4;
+      --md-sys-color-on-primary: #ffffff;
+      --md-sys-color-surface: #fef7ff;
+      --md-sys-color-on-surface: #1c1b1f;
+      --md-sys-color-outline: #79747e;
+      --md-sys-color-surface-variant: #e7e0ec;
+      --md-sys-color-inverse-surface: #313033;
+      --md-sys-color-on-inverse-surface: #f4eff4;
+
+      --md-sys-elevation-level1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      --md-sys-elevation-level2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      --md-sys-shape-corner-large: 1rem;
+      --md-sys-shape-corner-extra-large: 1.75rem;
+
+      --bg: var(--md-sys-color-surface);
+      --text: var(--md-sys-color-on-surface);
+      --card-bg: white;
+      --card-text: var(--md-sys-color-on-surface);
+      --accent: var(--md-sys-color-primary);
+    }
+
+    [data-theme="dark"] {
+      --md-sys-color-primary: #d0bcff;
+      --md-sys-color-on-primary: #381e72;
+      --md-sys-color-surface: #141218;
+      --md-sys-color-on-surface: #e6e0e9;
+      --md-sys-color-outline: #938f99;
+      --md-sys-color-surface-variant: #49454f;
+      --md-sys-color-inverse-surface: #e6e0e9;
+      --md-sys-color-on-inverse-surface: #313033;
+
+      --bg: #0f0d13;
+      --text: #e6e0e9;
+      --card-bg: #1c1b1f;
+      --card-text: #e6e0e9;
+      --accent: #d0bcff;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Google Sans Flex', system-ui, sans-serif;
+      font-weight: 400;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem 4rem;
+      text-align: center;
+      line-height: 1.5;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .controls {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .theme-toggle, .lang-toggle {
+      background: transparent;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 50%;
+      transition: all 0.3s;
+      color: var(--text);
+      opacity: 0.8;
+    }
+
+    .theme-toggle:hover, .lang-toggle:hover {
+      opacity: 1;
+      transform: scale(1.15);
+      background: rgba(103,80,164,0.1);
+    }
+
+    .lang-toggle {
+      font-size: 1.4rem;
+      font-weight: 500;
+      padding: 0.4rem 0.8rem;
+      border-radius: 2rem;
+      border: 1px solid var(--accent);
+    }
+
+    .lang-toggle.active {
+      background: var(--accent);
+      color: white;
+      opacity: 1;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    .skull {
+      font-size: 9rem;
+      margin-bottom: 1.5rem;
+      animation: float 7s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .headline {
+      font-size: clamp(3.5rem, 10vw, 6.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0.5rem 0 0.75rem;
+      color: var(--accent);
+      line-height: 1.1;
+      text-align: center;
+      width: 100%;
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+      font-weight: 500;
+      opacity: 0.9;
+      margin: 0 auto 2.5rem;
+      max-width: 700px;
+      text-align: center;
+    }
+
+    .projects-section {
+      width: 100%;
+      margin: 4rem 0 2rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border-radius: var(--md-sys-shape-corner-extra-large);
+      box-shadow: var(--md-sys-elevation-level1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      text-align: left;
+      color: var(--card-text);
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--md-sys-elevation-level2);
+    }
+
+    .project-header {
+      background: linear-gradient(135deg, var(--accent) 0%, #8a6be3 90%);
+      color: white;
+      padding: 1.5rem 1.5rem 1rem;
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-lang {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .project-body {
+      padding: 1.5rem;
+    }
+
+    .project-desc {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-link {
+      color: var(--accent);
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+      opacity: 0.85;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 140px;
+      height: 56px;
+      padding: 0 24px;
+      border-radius: 28px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+      margin: 0.75rem;
+    }
+
+    .btn-filled {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-filled:hover {
+      background: #5a4396;
+      transform: scale(1.04);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-outline:hover {
+      background: rgba(103,80,164,0.08);
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 3rem 0 1rem;
+      font-size: 1rem;
+      opacity: 0.6;
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+</head>
+<body data-theme="light" data-lang="ru">
+
+  <div class="controls">
+    <button class="theme-toggle" id="themeToggle" aria-label="сменить тему">☀️</button>
+    <button class="lang-toggle" id="langRu" data-lang="ru">RU</button>
+    <button class="lang-toggle" id="langEn" data-lang="en">EN</button>
+  </div>
+
+  <div class="container">
+
+    <div class="hero">
+      <div class="skull">🌉</div>
+      <h1 class="headline" data-key="title">iwtsyddd</h1>
+      <p class="subtitle" data-key="subtitle">
+        мой сайт в 2026<br>
+        код и проекты
+      </p>
+    </div>
+
+    <div style="margin: 3rem 0;">
+      <a href="https://github.com/iwtsyddd" class="btn btn-filled" onclick="createRipple(event)" data-key="githubBtn">github профиль</a>
+      <a href="https://t.me/iwtsyddddddddddd" class="btn btn-outline" onclick="createRipple(event)" data-key="telegramBtn">telegram 🫩</a>
+    </div>
+
+    <section class="projects-section">
+      <h2 class="headline" style="font-size:2.5rem; margin-bottom:1rem;" data-key="projectsTitle">мои проекты</h2>
+      <p class="subtitle" style="font-size:1.3rem; margin-bottom:2rem;" data-key="projectsSubtitle">
+        пока три проекта
+      </p>
+
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-title">Socksicle</div>
+            <div class="project-lang">Python • PySide6/Qt6</div>
+          </div>
+          <div class="project-body">
+            <p class="project-desc" data-key="socksicleDesc">
+              минималистичный gui-клиент для shadowsocks на linux.
+            </p>
+            <a href="https://github.com/iwtsyddd/Socksicle" class="project-link" target="_blank" data-key="repoLink">→ репозиторий</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-title">DiEmu</div>
+            <div class="project-lang">Rust</div>
+          </div>
+          <div class="project-body">
+            <p class="project-desc" data-key="diemuDesc">
+              эмулятор game boy на rust. gbc поддержка пока сломана.
+            </p>
+            <a href="https://github.com/iwtsyddd/DiEmu" class="project-link" target="_blank" data-key="repoLink">→ репозиторий</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-title" data-key="thisSiteTitle">этот сайт</div>
+            <div class="project-lang">HTML + CSS + Google Sans</div>
+          </div>
+          <div class="project-body">
+            <p class="project-desc" data-key="thisSiteDesc">
+              личная страница на github pages с тёмной темой и проектами.
+            </p>
+            <a href="https://github.com/iwtsyddd/iwtsyddd.github.io" class="project-link" target="_blank" data-key="repoLink">→ исходники</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer data-key="footer">
+      © 2026 iwtsyddd
+    </footer>
+
+  </div>
+
+  <script>
+    // translations
+    const translations = {
+      ru: {
+        title: "iwtsyddd",
+        subtitle: "пр",
+        githubBtn: "github профиль",
+        telegramBtn: "telegram 🫩",
+        projectsTitle: "мои проекты",
+        projectsSubtitle: "пока три проекта",
+        socksicleDesc: "минималистичный gui-клиент для shadowsocks на linux.",
+        diemuDesc: "эмулятор game boy на rust. gbc поддержка пока сломана.",
+        thisSiteTitle: "этот сайт",
+        thisSiteDesc: "личная страница на github pages с тёмной темой и проектами.",
+        repoLink: "→ репозиторий",
+        footer: "© 2026 iwtsyddd"
+      },
+      en: {
+        title: "iwtsyddd",
+        subtitle: "hi brazers",
+        githubBtn: "github profile",
+        telegramBtn: "telegram 🫩",
+        projectsTitle: "my projects",
+        projectsSubtitle: "three projects so far",
+        socksicleDesc: "minimalistic gui client for shadowsocks on linux.",
+        diemuDesc: "game boy emulator in rust. gbc support is currently broken.",
+        thisSiteTitle: "this site",
+        thisSiteDesc: "personal page on github pages with dark mode and projects.",
+        repoLink: "→ repository",
+        footer: "© 2026 iwtsyddd"
+      }
+    };
+
+    // theme logic (как было)
+    const toggle = document.getElementById('themeToggle');
+    const body = document.body;
+
+    function isStorageAvailable() {
+      try {
+        const test = '__storage_test__';
+        localStorage.setItem(test, test);
+        localStorage.removeItem(test);
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    const storageOk = isStorageAvailable();
+
+    let currentTheme = 'light';
+    if (storageOk) {
+      const saved = localStorage.getItem('theme');
+      if (saved) currentTheme = saved;
+      else if (window.matchMedia('(prefers-color-scheme: dark)').matches) currentTheme = 'dark';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      currentTheme = 'dark';
+    }
+
+    body.setAttribute('data-theme', currentTheme);
+    toggle.textContent = currentTheme === 'dark' ? '🌙' : '☀️';
+
+    toggle.addEventListener('click', () => {
+      const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      body.setAttribute('data-theme', next);
+      toggle.textContent = next === 'dark' ? '🌙' : '☀️';
+      if (storageOk) localStorage.setItem('theme', next);
+    });
+
+    // language logic
+    const currentLang = body.getAttribute('data-lang') || (storageOk ? localStorage.getItem('lang') || 'ru' : 'ru');
+    body.setAttribute('data-lang', currentLang);
+
+    function setLanguage(lang) {
+      body.setAttribute('data-lang', lang);
+      document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (translations[lang][key]) {
+          if (el.tagName === 'A' || el.tagName === 'BUTTON') {
+            el.textContent = translations[lang][key];
+          } else {
+            el.textContent = translations[lang][key];
+          }
+        }
+      });
+      // update active button
+      document.querySelectorAll('.lang-toggle').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+      if (storageOk) localStorage.setItem('lang', lang);
+    }
+
+    setLanguage(currentLang);
+
+    document.getElementById('langRu').addEventListener('click', () => setLanguage('ru'));
+    document.getElementById('langEn').addEventListener('click', () => setLanguage('en'));
+
+    // ripple
+    function createRipple(event) {
+      const btn = event.currentTarget;
+      const ripple = document.createElement('span');
+      const rect = btn.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = event.clientX - rect.left - size / 2;
+      const y = event.clientY - rect.top - size / 2;
+
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = x + 'px';
+      ripple.style.top = y + 'px';
+      ripple.style.position = 'absolute';
+      ripple.style.borderRadius = '50%';
+      ripple.style.background = 'rgba(255,255,255,0.4)';
+      ripple.style.transform = 'scale(0)';
+      ripple.style.animation = 'ripple 0.6s linear';
+      ripple.style.pointerEvents = 'none';
+
+      btn.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600);
+    }
+  </script>
+
+  <style>
+    @keyframes ripple {
+      to { transform: scale(4); opacity: 0; }
+    }
+  </style>
+
+</body>
+</html>
