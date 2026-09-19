@@ -1,0 +1,1072 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>чужой код</title>
+  <meta name="description" content="чужой vpn сервис. я просто настраивал сервера и писал панель. iwtsyddd">
+  <meta name="theme-color" content="#08090e">
+
+  <!-- Fonts: Google Sans Flex, Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Typography */
+      --font-display: 'Google Sans Flex', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+      /* Dark Theme with Blue-Violet-Pink Tri-Accent */
+      --bg-base: #08090e;
+      --bg-surface: #0f111a;
+      --bg-surface-elevated: #161826;
+      --bg-card: rgba(16, 18, 28, 0.72);
+      --bg-card-hover: rgba(24, 27, 42, 0.88);
+
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-focus: rgba(255, 255, 255, 0.18);
+      --border-highlight: rgba(236, 72, 153, 0.4);
+
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-tertiary: #64748b;
+      --text-mono: #cbd5e1;
+
+      /* Blue-Violet-Pink Tri-Accent */
+      --accent-blue: #3b82f6;
+      --accent-violet: #8b5cf6;
+      --accent-pink: #ec4899;
+      --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+      
+      --accent-glow-blue: rgba(59, 130, 246, 0.22);
+      --accent-glow-pink: rgba(236, 72, 153, 0.22);
+
+      --nav-bg: rgba(12, 14, 22, 0.75);
+      --nav-border: rgba(255, 255, 255, 0.08);
+
+      --chip-bg: rgba(255, 255, 255, 0.04);
+      --chip-border: rgba(255, 255, 255, 0.08);
+      --chip-text: #cbd5e1;
+
+      /* Apple iOS Badges */
+      --badge-closed-bg: rgba(236, 72, 153, 0.12);
+      --badge-closed-border: rgba(236, 72, 153, 0.32);
+      --badge-closed-text: #f472b6;
+
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 8px 30px -4px rgba(0, 0, 0, 0.45);
+      --shadow-glow: 0 0 45px -8px rgba(139, 92, 246, 0.3);
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
+    }
+
+    [data-theme="light"] {
+      --bg-base: #fafafc;
+      --bg-surface: #ffffff;
+      --bg-surface-elevated: #f1f3f9;
+      --bg-card: rgba(255, 255, 255, 0.9);
+      --bg-card-hover: #ffffff;
+
+      --border-subtle: rgba(0, 0, 0, 0.07);
+      --border-focus: rgba(0, 0, 0, 0.16);
+      --border-highlight: rgba(139, 92, 246, 0.35);
+
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-tertiary: #94a3b8;
+      --text-mono: #334155;
+
+      --accent-glow-blue: rgba(59, 130, 246, 0.12);
+      --accent-glow-pink: rgba(236, 72, 153, 0.12);
+
+      --nav-bg: rgba(255, 255, 255, 0.82);
+      --nav-border: rgba(0, 0, 0, 0.06);
+
+      --chip-bg: rgba(0, 0, 0, 0.03);
+      --chip-border: rgba(0, 0, 0, 0.08);
+      --chip-text: #334155;
+
+      --badge-closed-bg: rgba(236, 72, 153, 0.09);
+      --badge-closed-border: rgba(236, 72, 153, 0.25);
+      --badge-closed-text: #db2777;
+
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 12px 36px -4px rgba(0, 0, 0, 0.08);
+      --shadow-glow: 0 0 35px -8px rgba(139, 92, 246, 0.18);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+      transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s ease;
+    }
+
+    /* Ambient Blue-Pink Mesh */
+    .bg-mesh {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .bg-mesh-glow-blue {
+      position: absolute;
+      top: -100px;
+      left: 10%;
+      width: 600px;
+      height: 500px;
+      background: radial-gradient(circle, var(--accent-glow-blue) 0%, transparent 70%);
+      filter: blur(90px);
+      opacity: 0.85;
+    }
+
+    .bg-mesh-glow-pink {
+      position: absolute;
+      top: 100px;
+      right: 5%;
+      width: 600px;
+      height: 500px;
+      background: radial-gradient(circle, var(--accent-glow-pink) 0%, transparent 70%);
+      filter: blur(90px);
+      opacity: 0.85;
+    }
+
+    .bg-mesh-grid {
+      position: absolute;
+      inset: 0;
+      background-size: 48px 48px;
+      background-image: 
+        linear-gradient(to right, var(--border-subtle) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--border-subtle) 1px, transparent 1px);
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 20%, transparent 85%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 20%, transparent 85%);
+      opacity: 0.45;
+    }
+
+    /* Layout Wrapper: Wide Two-Column Split */
+    .site-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px 70px;
+    }
+
+    /* Floating Navigation */
+    .nav-bar {
+      position: sticky;
+      top: 18px;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1060px;
+      margin: 18px auto 0;
+      padding: 9px 18px;
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--nav-border);
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, var(--font-body);
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: -0.01em;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-back:hover {
+      color: #f472b6;
+      transform: translateX(-2px);
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .segmented-lang {
+      display: inline-flex;
+      background: var(--chip-bg);
+      border: 1px solid var(--chip-border);
+      border-radius: var(--radius-full);
+      padding: 3px;
+      gap: 2px;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lang-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .lang-btn.active {
+      background: var(--bg-surface-elevated);
+      color: var(--text-primary);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    [data-theme="light"] .lang-btn.active {
+      background: #ffffff;
+      color: var(--accent-violet);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+
+    .icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: var(--chip-bg);
+      border: 1px solid var(--chip-border);
+      border-radius: var(--radius-full);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .icon-btn:hover {
+      color: var(--text-primary);
+      background: var(--bg-surface-elevated);
+      border-color: var(--border-focus);
+      transform: translateY(-1px);
+    }
+
+    .icon-btn svg {
+      width: 17px;
+      height: 17px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.4s ease;
+    }
+
+    .icon-btn:hover svg {
+      transform: rotate(20deg);
+    }
+
+    /* Asymmetric Split Studio */
+    .showcase-split-container {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 36px;
+      margin-top: 40px;
+      align-items: start;
+    }
+
+    /* Left Column: Sticky Product Info & Apple Spec Card */
+    .product-left-pane {
+      position: sticky;
+      top: 90px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .product-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .closed-source-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      background: var(--badge-closed-bg);
+      border: 1px solid var(--badge-closed-border);
+      color: var(--badge-closed-text);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .closed-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 8px currentColor;
+    }
+
+    .product-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6vw, 4.4rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      background: linear-gradient(135deg, #60a5fa 0%, #c084fc 48%, #f472b6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .product-lead-text {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* iOS Spec Table */
+    .ios-grouped-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .ios-spec-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 18px;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 0.88rem;
+    }
+
+    .ios-spec-row:last-child {
+      border-bottom: none;
+    }
+
+    .ios-spec-label {
+      color: var(--text-tertiary);
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ios-spec-val {
+      font-weight: 500;
+      color: var(--text-primary);
+      text-align: right;
+    }
+
+    .ios-spec-val.accent {
+      color: #f472b6;
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+    }
+
+    /* iOS Action Buttons */
+    .ios-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn-ios {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      height: 48px;
+      padding: 0 24px;
+      border-radius: var(--radius-full);
+      font-family: -apple-system, BlinkMacSystemFont, var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.16s cubic-bezier(0.25, 1, 0.5, 1), 
+                  filter 0.2s ease, 
+                  box-shadow 0.2s ease;
+      width: 100%;
+    }
+
+    .btn-ios:active {
+      transform: scale(0.96) !important;
+    }
+
+    .btn-ios-primary {
+      background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 
+        inset 0 1px 0.5px rgba(255, 255, 255, 0.45),
+        0 4px 16px rgba(139, 92, 246, 0.35);
+    }
+
+    .btn-ios-primary:hover {
+      filter: brightness(1.08);
+      box-shadow: 0 6px 24px rgba(236, 72, 153, 0.45);
+      transform: translateY(-1px);
+    }
+
+    .btn-ios-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(24px) saturate(190%);
+      -webkit-backdrop-filter: blur(24px) saturate(190%);
+      color: var(--text-primary);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: inset 0 1px 0.5px rgba(255, 255, 255, 0.22);
+    }
+
+    [data-theme="light"] .btn-ios-secondary {
+      background: rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: inset 0 1px 0.5px rgba(255, 255, 255, 0.85);
+    }
+
+    .btn-ios-secondary:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.26);
+      transform: translateY(-1px);
+    }
+
+    /* Right Column: Deep-Dive Feature Showcase */
+    .product-right-pane {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    /* Hero Glass Specimen Card */
+    .specimen-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+    }
+
+    .specimen-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+      opacity: 0.85;
+    }
+
+    .specimen-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .specimen-status-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #60a5fa;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+    }
+
+    .status-pulse {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #3b82f6;
+      box-shadow: 0 0 8px #3b82f6;
+    }
+
+    .specimen-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+
+    .specimen-desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    /* Contribution Checklist Items */
+    .checklist-title {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: #c084fc;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+    }
+
+    .checklist-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .checklist-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid rgba(139, 92, 246, 0.28);
+      border-radius: var(--radius-full);
+      padding: 8px 18px;
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: #c084fc;
+      cursor: default;
+      transition: all 0.22s cubic-bezier(0.25, 1, 0.5, 1);
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .checklist-item:hover {
+      border-color: rgba(236, 72, 153, 0.45);
+      background: rgba(236, 72, 153, 0.12);
+      color: #f472b6;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(139, 92, 246, 0.25);
+    }
+
+    .checklist-item:active {
+      transform: scale(0.96) !important;
+    }
+
+    .checklist-icon {
+      font-size: 0.95rem;
+      line-height: 1;
+    }
+
+    .checklist-text {
+      font-size: 0.8125rem;
+      color: inherit;
+      line-height: 1;
+    }
+
+    .checklist-text strong {
+      color: inherit;
+    }
+
+    /* Architecture / Engineering Mini-Cards */
+    .tech-pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .pillar-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      transition: all 0.2s ease;
+    }
+
+    .pillar-card:hover {
+      border-color: var(--border-focus);
+      transform: translateY(-2px);
+    }
+
+    .pillar-head {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: #60a5fa;
+      margin-bottom: 6px;
+    }
+
+    .pillar-body {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    /* Closed Source Notice */
+    .closed-notice-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(236, 72, 153, 0.06);
+      border: 1px solid rgba(236, 72, 153, 0.22);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .closed-notice-box strong {
+      color: #f472b6;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: clamp(60px, 9vw, 100px);
+      padding-top: 28px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      font-size: 0.85rem;
+      color: var(--text-tertiary);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+      color: var(--text-primary);
+    }
+
+    .footer-link.home {
+      color: #60a5fa;
+    }
+
+    .footer-link.home:hover {
+      color: #93c5fd;
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .showcase-split-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .product-left-pane {
+        position: static;
+      }
+      .site-wrapper {
+        padding: 0 16px 50px;
+      }
+      .nav-bar {
+        padding: 8px 14px;
+        margin-top: 12px;
+      }
+      footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body data-theme="dark" data-lang="ru">
+
+  <!-- Ambient Blue-Violet-Pink Mesh Background -->
+  <div class="bg-mesh" aria-hidden="true">
+    <div class="bg-mesh-glow-blue"></div>
+    <div class="bg-mesh-glow-pink"></div>
+    <div class="bg-mesh-grid"></div>
+  </div>
+
+  <div class="site-wrapper">
+
+    <!-- Floating Sticky Navbar (Kept with "на главную") -->
+    <header class="nav-bar">
+      <a href="./" class="nav-back" data-key="navBack">
+        <span>←</span>
+        <span>на главную</span>
+      </a>
+
+      <div class="nav-controls">
+        <!-- Bilingual Switcher -->
+        <div class="segmented-lang" role="group" aria-label="Language selection">
+          <button class="lang-btn active" id="langRu" data-lang="ru" aria-label="Русский">ru</button>
+          <button class="lang-btn" id="langEn" data-lang="en" aria-label="English">en</button>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+          <svg id="themeIconSun" style="display: none;" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg id="themeIconMoon" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Asymmetric Split Studio: Product Showcase -->
+    <main class="showcase-split-container">
+      
+      <!-- LEFT PANE: Sticky Product Info & Apple Spec Card -->
+      <aside class="product-left-pane">
+        <div class="product-badge-row">
+          <div class="closed-source-pill">
+            <span class="closed-dot"></span>
+            <span data-key="pillClosed">закрытый проект</span>
+          </div>
+          <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-tertiary);" data-key="pillType">
+            mabvpn
+          </span>
+        </div>
+
+        <h1 class="product-title" data-key="title">MabVPN</h1>
+
+        <p class="product-lead-text" data-key="leadText">
+          vpn сервис. я настраивал сервера и писал панель.
+        </p>
+
+        <!-- iOS Spec Table -->
+        <div class="ios-grouped-card">
+          <div class="ios-spec-row">
+            <span class="ios-spec-label" data-key="specRoleLabel">что делал</span>
+            <span class="ios-spec-val" data-key="specRoleVal">настройка серверов и панель</span>
+          </div>
+          <div class="ios-spec-row">
+            <span class="ios-spec-label" data-key="specTypeLabel">тип сервиса</span>
+            <span class="ios-spec-val accent" data-key="specTypeVal">продажа vpn по подписке</span>
+          </div>
+          <div class="ios-spec-row">
+            <span class="ios-spec-label" data-key="specStackLabel">стек</span>
+            <span class="ios-spec-val">linux, python, web, api</span>
+          </div>
+          <div class="ios-spec-row">
+            <span class="ios-spec-label" data-key="specCodeLabel">исходный код</span>
+            <span class="ios-spec-val" data-key="specCodeVal">closed source</span>
+          </div>
+        </div>
+
+        <!-- iOS Action Buttons -->
+        <div class="ios-actions">
+          <a href="./" class="btn-ios btn-ios-secondary">
+            <span data-key="btnHome">← к моим проектам</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- RIGHT PANE: Deep-Dive Feature Breakdown & Technical Detail -->
+      <section class="product-right-pane">
+        
+        <!-- Large Specimen Card -->
+        <article class="specimen-card">
+          <div class="specimen-header">
+            <div class="specimen-status-chip">
+              <span class="status-pulse"></span>
+              <span data-key="statusChip">active vpn service</span>
+            </div>
+            <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-tertiary);">
+              servers and panel
+            </span>
+          </div>
+
+          <h2 class="specimen-title" data-key="overviewTitle">что я делал</h2>
+          
+          <p class="specimen-desc" data-key="overviewDesc">
+            сервис продает vpn доступ. моя задача — поднять серверы и написать панель для выдачи ключей, конфигов и контроля клиентов.
+          </p>
+
+          <div class="checklist-title" data-key="tasksTitle">задачи и реализация</div>
+
+          <div class="checklist-grid">
+            <div class="checklist-item">
+              <span class="checklist-icon">⚡</span>
+              <span class="checklist-text"><strong data-key="task1Bold">панель управления</strong></span>
+            </div>
+
+            <div class="checklist-item">
+              <span class="checklist-icon">🛡️</span>
+              <span class="checklist-text"><strong data-key="task2Bold">настройка серверов</strong></span>
+            </div>
+
+            <div class="checklist-item">
+              <span class="checklist-icon">🔄</span>
+              <span class="checklist-text"><strong data-key="task3Bold">автоматизация ключей</strong></span>
+            </div>
+
+            <div class="checklist-item">
+              <span class="checklist-icon">🐧</span>
+              <span class="checklist-text"><strong data-key="task4Bold">поддержка</strong></span>
+            </div>
+          </div>
+
+          <!-- Architecture Pillars -->
+          <div class="tech-pillars">
+            <div class="pillar-card">
+              <div class="pillar-head" data-key="pillar1Head">серверная часть</div>
+              <div class="pillar-body" data-key="pillar1Body">настройка туннелей, маршрутизация сетевых пакетов и стабильность нод.</div>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-head" data-key="pillar2Head">панель управления</div>
+              <div class="pillar-body" data-key="pillar2Body">удобная генерация ключей, контроль клиентов и автоматизация.</div>
+            </div>
+          </div>
+
+          <!-- Notice Box -->
+          <div class="closed-notice-box">
+            <span>🔒</span>
+            <div>
+              <strong data-key="noticeBold">закрытый проект:</strong>
+              <span data-key="noticeText">
+                проект коммерческий и не мой. исходники серверов и панели не выкладываются публично.
+              </span>
+            </div>
+          </div>
+
+        </article>
+
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div data-key="footerNotice">
+        iwtsd. права не защищены
+      </div>
+      <div class="footer-links">
+        <a href="./" class="footer-link home" data-key="footerHome">← на главную</a>
+        <a href="https://github.com/iwtsyddd" class="footer-link" target="_blank" rel="noopener noreferrer">github</a>
+        <a href="https://t.me/iwtsyddd" class="footer-link" target="_blank" rel="noopener noreferrer">telegram</a>
+        <a href="#" class="footer-link" id="backToTop" data-key="backToTop">наверх ↑</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Interactive Scripts -->
+  <script>
+    const i18n = {
+      ru: {
+        navBack: "← на главную",
+        pillClosed: "закрытый проект",
+        pillType: "mabvpn",
+        title: "MabVPN",
+        leadText: "vpn сервис. я настраивал сервера и писал панель.",
+        specRoleLabel: "что делал",
+        specRoleVal: "настройка серверов и панель",
+        specTypeLabel: "тип сервиса",
+        specTypeVal: "продажа vpn по подписке",
+        specStackLabel: "стек",
+        specCodeLabel: "исходный код",
+        specCodeVal: "closed source",
+        btnHome: "← к моим проектам",
+        statusChip: "vpn service",
+        overviewTitle: "что я делал",
+        overviewDesc: "сервис продает vpn доступ. моя задача — поднять серверы и написать панель для выдачи ключей, конфигов и контроля клиентов.",
+        tasksTitle: "задачи",
+        task1Bold: "панель управления",
+        task2Bold: "настройка серверов",
+        task3Bold: "автоматизация ключей",
+        task4Bold: "поддержка",
+        pillar1Head: "серверы",
+        pillar1Body: "туннели, маршрутизация, стабильность нод.",
+        pillar2Head: "панель",
+        pillar2Body: "генерация ключей, контроль клиентов, автоматизация.",
+        noticeBold: "закрытый проект:",
+        noticeText: "исходники не публикуются.",
+        footerNotice: "iwtsd. права не защищены",
+        footerHome: "← на главную",
+        backToTop: "наверх ↑"
+      },
+      en: {
+        navBack: "← back to home",
+        pillClosed: "closed project",
+        pillType: "mabvpn",
+        title: "MabVPN",
+        leadText: "vpn service. i set up servers and built the panel.",
+        specRoleLabel: "my role",
+        specRoleVal: "servers and panel",
+        specTypeLabel: "service type",
+        specTypeVal: "paid vpn subscription",
+        specStackLabel: "stack",
+        specCodeLabel: "source code",
+        specCodeVal: "closed source",
+        btnHome: "← to my projects",
+        statusChip: "vpn service",
+        overviewTitle: "what i did",
+        overviewDesc: "the service sells vpn access. my job was setting up servers and building a panel for key generation, configs, and client management.",
+        tasksTitle: "tasks",
+        task1Bold: "control panel",
+        task2Bold: "server setup",
+        task3Bold: "key automation",
+        task4Bold: "maintenance",
+        pillar1Head: "servers",
+        pillar1Body: "tunnels, routing, node stability.",
+        pillar2Head: "control panel",
+        pillar2Body: "key generation, client management, automation.",
+        noticeBold: "closed project:",
+        noticeText: "sources are not public.",
+        footerNotice: "iwtsd. no rights reserved",
+        footerHome: "← to main page",
+        backToTop: "back to top ↑"
+      }
+    };
+
+    function storage() {
+      try {
+        const test = '__t__';
+        localStorage.setItem(test, test);
+        localStorage.removeItem(test);
+        return localStorage;
+      } catch (e) {
+        return null;
+      }
+    }
+    const store = storage();
+
+    const htmlEl = document.documentElement;
+    const bodyEl = document.body;
+    const themeBtn = document.getElementById('themeToggle');
+    const sunIcon = document.getElementById('themeIconSun');
+    const moonIcon = document.getElementById('themeIconMoon');
+
+    function applyTheme(theme) {
+      htmlEl.setAttribute('data-theme', theme);
+      bodyEl.setAttribute('data-theme', theme);
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+      if (metaThemeColor) {
+        metaThemeColor.setAttribute('content', theme === 'dark' ? '#08090e' : '#fafafc');
+      }
+
+      if (theme === 'dark') {
+        sunIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
+      } else {
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+      }
+      if (store) store.setItem('site_theme', theme);
+    }
+
+    let initialTheme = 'dark';
+    if (store && store.getItem('site_theme')) {
+      initialTheme = store.getItem('site_theme');
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+      initialTheme = 'light';
+    }
+    applyTheme(initialTheme);
+
+    themeBtn.addEventListener('click', () => {
+      const cur = htmlEl.getAttribute('data-theme') || 'dark';
+      applyTheme(cur === 'dark' ? 'light' : 'dark');
+    });
+
+    const langRuBtn = document.getElementById('langRu');
+    const langEnBtn = document.getElementById('langEn');
+
+    function applyLang(lang) {
+      htmlEl.setAttribute('lang', lang);
+      bodyEl.setAttribute('data-lang', lang);
+
+      document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (i18n[lang] && i18n[lang][key]) {
+          el.textContent = i18n[lang][key];
+        }
+      });
+
+      langRuBtn.classList.toggle('active', lang === 'ru');
+      langEnBtn.classList.toggle('active', lang === 'en');
+
+      if (store) store.setItem('site_lang', lang);
+    }
+
+    let initialLang = 'ru';
+    if (store && store.getItem('site_lang')) {
+      initialLang = store.getItem('site_lang');
+    } else if (navigator.language && !navigator.language.startsWith('ru')) {
+      initialLang = 'en';
+    }
+    applyLang(initialLang);
+
+    langRuBtn.addEventListener('click', () => applyLang('ru'));
+    langEnBtn.addEventListener('click', () => applyLang('en'));
+
+    // Back to top
+    document.getElementById('backToTop').addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

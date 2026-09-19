@@ -1,481 +1,1445 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>iwtsyddd 🫩🫩🫩🫩🫩</title>
-  <meta name="description" content="🫩🫩🫩🫩🫩">
+  <title>iwtsyddd</title>
+  <meta name="description" content="чисто мои проекты и мой говнокод. iwtsyddd">
+  <meta name="theme-color" content="#08090d">
 
-  <!-- google sans flex variable -->
+  <!-- Fonts: Google Sans Flex, Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --md-sys-color-primary: #6750a4;
-      --md-sys-color-on-primary: #ffffff;
-      --md-sys-color-surface: #fef7ff;
-      --md-sys-color-on-surface: #1c1b1f;
-      --md-sys-color-outline: #79747e;
-      --md-sys-color-surface-variant: #e7e0ec;
-      --md-sys-color-inverse-surface: #313033;
-      --md-sys-color-on-inverse-surface: #f4eff4;
+      /* Typography */
+      --font-display: 'Google Sans Flex', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-      --md-sys-elevation-level1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-      --md-sys-elevation-level2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-      --md-sys-shape-corner-large: 1rem;
-      --md-sys-shape-corner-extra-large: 1.75rem;
+      /* Dark Theme (Default) - Linear & Framer Inspired */
+      --bg-base: #08090d;
+      --bg-surface: #10121a;
+      --bg-surface-elevated: #161924;
+      --bg-card: rgba(18, 21, 30, 0.7);
+      --bg-card-hover: rgba(26, 30, 44, 0.85);
 
-      --bg: var(--md-sys-color-surface);
-      --text: var(--md-sys-color-on-surface);
-      --card-bg: white;
-      --card-text: var(--md-sys-color-on-surface);
-      --accent: var(--md-sys-color-primary);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-focus: rgba(255, 255, 255, 0.2);
+      --border-highlight: rgba(129, 140, 248, 0.35);
+
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-tertiary: #64748b;
+      --text-mono: #cbd5e1;
+
+      --accent-primary: #3b82f6;
+      --accent-light: #60a5fa;
+      --accent-glow: rgba(59, 130, 246, 0.24);
+      --accent-glow-subtle: rgba(59, 130, 246, 0.08);
+
+      --nav-bg: rgba(12, 14, 20, 0.72);
+      --nav-border: rgba(255, 255, 255, 0.08);
+
+      --chip-bg: rgba(255, 255, 255, 0.04);
+      --chip-border: rgba(255, 255, 255, 0.08);
+      --chip-text: #cbd5e1;
+
+      /* Status tag colors */
+      --status-active-bg: rgba(16, 185, 129, 0.12);
+      --status-active-border: rgba(16, 185, 129, 0.3);
+      --status-active-text: #6ee7b7;
+
+      --status-abandoned-bg: rgba(245, 158, 11, 0.12);
+      --status-abandoned-border: rgba(245, 158, 11, 0.3);
+      --status-abandoned-text: #fcd34d;
+
+      --status-closed-bg: rgba(239, 68, 68, 0.12);
+      --status-closed-border: rgba(239, 68, 68, 0.3);
+      --status-closed-text: #fca5a5;
+
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+      --shadow-glow: 0 0 36px -10px rgba(59, 130, 246, 0.28);
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
     }
 
-    [data-theme="dark"] {
-      --md-sys-color-primary: #d0bcff;
-      --md-sys-color-on-primary: #381e72;
-      --md-sys-color-surface: #141218;
-      --md-sys-color-on-surface: #e6e0e9;
-      --md-sys-color-outline: #938f99;
-      --md-sys-color-surface-variant: #49454f;
-      --md-sys-color-inverse-surface: #e6e0e9;
-      --md-sys-color-on-inverse-surface: #313033;
+    [data-theme="light"] {
+      --bg-base: #f9fafb;
+      --bg-surface: #ffffff;
+      --bg-surface-elevated: #f1f5f9;
+      --bg-card: rgba(255, 255, 255, 0.85);
+      --bg-card-hover: #ffffff;
 
-      --bg: #0f0d13;
-      --text: #e6e0e9;
-      --card-bg: #1c1b1f;
-      --card-text: #e6e0e9;
-      --accent: #d0bcff;
+      --border-subtle: rgba(0, 0, 0, 0.07);
+      --border-focus: rgba(0, 0, 0, 0.16);
+      --border-highlight: rgba(59, 130, 246, 0.3);
+
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-tertiary: #94a3b8;
+      --text-mono: #334155;
+
+      --accent-primary: #2563eb;
+      --accent-light: #3b82f6;
+      --accent-glow: rgba(37, 99, 235, 0.15);
+      --accent-glow-subtle: rgba(37, 99, 235, 0.04);
+
+      --nav-bg: rgba(255, 255, 255, 0.82);
+      --nav-border: rgba(0, 0, 0, 0.06);
+
+      --chip-bg: rgba(0, 0, 0, 0.03);
+      --chip-border: rgba(0, 0, 0, 0.08);
+      --chip-text: #334155;
+
+      --status-active-bg: rgba(16, 185, 129, 0.1);
+      --status-active-border: rgba(16, 185, 129, 0.25);
+      --status-active-text: #059669;
+
+      --status-abandoned-bg: rgba(245, 158, 11, 0.1);
+      --status-abandoned-border: rgba(245, 158, 11, 0.25);
+      --status-abandoned-text: #d97706;
+
+      --status-closed-bg: rgba(239, 68, 68, 0.08);
+      --status-closed-border: rgba(239, 68, 68, 0.22);
+      --status-closed-text: #dc2626;
+
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 10px 30px -4px rgba(0, 0, 0, 0.07);
+      --shadow-glow: 0 0 35px -8px rgba(37, 99, 235, 0.15);
     }
 
-    * { margin:0; padding:0; box-sizing:border-box; }
+    /* Reset & Base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Google Sans Flex', system-ui, sans-serif;
-      font-weight: 400;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem 1rem 4rem;
-      text-align: center;
-      line-height: 1.5;
-      transition: background 0.4s ease, color 0.4s ease;
-    }
-
-    .container {
-      max-width: 900px;
-      width: 100%;
+      line-height: 1.6;
+      overflow-x: hidden;
       position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s ease;
     }
 
-    .controls {
+    /* Ambient Background Light Mesh */
+    .bg-mesh {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .bg-mesh-glow {
       position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      display: flex;
-      gap: 1rem;
-      align-items: center;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 440px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, rgba(139, 92, 246, 0.06) 50%, transparent 75%);
+      filter: blur(80px);
+      opacity: 0.85;
+      transition: opacity 0.5s ease;
     }
 
-    .theme-toggle, .lang-toggle {
+    .bg-mesh-grid {
+      position: absolute;
+      inset: 0;
+      background-size: 48px 48px;
+      background-image: 
+        linear-gradient(to right, var(--border-subtle) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--border-subtle) 1px, transparent 1px);
+      mask-image: radial-gradient(ellipse 65% 55% at 50% 20%, black 20%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 65% 55% at 50% 20%, black 20%, transparent 80%);
+      opacity: 0.45;
+    }
+
+    /* Container */
+    .site-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 24px 70px;
+    }
+
+    /* Floating Navigation */
+    .nav-bar {
+      position: sticky;
+      top: 18px;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 900px;
+      margin: 18px auto 0;
+      padding: 9px 18px;
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--nav-border);
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .status-dot-wrap {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 10px;
+      height: 10px;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background: #10b981;
+      border-radius: 50%;
+    }
+
+    .status-ping {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #10b981;
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: pulse-ring 2.4s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+    }
+
+    @keyframes pulse-ring {
+      0% { transform: scale(0.8); opacity: 0.8; }
+      50% { transform: scale(2.2); opacity: 0; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .segmented-lang {
+      display: inline-flex;
+      background: var(--chip-bg);
+      border: 1px solid var(--chip-border);
+      border-radius: var(--radius-full);
+      padding: 3px;
+      gap: 2px;
+    }
+
+    .lang-btn {
       background: transparent;
       border: none;
-      font-size: 1.8rem;
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
       cursor: pointer;
-      padding: 0.5rem;
-      border-radius: 50%;
-      transition: all 0.3s;
-      color: var(--text);
-      opacity: 0.8;
+      transition: all 0.2s ease;
     }
 
-    .theme-toggle:hover, .lang-toggle:hover {
-      opacity: 1;
-      transform: scale(1.15);
-      background: rgba(103,80,164,0.1);
+    .lang-btn:hover {
+      color: var(--text-primary);
     }
 
-    .lang-toggle {
-      font-size: 1.4rem;
-      font-weight: 500;
-      padding: 0.4rem 0.8rem;
-      border-radius: 2rem;
-      border: 1px solid var(--accent);
+    .lang-btn.active {
+      background: var(--bg-surface-elevated);
+      color: var(--text-primary);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     }
 
-    .lang-toggle.active {
-      background: var(--accent);
-      color: white;
-      opacity: 1;
+    [data-theme="light"] .lang-btn.active {
+      background: #ffffff;
+      color: var(--accent-primary);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
     }
 
-    .hero {
+    .icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: var(--chip-bg);
+      border: 1px solid var(--chip-border);
+      border-radius: var(--radius-full);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .icon-btn:hover {
+      color: var(--text-primary);
+      background: var(--bg-surface-elevated);
+      border-color: var(--border-focus);
+      transform: translateY(-1px);
+    }
+
+    .icon-btn svg {
+      width: 17px;
+      height: 17px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.4s ease;
+    }
+
+    .icon-btn:hover svg {
+      transform: rotate(20deg);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      min-height: calc(80vh - 80px);
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
-      margin-bottom: 3rem;
-    }
-
-    .skull {
-      font-size: 9rem;
-      margin-bottom: 1.5rem;
-      animation: float 7s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-
-    .headline {
-      font-size: clamp(3.5rem, 10vw, 6.5rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin: 0.5rem 0 0.75rem;
-      color: var(--accent);
-      line-height: 1.1;
       text-align: center;
-      width: 100%;
+      padding: 40px 16px 36px;
+      position: relative;
     }
 
-    .subtitle {
-      font-size: 1.5rem;
-      font-weight: 500;
-      opacity: 0.9;
-      margin: 0 auto 2.5rem;
-      max-width: 700px;
-      text-align: center;
-    }
-
-    .projects-section {
-      width: 100%;
-      margin: 4rem 0 2rem;
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .project-card {
-      background: var(--card-bg);
-      border-radius: var(--md-sys-shape-corner-extra-large);
-      box-shadow: var(--md-sys-elevation-level1);
+    /* Mascot */
+    .anime-mascot-wrap {
+      position: relative;
+      width: 76px;
+      height: 76px;
+      border-radius: 20px;
       overflow: hidden;
-      transition: all 0.3s ease;
-      text-align: left;
-      color: var(--card-text);
+      margin-bottom: 20px;
+      border: 1.5px solid rgba(255, 255, 255, 0.16);
+      background: var(--bg-surface);
+      box-shadow: 
+        0 8px 24px -4px rgba(0, 0, 0, 0.4),
+        0 0 20px 0 var(--accent-glow-subtle);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      user-select: none;
     }
 
-    .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--md-sys-elevation-level2);
+    [data-theme="light"] .anime-mascot-wrap {
+      border: 1.5px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 
+        0 10px 24px -4px rgba(0, 0, 0, 0.08),
+        0 0 16px 0 var(--accent-glow-subtle);
     }
 
-    .project-header {
-      background: linear-gradient(135deg, var(--accent) 0%, #8a6be3 90%);
-      color: white;
-      padding: 1.5rem 1.5rem 1rem;
+    .anime-mascot-wrap:hover {
+      transform: translateY(-3px) scale(1.08);
+      border-color: var(--border-highlight);
+      box-shadow: 
+        0 14px 30px -4px rgba(0, 0, 0, 0.5),
+        0 0 30px 0 var(--accent-glow);
     }
 
-    .project-title {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
+    .anime-mascot {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 18px;
     }
 
-    .project-lang {
-      font-size: 0.95rem;
-      opacity: 0.9;
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 8vw, 5.2rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+      margin-bottom: 16px;
+      background: linear-gradient(180deg, var(--text-primary) 35%, var(--text-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .project-body {
-      padding: 1.5rem;
+    .hero-subtitle {
+      font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+      color: var(--text-secondary);
+      max-width: 540px;
+      line-height: 1.5;
+      margin: 0 auto 34px;
+      font-weight: 400;
     }
 
-    .project-desc {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 28px;
     }
 
-    .project-link {
-      color: var(--accent);
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
-    .project-link:hover {
-      text-decoration: underline;
-      opacity: 0.85;
-    }
-
+    /* ============================================================
+       APPLE iOS BUTTONS (SF Pro style, tactile press, specular inset)
+       ============================================================ */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 140px;
-      height: 56px;
+      gap: 9px;
+      height: 48px;
       padding: 0 24px;
-      border-radius: 28px;
-      font-size: 1.1rem;
+      border-radius: var(--radius-full);
+      font-family: -apple-system, BlinkMacSystemFont, var(--font-body);
+      font-size: 0.9375rem;
       font-weight: 500;
+      letter-spacing: -0.01em;
       text-decoration: none;
       cursor: pointer;
-      transition: all 0.25s;
+      transition: transform 0.16s cubic-bezier(0.25, 1, 0.5, 1), 
+                  background 0.2s ease, 
+                  box-shadow 0.2s ease;
+      position: relative;
+      white-space: nowrap;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn:active {
+      transform: scale(0.96) !important;
+    }
+
+    .btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .btn-primary {
+      background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      box-shadow: 
+        inset 0 1px 0.5px rgba(255, 255, 255, 0.45),
+        0 4px 14px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(180deg, #60a5fa 0%, #3b82f6 100%);
+      box-shadow: 
+        inset 0 1px 0.5px rgba(255, 255, 255, 0.55),
+        0 6px 20px rgba(37, 99, 235, 0.45);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(24px) saturate(190%);
+      -webkit-backdrop-filter: blur(24px) saturate(190%);
+      color: var(--text-primary);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: inset 0 1px 0.5px rgba(255, 255, 255, 0.22);
+    }
+
+    [data-theme="light"] .btn-secondary {
+      background: rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: inset 0 1px 0.5px rgba(255, 255, 255, 0.85);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.26);
+      transform: translateY(-1px);
+    }
+
+    [data-theme="light"] .btn-secondary:hover {
+      background: rgba(0, 0, 0, 0.08);
+      border-color: rgba(0, 0, 0, 0.14);
+    }
+
+    /* 1-Click Copy Handle Chip */
+    .terminal-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 8px 16px;
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--text-mono);
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .terminal-chip:hover {
+      border-color: var(--border-highlight);
+      background: var(--bg-surface-elevated);
+    }
+
+    .terminal-chip .prefix {
+      color: var(--accent-light);
+      font-weight: 600;
+    }
+
+    .terminal-chip .copy-icon {
+      margin-left: 4px;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+
+    .terminal-chip:hover .copy-icon {
+      opacity: 1;
+    }
+
+    .copy-tooltip {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      background: var(--text-primary);
+      color: var(--bg-base);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      pointer-events: none;
+      opacity: 0;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .terminal-chip.copied .copy-tooltip {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Section Header without slashes or numbers */
+    .section-seam {
+      margin-top: clamp(60px, 8vw, 100px);
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--accent-light);
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3.2vw, 2.1rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--text-primary);
+    }
+
+    .section-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      max-width: 560px;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 18px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       position: relative;
       overflow: hidden;
-      margin: 0.75rem;
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: var(--shadow-sm);
     }
 
-    .btn-filled {
-      background: var(--accent);
-      color: white;
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-focus), transparent);
+      opacity: 0.35;
+      transition: opacity 0.3s;
     }
 
-    .btn-filled:hover {
-      background: #5a4396;
-      transform: scale(1.04);
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-highlight);
+      background: var(--bg-card-hover);
+      box-shadow: var(--shadow-md), var(--shadow-glow);
     }
 
-    .btn-outline {
-      background: transparent;
-      border: 2px solid var(--accent);
-      color: var(--accent);
+    .project-card:hover::before {
+      opacity: 1;
+      background: linear-gradient(90deg, transparent, var(--accent-light), transparent);
     }
 
-    .btn-outline:hover {
-      background: rgba(103,80,164,0.08);
+    .project-card-top {
+      margin-bottom: 20px;
     }
 
+    .project-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      gap: 8px;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tech-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      background: var(--chip-bg);
+      border: 1px solid var(--chip-border);
+      color: var(--text-mono);
+    }
+
+    /* Status Badges on Cards */
+    .status-pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+
+    .status-pill.active {
+      background: var(--status-active-bg);
+      border: 1px solid var(--status-active-border);
+      color: var(--status-active-text);
+    }
+
+    .status-pill.abandoned {
+      background: var(--status-abandoned-bg);
+      border: 1px solid var(--status-abandoned-border);
+      color: var(--status-abandoned-text);
+    }
+
+    .status-pill.closed {
+      background: var(--status-closed-bg);
+      border: 1px solid var(--status-closed-border);
+      color: var(--status-closed-text);
+    }
+
+    .status-pill-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .project-card-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .project-card-desc {
+      font-size: 0.925rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .project-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .project-action-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--accent-light);
+      text-decoration: none;
+      transition: gap 0.2s ease, color 0.2s ease;
+    }
+
+    .project-action-link svg {
+      width: 15px;
+      height: 15px;
+      transition: transform 0.2s ease;
+    }
+
+    .project-action-link:hover {
+      color: var(--text-primary);
+      gap: 9px;
+    }
+
+    .project-action-link:hover svg {
+      transform: translate(2px, -2px);
+    }
+
+    /* ============================================================
+       COLLAB CTA BANNER (Link to contributions.html)
+       ============================================================ */
+    .collab-cta-card {
+      margin-top: 24px;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.08) 50%, rgba(236, 72, 153, 0.08) 100%);
+      border: 1px solid rgba(139, 92, 246, 0.28);
+      border-radius: var(--radius-lg);
+      padding: 22px 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.28s ease;
+    }
+
+    .collab-cta-card:hover {
+      border-color: rgba(236, 72, 153, 0.5);
+      box-shadow: 0 8px 30px -4px rgba(139, 92, 246, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .collab-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: linear-gradient(90deg, #38bdf8, #c084fc, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .collab-title {
+      font-family: var(--font-display);
+      font-size: 1.22rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+    }
+
+    .collab-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .collab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+      color: #ffffff;
+      text-decoration: none;
+      font-family: -apple-system, BlinkMacSystemFont, var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 
+        inset 0 1px 0.5px rgba(255, 255, 255, 0.45),
+        0 4px 14px rgba(139, 92, 246, 0.35);
+      transition: transform 0.16s cubic-bezier(0.25, 1, 0.5, 1), filter 0.2s ease, box-shadow 0.2s ease;
+      user-select: none;
+    }
+
+    .collab-btn:active {
+      transform: scale(0.96) !important;
+    }
+
+    .collab-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 22px rgba(236, 72, 153, 0.45);
+      filter: brightness(1.08);
+    }
+
+    .collab-btn svg {
+      width: 15px;
+      height: 15px;
+      transition: transform 0.2s;
+    }
+
+    .collab-btn:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* Stack Section */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .stack-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s ease;
+    }
+
+    .stack-card:hover {
+      border-color: var(--border-focus);
+      background: var(--bg-surface-elevated);
+      transform: translateY(-2px);
+    }
+
+    .stack-icon {
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: var(--radius-sm);
+      background: var(--chip-bg);
+    }
+
+    .stack-name {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .stack-role {
+      font-size: 0.72rem;
+      color: var(--text-tertiary);
+    }
+
+    /* Footer */
     footer {
-      margin-top: auto;
-      padding: 3rem 0 1rem;
-      font-size: 1rem;
-      opacity: 0.6;
-      width: 100%;
-      text-align: center;
+      margin-top: clamp(70px, 10vw, 120px);
+      padding-top: 28px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      font-size: 0.85rem;
+      color: var(--text-tertiary);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+      color: var(--text-primary);
+    }
+
+    .footer-link.accent {
+      color: #c084fc;
+    }
+
+    .footer-link.accent:hover {
+      color: #f472b6;
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .site-wrapper {
+        padding: 0 16px 50px;
+      }
+      .nav-bar {
+        padding: 8px 14px;
+        margin-top: 12px;
+      }
+      .hero-section {
+        min-height: auto;
+        padding: 38px 6px 28px;
+      }
+      .hero-actions {
+        width: 100%;
+        flex-direction: column;
+      }
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .collab-cta-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .collab-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
     }
   </style>
 </head>
-<body data-theme="light" data-lang="ru">
+<body data-theme="dark" data-lang="ru">
 
-  <div class="controls">
-    <button class="theme-toggle" id="themeToggle" aria-label="сменить тему">☀️</button>
-    <button class="lang-toggle" id="langRu" data-lang="ru">RU</button>
-    <button class="lang-toggle" id="langEn" data-lang="en">EN</button>
+  <!-- Ambient Light Mesh Background -->
+  <div class="bg-mesh" aria-hidden="true">
+    <div class="bg-mesh-glow"></div>
+    <div class="bg-mesh-grid"></div>
   </div>
 
-  <div class="container">
+  <div class="site-wrapper">
 
-    <div class="hero">
-      <div class="skull">🌉</div>
-      <h1 class="headline" data-key="title">iwtsyddd</h1>
-      <p class="subtitle" data-key="subtitle">
-        мой сайт в 2026<br>
-        код и проекты
-      </p>
-    </div>
+    <!-- Floating Sticky Navbar -->
+    <header class="nav-bar">
+      <a href="#" class="nav-brand">
+        <span class="status-dot-wrap">
+          <span class="status-ping"></span>
+          <span class="status-dot"></span>
+        </span>
+        <span>iwtsyddd</span>
+      </a>
 
-    <div style="margin: 3rem 0;">
-      <a href="https://github.com/iwtsyddd" class="btn btn-filled" onclick="createRipple(event)" data-key="githubBtn">github профиль</a>
-      <a href="https://t.me/iwtsyddd" class="btn btn-outline" onclick="createRipple(event)" data-key="telegramBtn">telegram 🫩</a>
-    </div>
-
-    <section class="projects-section">
-      <h2 class="headline" style="font-size:2.5rem; margin-bottom:1rem;" data-key="projectsTitle">мои проекты</h2>
-      <p class="subtitle" style="font-size:1.3rem; margin-bottom:2rem;" data-key="projectsSubtitle">
-        пока три проекта
-      </p>
-
-      <div class="projects-grid">
-
-        <div class="project-card">
-          <div class="project-header">
-            <div class="project-title">Socksicle</div>
-            <div class="project-lang">Python • PySide6/Qt6</div>
-          </div>
-          <div class="project-body">
-            <p class="project-desc" data-key="socksicleDesc">
-              минималистичный gui-клиент для shadowsocks на linux.
-            </p>
-            <a href="https://github.com/iwtsyddd/Socksicle" class="project-link" target="_blank" data-key="repoLink">→ репозиторий</a>
-          </div>
+      <div class="nav-controls">
+        <!-- Bilingual Switcher -->
+        <div class="segmented-lang" role="group" aria-label="Language selection">
+          <button class="lang-btn active" id="langRu" data-lang="ru" aria-label="Русский">RU</button>
+          <button class="lang-btn" id="langEn" data-lang="en" aria-label="English">EN</button>
         </div>
 
-        <div class="project-card">
-          <div class="project-header">
-            <div class="project-title">DiEmu</div>
-            <div class="project-lang">Rust</div>
-          </div>
-          <div class="project-body">
-            <p class="project-desc" data-key="diemuDesc">
-              эмулятор game boy на rust. gbc поддержка пока сломана.
-            </p>
-            <a href="https://github.com/iwtsyddd/DiEmu" class="project-link" target="_blank" data-key="repoLink">→ репозиторий</a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-header">
-            <div class="project-title" data-key="thisSiteTitle">этот сайт</div>
-            <div class="project-lang">HTML + CSS + Google Sans</div>
-          </div>
-          <div class="project-body">
-            <p class="project-desc" data-key="thisSiteDesc">
-              личная страница на github pages с тёмной темой и проектами.
-            </p>
-            <a href="https://github.com/iwtsyddd/iwtsyddd.github.io" class="project-link" target="_blank" data-key="repoLink">→ исходники</a>
-          </div>
-        </div>
-
+        <!-- Theme Toggle -->
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+          <svg id="themeIconSun" style="display: none;" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg id="themeIconMoon" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
       </div>
-    </section>
+    </header>
 
-    <footer data-key="footer">
-      © 2026 iwtsyddd
+    <!-- Main Content -->
+    <main>
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <!-- Cute Dancing Anime Girl Mascot -->
+        <div class="anime-mascot-wrap" title="vibe">
+          <img src="dance.gif" alt="anime dancing girl" class="anime-mascot" width="76" height="76">
+        </div>
+
+        <!-- Headline -->
+        <h1 class="hero-headline" data-key="title">iwtsyddd</h1>
+
+        <!-- Subtitle: Chill & Grounded -->
+        <p class="hero-subtitle" data-key="subtitle">
+          чисто мои проекты и мой говнокод
+        </p>
+
+        <!-- CTAs in iOS Style -->
+        <div class="hero-actions">
+          <a href="https://github.com/iwtsyddd" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            <span data-key="githubBtn">github профиль</span>
+          </a>
+
+          <a href="https://t.me/iwtsyddd" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+            </svg>
+            <span data-key="telegramBtn">telegram</span>
+          </a>
+        </div>
+
+        <!-- 1-Click Copy Handle -->
+        <div class="terminal-chip" id="copyHandleChip" title="Скопировать ник">
+          <span class="prefix">$</span>
+          <span>@iwtsyddd</span>
+          <svg class="copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <span class="copy-tooltip" id="copyTooltip" data-key="copyTooltip">Скопировано!</span>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects">
+        <div class="section-seam">
+          <div class="section-eyebrow">
+            <span data-key="projectsEyebrow">проекты</span>
+          </div>
+          <h2 class="section-title" data-key="projectsTitle">мои проекты</h2>
+          <p class="section-desc" data-key="projectsSubtitle">
+            пока три-четыре штуки
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Card 1: Socksicle -->
+          <article class="project-card">
+            <div class="project-card-top">
+              <div class="project-meta-row">
+                <div class="tech-tags">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">Qt6 / PySide</span>
+                </div>
+                <span class="status-pill active">
+                  <span class="status-pill-dot"></span>
+                  <span data-key="statusActive">активен</span>
+                </span>
+              </div>
+              <h3 class="project-card-title">Socksicle</h3>
+              <p class="project-card-desc" data-key="socksicleDesc">
+                минималистичный gui-клиент для shadowsocks на linux.
+              </p>
+            </div>
+            <div class="project-card-footer">
+              <a href="https://github.com/iwtsyddd/Socksicle" class="project-action-link" target="_blank" rel="noopener noreferrer">
+                <span data-key="repoLink">→ репозиторий</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 2: DiEmu (заброшен) -->
+          <article class="project-card">
+            <div class="project-card-top">
+              <div class="project-meta-row">
+                <div class="tech-tags">
+                  <span class="tech-tag">Rust</span>
+                  <span class="tech-tag">Game Boy</span>
+                </div>
+                <span class="status-pill abandoned">
+                  <span class="status-pill-dot"></span>
+                  <span data-key="statusAbandoned">заброшен</span>
+                </span>
+              </div>
+              <h3 class="project-card-title">DiEmu</h3>
+              <p class="project-card-desc" data-key="diemuDesc">
+                эмулятор game boy на rust. gbc поддержка сломана, проект заброшен.
+              </p>
+            </div>
+            <div class="project-card-footer">
+              <a href="https://github.com/iwtsyddd/DiEmu" class="project-action-link" target="_blank" rel="noopener noreferrer">
+                <span data-key="repoLink">→ репозиторий</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+
+          <!-- Card 4: этот сайт -->
+          <article class="project-card">
+            <div class="project-card-top">
+              <div class="project-meta-row">
+                <div class="tech-tags">
+                  <span class="tech-tag">HTML</span>
+                  <span class="tech-tag">CSS</span>
+                </div>
+                <span class="status-pill active">
+                  <span class="status-pill-dot"></span>
+                  <span data-key="statusSite">сайт</span>
+                </span>
+              </div>
+              <h3 class="project-card-title" data-key="thisSiteTitle">этот сайт</h3>
+              <p class="project-card-desc" data-key="thisSiteDesc">
+                личная страница на github pages с тёмной темой и проектами.
+              </p>
+            </div>
+            <div class="project-card-footer">
+              <a href="https://github.com/iwtsyddd/iwtsyddd.github.io" class="project-action-link" target="_blank" rel="noopener noreferrer">
+                <span data-key="sourceLink">→ исходники</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Collab / Not My Projects Banner (iOS Button Style) -->
+        <div class="collab-cta-card">
+          <div>
+            <span class="collab-eyebrow" data-key="collabEyebrow">участие в чужих проектах</span>
+            <h3 class="collab-title" data-key="collabTitle">чужой код, где я приложил руку</h3>
+            <p class="collab-desc" data-key="collabDesc">проекты других людей, где я разрабатывал софт</p>
+          </div>
+          <a href="contributions.html" class="collab-btn">
+            <span data-key="collabBtn">смотреть чужой код</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- Stack Section -->
+      <section id="stack">
+        <div class="section-seam">
+          <div class="section-eyebrow">
+            <span data-key="stackEyebrow">стек</span>
+          </div>
+          <h2 class="section-title" data-key="stackTitle">с чем ковырялся</h2>
+          <p class="section-desc" data-key="stackSubtitle">
+            языки и штуки, которые трогал
+          </p>
+        </div>
+
+        <div class="stack-grid">
+          <div class="stack-card">
+            <div class="stack-icon">🦀</div>
+            <div>
+              <div class="stack-name">Rust</div>
+              <div class="stack-role">эмуляция, cli</div>
+            </div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-icon">🐍</div>
+            <div>
+              <div class="stack-name">Python</div>
+              <div class="stack-role">скрипты, gui</div>
+            </div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-icon">⚡</div>
+            <div>
+              <div class="stack-name">Qt6 / PySide</div>
+              <div class="stack-role">desktop gui</div>
+            </div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-icon">🐧</div>
+            <div>
+              <div class="stack-name">Linux</div>
+              <div class="stack-role">дефолтная система</div>
+            </div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-icon">📦</div>
+            <div>
+              <div class="stack-name">Git</div>
+              <div class="stack-role">контроль версий</div>
+            </div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-icon">🌐</div>
+            <div>
+              <div class="stack-name">Web</div>
+              <div class="stack-role">html, css, js</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div data-key="footerNotice">
+        iwtsd. права не защищены
+      </div>
+      <div class="footer-links">
+        <a href="contributions.html" class="footer-link accent" data-key="footerCollabs">чужой код →</a>
+        <a href="https://github.com/iwtsyddd" class="footer-link" target="_blank" rel="noopener noreferrer">github</a>
+        <a href="https://t.me/iwtsyddd" class="footer-link" target="_blank" rel="noopener noreferrer">telegram</a>
+        <a href="#" class="footer-link" id="backToTop" data-key="backToTop">наверх ↑</a>
+      </div>
     </footer>
 
   </div>
 
+  <!-- Interactive Scripts -->
   <script>
-    // translations
-    const translations = {
+    // Bilingual Localization without // and numbers
+    const i18n = {
       ru: {
         title: "iwtsyddd",
-        subtitle: "пр",
+        subtitle: "чисто мои проекты и мой говнокод",
         githubBtn: "github профиль",
-        telegramBtn: "telegram 🫩",
+        telegramBtn: "telegram",
+        copyTooltip: "Скопировано!",
+        projectsEyebrow: "проекты",
         projectsTitle: "мои проекты",
-        projectsSubtitle: "пока три проекта",
+        projectsSubtitle: "пока три-четыре штуки",
         socksicleDesc: "минималистичный gui-клиент для shadowsocks на linux.",
-        diemuDesc: "эмулятор game boy на rust. gbc поддержка пока сломана.",
+        diemuDesc: "эмулятор game boy на rust. gbc поддержка сломана, проект заброшен.",
         thisSiteTitle: "этот сайт",
         thisSiteDesc: "личная страница на github pages с тёмной темой и проектами.",
         repoLink: "→ репозиторий",
-        footer: "© 2026 iwtsyddd"
+        launchTool: "→ запустить утилиту",
+        sourceLink: "→ исходники",
+        statusActive: "активен",
+        statusAbandoned: "заброшен",
+        statusClosed: "закрыт",
+        statusSite: "сайт",
+        collabEyebrow: "участие в чужих проектах",
+        collabTitle: "чужой код, где я приложил руку",
+        collabDesc: "проекты других людей, где я разрабатывал софт",
+        collabBtn: "смотреть чужой код",
+        stackEyebrow: "стек",
+        stackTitle: "с чем ковырялся",
+        stackSubtitle: "языки и штуки, которые трогал",
+        footerNotice: "iwtsd. права не защищены",
+        footerCollabs: "чужой код →",
+        backToTop: "наверх ↑"
       },
       en: {
         title: "iwtsyddd",
-        subtitle: "hi brazers",
+        subtitle: "just my projects and my spaghetti code",
         githubBtn: "github profile",
-        telegramBtn: "telegram 🫩",
+        telegramBtn: "telegram",
+        copyTooltip: "Copied!",
+        projectsEyebrow: "projects",
         projectsTitle: "my projects",
-        projectsSubtitle: "three projects so far",
-        socksicleDesc: "minimalistic gui client for shadowsocks on linux.",
-        diemuDesc: "game boy emulator in rust. gbc support is currently broken.",
+        projectsSubtitle: "three or four so far",
+        socksicleDesc: "minimalist gui client for shadowsocks on linux.",
+        diemuDesc: "game boy emulator in rust. gbc support is broken, project abandoned.",
+        twinsockDesc: "shadowsocks url generator in browser. project is closed.",
         thisSiteTitle: "this site",
         thisSiteDesc: "personal page on github pages with dark mode and projects.",
         repoLink: "→ repository",
-        footer: "© 2026 iwtsyddd"
+        launchTool: "→ launch tool",
+        sourceLink: "→ source code",
+        statusActive: "active",
+        statusAbandoned: "abandoned",
+        statusClosed: "closed",
+        statusSite: "site",
+        collabEyebrow: "participated projects",
+        collabTitle: "other projects i worked on",
+        collabDesc: "software made by other folks where i contributed code",
+        collabBtn: "view other code",
+        stackEyebrow: "stack",
+        stackTitle: "stuff i played with",
+        stackSubtitle: "languages and tools i touched",
+        footerNotice: "iwtsd. no rights reserved",
+        footerCollabs: "other code →",
+        backToTop: "back to top ↑"
       }
     };
 
-    // theme logic (как было)
-    const toggle = document.getElementById('themeToggle');
-    const body = document.body;
-
-    function isStorageAvailable() {
+    function storage() {
       try {
-        const test = '__storage_test__';
+        const test = '__t__';
         localStorage.setItem(test, test);
         localStorage.removeItem(test);
-        return true;
+        return localStorage;
       } catch (e) {
-        return false;
+        return null;
       }
     }
+    const store = storage();
 
-    const storageOk = isStorageAvailable();
+    // Theme Controller
+    const htmlEl = document.documentElement;
+    const bodyEl = document.body;
+    const themeBtn = document.getElementById('themeToggle');
+    const sunIcon = document.getElementById('themeIconSun');
+    const moonIcon = document.getElementById('themeIconMoon');
 
-    let currentTheme = 'light';
-    if (storageOk) {
-      const saved = localStorage.getItem('theme');
-      if (saved) currentTheme = saved;
-      else if (window.matchMedia('(prefers-color-scheme: dark)').matches) currentTheme = 'dark';
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      currentTheme = 'dark';
+    function applyTheme(theme) {
+      htmlEl.setAttribute('data-theme', theme);
+      bodyEl.setAttribute('data-theme', theme);
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+      if (metaThemeColor) {
+        metaThemeColor.setAttribute('content', theme === 'dark' ? '#08090d' : '#f9fafb');
+      }
+
+      if (theme === 'dark') {
+        sunIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
+      } else {
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+      }
+      if (store) store.setItem('site_theme', theme);
     }
 
-    body.setAttribute('data-theme', currentTheme);
-    toggle.textContent = currentTheme === 'dark' ? '🌙' : '☀️';
+    let initialTheme = 'dark';
+    if (store && store.getItem('site_theme')) {
+      initialTheme = store.getItem('site_theme');
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+      initialTheme = 'light';
+    }
+    applyTheme(initialTheme);
 
-    toggle.addEventListener('click', () => {
-      const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      body.setAttribute('data-theme', next);
-      toggle.textContent = next === 'dark' ? '🌙' : '☀️';
-      if (storageOk) localStorage.setItem('theme', next);
+    themeBtn.addEventListener('click', () => {
+      const cur = htmlEl.getAttribute('data-theme') || 'dark';
+      applyTheme(cur === 'dark' ? 'light' : 'dark');
     });
 
-    // language logic
-    const currentLang = body.getAttribute('data-lang') || (storageOk ? localStorage.getItem('lang') || 'ru' : 'ru');
-    body.setAttribute('data-lang', currentLang);
+    // Language Controller
+    const langRuBtn = document.getElementById('langRu');
+    const langEnBtn = document.getElementById('langEn');
 
-    function setLanguage(lang) {
-      body.setAttribute('data-lang', lang);
+    function applyLang(lang) {
+      htmlEl.setAttribute('lang', lang);
+      bodyEl.setAttribute('data-lang', lang);
+
       document.querySelectorAll('[data-key]').forEach(el => {
         const key = el.getAttribute('data-key');
-        if (translations[lang][key]) {
-          if (el.tagName === 'A' || el.tagName === 'BUTTON') {
-            el.textContent = translations[lang][key];
-          } else {
-            el.textContent = translations[lang][key];
-          }
+        if (i18n[lang] && i18n[lang][key]) {
+          el.textContent = i18n[lang][key];
         }
       });
-      // update active button
-      document.querySelectorAll('.lang-toggle').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.lang === lang);
-      });
-      if (storageOk) localStorage.setItem('lang', lang);
+
+      langRuBtn.classList.toggle('active', lang === 'ru');
+      langEnBtn.classList.toggle('active', lang === 'en');
+
+      if (store) store.setItem('site_lang', lang);
     }
 
-    setLanguage(currentLang);
-
-    document.getElementById('langRu').addEventListener('click', () => setLanguage('ru'));
-    document.getElementById('langEn').addEventListener('click', () => setLanguage('en'));
-
-    // ripple
-    function createRipple(event) {
-      const btn = event.currentTarget;
-      const ripple = document.createElement('span');
-      const rect = btn.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height);
-      const x = event.clientX - rect.left - size / 2;
-      const y = event.clientY - rect.top - size / 2;
-
-      ripple.style.width = ripple.style.height = size + 'px';
-      ripple.style.left = x + 'px';
-      ripple.style.top = y + 'px';
-      ripple.style.position = 'absolute';
-      ripple.style.borderRadius = '50%';
-      ripple.style.background = 'rgba(255,255,255,0.4)';
-      ripple.style.transform = 'scale(0)';
-      ripple.style.animation = 'ripple 0.6s linear';
-      ripple.style.pointerEvents = 'none';
-
-      btn.appendChild(ripple);
-      setTimeout(() => ripple.remove(), 600);
+    let initialLang = 'ru';
+    if (store && store.getItem('site_lang')) {
+      initialLang = store.getItem('site_lang');
+    } else if (navigator.language && !navigator.language.startsWith('ru')) {
+      initialLang = 'en';
     }
+    applyLang(initialLang);
+
+    langRuBtn.addEventListener('click', () => applyLang('ru'));
+    langEnBtn.addEventListener('click', () => applyLang('en'));
+
+    // Copy Nick
+    const copyChip = document.getElementById('copyHandleChip');
+    let copyTimeout = null;
+
+    copyChip.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('iwtsyddd');
+        copyChip.classList.add('copied');
+        clearTimeout(copyTimeout);
+        copyTimeout = setTimeout(() => {
+          copyChip.classList.remove('copied');
+        }, 2000);
+      } catch (err) {
+        const textarea = document.createElement('textarea');
+        textarea.value = 'iwtsyddd';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        copyChip.classList.add('copied');
+        clearTimeout(copyTimeout);
+        copyTimeout = setTimeout(() => {
+          copyChip.classList.remove('copied');
+        }, 2000);
+      }
+    });
+
+    // Back to top
+    document.getElementById('backToTop').addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   </script>
-
-  <style>
-    @keyframes ripple {
-      to { transform: scale(4); opacity: 0; }
-    }
-  </style>
-
 </body>
 </html>
