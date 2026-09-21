@@ -3,25 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>iwtsyddd — проекты</title>
-  <meta name="description" content="чисто мои проекты и мой говнокод. iwtsyddd">
-  <meta name="theme-color" content="#08090d">
+  <title>iwtsd — проекты</title>
+  <meta name="description" content="iwtsd — a few things i've worked on">
+  <meta name="theme-color" content="#08090e">
   <link rel="canonical" href="https://iwtsd.online/">
   <meta name="robots" content="index, follow">
-  <meta name="author" content="iwtsyddd">
+  <meta name="author" content="iwtsd">
 
   <!-- Open Graph (telegram, discord, etc) -->
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="iwtsyddd">
-  <meta property="og:title" content="iwtsyddd — проекты">
-  <meta property="og:description" content="чисто мои проекты и мой говнокод">
+  <meta property="og:site_name" content="iwtsd">
+  <meta property="og:title" content="iwtsd — проекты">
+  <meta property="og:description" content="несколько вещей, над которыми я работал">
   <meta property="og:url" content="https://iwtsd.online/">
   <meta property="og:image" content="https://iwtsd.online/dance.gif">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="iwtsyddd — проекты">
-  <meta name="twitter:description" content="чисто мои проекты и мой говнокод">
+  <meta name="twitter:title" content="iwtsd — проекты">
+  <meta name="twitter:description" content="несколько вещей, над которыми я работал">
   <meta name="twitter:image" content="https://iwtsd.online/dance.gif">
 
   <!-- Fonts: Google Sans Flex, Inter & JetBrains Mono -->
@@ -231,36 +231,14 @@
       letter-spacing: -0.02em;
     }
 
-    .status-dot-wrap {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      width: 10px;
-      height: 10px;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      background: #10b981;
+    .nav-avatar {
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
-    }
-
-    .status-ping {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: #10b981;
-      border-radius: 50%;
-      opacity: 0.6;
-      animation: pulse-ring 2.4s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-    }
-
-    @keyframes pulse-ring {
-      0% { transform: scale(0.8); opacity: 0.8; }
-      50% { transform: scale(2.2); opacity: 0; }
-      100% { transform: scale(2.2); opacity: 0; }
+      object-fit: cover;
+      display: block;
+      border: 1px solid var(--border-subtle);
+      flex-shrink: 0;
     }
 
     .nav-controls {
@@ -862,53 +840,7 @@
       transform: translateX(3px);
     }
 
-    /* Stack Section */
-    .stack-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 12px;
-      margin-top: 6px;
-    }
 
-    .stack-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.2s ease;
-    }
-
-    .stack-card:hover {
-      border-color: var(--border-focus);
-      background: var(--bg-surface-elevated);
-      transform: translateY(-2px);
-    }
-
-    .stack-icon {
-      font-size: 1.3rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 30px;
-      height: 30px;
-      border-radius: var(--radius-sm);
-      background: var(--chip-bg);
-    }
-
-    .stack-name {
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-
-    .stack-role {
-      font-size: 0.72rem;
-      color: var(--text-tertiary);
-    }
 
     /* Footer */
     footer {
@@ -1001,11 +933,8 @@
     <!-- Floating Sticky Navbar -->
     <header class="nav-bar">
       <a href="#" class="nav-brand">
-        <span class="status-dot-wrap">
-          <span class="status-ping"></span>
-          <span class="status-dot"></span>
-        </span>
-        <span>iwtsyddd</span>
+        <img src="https://avatars.githubusercontent.com/u/212236894?v=4" alt="iwtsd" class="nav-avatar" width="24" height="24">
+        <span>iwtsd</span>
       </a>
 
       <div class="nav-controls">
@@ -1045,11 +974,11 @@
         </div>
 
         <!-- Headline -->
-        <h1 class="hero-headline" data-key="title">iwtsyddd</h1>
+        <h1 class="hero-headline" data-key="title">iwtsd</h1>
 
         <!-- Subtitle: Chill & Grounded -->
         <p class="hero-subtitle" data-key="subtitle">
-          чисто мои проекты и мой говнокод
+          несколько вещей, над которыми я работал
         </p>
 
         <!-- CTAs in iOS Style -->
@@ -1084,13 +1013,7 @@
       <!-- Projects Section -->
       <section id="projects">
         <div class="section-seam">
-          <div class="section-eyebrow">
-            <span data-key="projectsEyebrow">проекты</span>
-          </div>
-          <h2 class="section-title" data-key="projectsTitle">мои проекты</h2>
-          <p class="section-desc" data-key="projectsSubtitle">
-            пока три-четыре штуки
-          </p>
+          <h2 class="section-title" data-key="projectsTitle">проекты</h2>
         </div>
 
         <div class="projects-grid">
@@ -1109,7 +1032,7 @@
               </div>
               <h3 class="project-card-title">Socksicle</h3>
               <p class="project-card-desc" data-key="socksicleDesc">
-                минималистичный gui-клиент для shadowsocks на linux.
+                кроссплатформенный proxy-клиент для Windows и Linux.
               </p>
             </div>
             <div class="project-card-footer">
@@ -1183,12 +1106,12 @@
           </article>
         </div>
 
-        <!-- Collab / Not My Projects Banner (iOS Button Style) -->
+        <!-- Collab Banner (iOS Button Style) -->
         <div class="collab-cta-card">
           <div>
-            <span class="collab-eyebrow" data-key="collabEyebrow">не моё, но моими руками</span>
-            <h3 class="collab-title" data-key="collabTitle">mabvpn — чужой проект, где я копался</h3>
-            <p class="collab-desc" data-key="collabDesc">сервера поднял, панель написал, код не мой</p>
+            <span class="collab-eyebrow" data-key="collabEyebrow">сотрудничество</span>
+            <h3 class="collab-title" data-key="collabTitle">mabvpn</h3>
+            <p class="collab-desc" data-key="collabDesc">инфраструктура и панель управления для внешнего проекта</p>
           </div>
           <a href="mabvpn.html" class="collab-btn">
             <span data-key="collabBtn">глянуть что вышло</span>
@@ -1199,70 +1122,12 @@
           </a>
         </div>
       </section>
-
-      <!-- Stack Section -->
-      <section id="stack">
-        <div class="section-seam">
-          <div class="section-eyebrow">
-            <span data-key="stackEyebrow">стек</span>
-          </div>
-          <h2 class="section-title" data-key="stackTitle">с чем ковырялся</h2>
-          <p class="section-desc" data-key="stackSubtitle">
-            языки и штуки, которые трогал
-          </p>
-        </div>
-
-        <div class="stack-grid">
-          <div class="stack-card">
-            <div class="stack-icon">🦀</div>
-            <div>
-              <div class="stack-name">Rust</div>
-              <div class="stack-role" data-key="stackRust">эмуляция, cli</div>
-            </div>
-          </div>
-          <div class="stack-card">
-            <div class="stack-icon">🐍</div>
-            <div>
-              <div class="stack-name">Python</div>
-              <div class="stack-role" data-key="stackPython">скрипты, gui</div>
-            </div>
-          </div>
-          <div class="stack-card">
-            <div class="stack-icon">⚡</div>
-            <div>
-              <div class="stack-name">Qt6 / PySide</div>
-              <div class="stack-role" data-key="stackQt">desktop gui</div>
-            </div>
-          </div>
-          <div class="stack-card">
-            <div class="stack-icon">🐧</div>
-            <div>
-              <div class="stack-name">Linux</div>
-              <div class="stack-role" data-key="stackLinux">дефолтная система</div>
-            </div>
-          </div>
-          <div class="stack-card">
-            <div class="stack-icon">📦</div>
-            <div>
-              <div class="stack-name">Git</div>
-              <div class="stack-role" data-key="stackGit">контроль версий</div>
-            </div>
-          </div>
-          <div class="stack-card">
-            <div class="stack-icon">🌐</div>
-            <div>
-              <div class="stack-name">Web</div>
-              <div class="stack-role" data-key="stackWeb">html, css, js</div>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
 
     <!-- Footer -->
     <footer>
       <div data-key="footerNotice">
-        iwtsd. права не защищены
+        iwtsd
       </div>
       <div class="footer-links">
         <a href="mabvpn.html" class="footer-link accent" data-key="footerCollabs">mabvpn →</a>
@@ -1279,15 +1144,13 @@
     // Bilingual Localization without // and numbers
     const i18n = {
       ru: {
-        title: "iwtsyddd",
-        subtitle: "чисто мои проекты и мой говнокод",
+        title: "iwtsd",
+        subtitle: "несколько вещей, над которыми я работал",
         githubBtn: "github профиль",
         telegramBtn: "telegram",
         copyTooltip: "Скопировано!",
-        projectsEyebrow: "проекты",
-        projectsTitle: "мои проекты",
-        projectsSubtitle: "пока три-четыре штуки",
-        socksicleDesc: "минималистичный gui-клиент для shadowsocks на linux.",
+        projectsTitle: "проекты",
+        socksicleDesc: "кроссплатформенный proxy-клиент для Windows и Linux.",
         diemuDesc: "эмулятор game boy на rust. gbc поддержка сломана, проект заброшен.",
         thisSiteTitle: "этот сайт",
         thisSiteDesc: "личная страница на github pages с тёмной темой и проектами.",
@@ -1298,33 +1161,22 @@
         statusAbandoned: "заброшен",
         statusClosed: "закрыт",
         statusSite: "сайт",
-        collabEyebrow: "не моё, но моими руками",
-        collabTitle: "mabvpn — чужой проект, где я копался",
-        collabDesc: "сервера поднял, панель написал, код не мой",
+        collabEyebrow: "сотрудничество",
+        collabTitle: "mabvpn",
+        collabDesc: "инфраструктура и панель управления для внешнего проекта",
         collabBtn: "глянуть что вышло",
-        stackEyebrow: "стек",
-        stackTitle: "с чем ковырялся",
-        stackSubtitle: "языки и штуки, которые трогал",
-        stackRust: "эмуляция, cli",
-        stackPython: "скрипты, gui",
-        stackQt: "desktop gui",
-        stackLinux: "дефолтная система",
-        stackGit: "контроль версий",
-        stackWeb: "html, css, js",
-        footerNotice: "iwtsd. права не защищены",
+        footerNotice: "iwtsd",
         footerCollabs: "mabvpn →",
         backToTop: "наверх ↑"
       },
       en: {
-        title: "iwtsyddd",
-        subtitle: "just my projects and my spaghetti code",
+        title: "iwtsd",
+        subtitle: "a few things i've worked on",
         githubBtn: "github profile",
         telegramBtn: "telegram",
         copyTooltip: "Copied!",
-        projectsEyebrow: "projects",
-        projectsTitle: "my projects",
-        projectsSubtitle: "three or four so far",
-        socksicleDesc: "minimalist gui client for shadowsocks on linux.",
+        projectsTitle: "projects",
+        socksicleDesc: "cross-platform proxy client for Windows and Linux.",
         diemuDesc: "game boy emulator in rust. gbc support is broken, project abandoned.",
         twinsockDesc: "shadowsocks url generator in browser. project is closed.",
         thisSiteTitle: "this site",
@@ -1336,20 +1188,11 @@
         statusAbandoned: "abandoned",
         statusClosed: "closed",
         statusSite: "site",
-        collabEyebrow: "not mine, but my hands",
-        collabTitle: "mabvpn — someone else's project i touched",
-        collabDesc: "servers up, panel written, code not mine",
+        collabEyebrow: "collaboration",
+        collabTitle: "mabvpn",
+        collabDesc: "infrastructure and dashboard work for an external project",
         collabBtn: "take a look",
-        stackEyebrow: "stack",
-        stackTitle: "stuff i played with",
-        stackSubtitle: "languages and tools i touched",
-        stackRust: "emulation, cli",
-        stackPython: "scripts, gui",
-        stackQt: "desktop gui",
-        stackLinux: "main os",
-        stackGit: "version control",
-        stackWeb: "html, css, js",
-        footerNotice: "iwtsd. no rights reserved",
+        footerNotice: "iwtsd",
         footerCollabs: "mabvpn →",
         backToTop: "back to top ↑"
       }
