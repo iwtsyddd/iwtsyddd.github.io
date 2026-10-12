@@ -579,19 +579,29 @@
         margin-top: 10px;
         padding: 8px 8px 8px 12px;
         gap: 8px;
+        row-gap: 8px;
+        flex-wrap: wrap;
+        border-radius: 22px;
+        max-width: 100%;
       }
       .nav-brand {
         font-size: 0.95rem;
         white-space: nowrap;
+        min-width: 0;
       }
       .nav-controls {
         gap: 6px;
         flex-shrink: 0;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        min-width: 0;
       }
       .back-btn {
         font-size: 0.7rem;
         padding: 6px 10px;
         min-height: 32px;
+        white-space: nowrap;
+        max-width: 100%;
       }
       .lang-btn {
         padding: 6px 10px;
@@ -616,8 +626,18 @@
       }
       .hero-buttons .btn {
         justify-content: center;
+        min-width: 0;
         min-height: 48px;
         padding: 0 14px;
+        overflow: hidden;
+      }
+      .hero-buttons .btn svg {
+        flex-shrink: 0;
+      }
+      .hero-buttons .btn span {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .hero-buttons .btn-github {
         grid-column: span 2;
@@ -673,9 +693,20 @@
     }
 
     @media (max-width: 380px) {
+      .nav-bar {
+        padding: 6px 6px 6px 10px;
+        gap: 6px;
+        border-radius: 20px;
+      }
+      .nav-brand {
+        font-size: 0.88rem;
+      }
       .back-btn {
         font-size: 0.66rem;
         padding: 6px 8px;
+      }
+      .back-btn .back-text {
+        display: none;
       }
       .hero-buttons {
         grid-template-columns: 1fr;
@@ -698,7 +729,7 @@
       </a>
 
       <div class="nav-controls">
-        <a href="../" class="back-btn" data-key="navBack">← на главную</a>
+        <a href="../" class="back-btn"><span aria-hidden="true">←</span> <span class="back-text" data-key="navBackText">на главную</span></a>
 
         <div class="segmented-lang">
           <button class="lang-btn active" id="langRu">RU</button>
@@ -864,7 +895,7 @@
     const i18n = {
       ru: {
         pageTitle: "Socksicle - iwtsd",
-        navBack: "← на главную",
+        navBackText: "на главную",
         noteRepo: "старый репозиторий закрыт, следующие версии будут выходить в <a href=\"https://github.com/socksicle\" target=\"_blank\" rel=\"noopener noreferrer\">github.com/socksicle</a>.",
         noteRewrite: "сейчас идет <strong>полный редизайн</strong> и переписывание <em>практически с нуля</em>.",
         noteMobileSpoiler: "android версия уже в разработке",
@@ -890,7 +921,7 @@
       },
       en: {
         pageTitle: "Socksicle - iwtsd",
-        navBack: "← back to home",
+        navBackText: "back to home",
         noteRepo: "the old repository is closed, upcoming versions will be published at <a href=\"https://github.com/socksicle\" target=\"_blank\" rel=\"noopener noreferrer\">github.com/socksicle</a>.",
         noteRewrite: "currently undergoing a <strong>complete redesign</strong> and rewrite <em>almost from scratch</em>.",
         noteMobileSpoiler: "android version is in development",
