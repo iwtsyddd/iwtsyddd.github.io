@@ -2,10 +2,13 @@
 <html lang="ru" data-theme="dark">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>iwtsd — профиль</title>
   <meta name="description" content="iwtsd">
   <meta name="theme-color" content="#08090d">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="canonical" href="https://iwtsd.online/">
   <meta name="robots" content="index, follow">
   <meta name="author" content="iwtsd">
@@ -1262,18 +1265,51 @@
       box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
     }
 
-    /* Responsive */
+    /* Responsive & Mobile Optimizations (Android / Small Screens) */
     @media (max-width: 768px) {
       .site-wrapper {
         padding: 0 16px;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 16px);
       }
       .nav-bar {
-        padding: 8px 14px;
-        margin-top: 12px;
+        padding: 8px 12px;
+        margin-top: 10px;
+        gap: 8px;
+      }
+      .nav-left {
+        gap: 12px;
+      }
+      .nav-brand {
+        font-size: 0.98rem;
+        gap: 8px;
+      }
+      .nav-avatar {
+        width: 22px;
+        height: 22px;
+      }
+      .nav-link-btn {
+        font-size: 0.74rem;
+        padding: 3px 5px;
+      }
+      .nav-controls {
+        gap: 6px;
+      }
+      .donate-btn {
+        height: 32px;
+        padding: 0 9px;
+        font-size: 0.72rem;
+      }
+      .segmented-lang {
+        padding: 2px;
+      }
+      .lang-btn {
+        padding: 3px 7px;
+        font-size: 0.68rem;
       }
       .hero-layout {
         grid-template-columns: 1fr;
-        gap: 28px;
+        gap: 24px;
         text-align: center;
       }
       .hero-left {
@@ -1281,27 +1317,88 @@
         text-align: center;
       }
       .hero-headline {
-        margin-bottom: 18px;
+        font-size: 2.1rem;
+        margin-bottom: 16px;
       }
       .hero-actions {
-        justify-content: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
         width: 100%;
       }
-      .btn {
+      .hero-actions .btn {
         width: 100%;
-        justify-content: center;
+        min-height: 44px;
+        padding: 0 14px;
+        font-size: 0.85rem;
+      }
+      .hero-actions .discord-copy-btn {
+        grid-column: span 2;
       }
       .hero-right {
         justify-content: center;
+        width: 100%;
       }
       .weather-widget,
       .glass-widget {
         max-width: 100%;
       }
+      .weather-widget {
+        padding: 14px 16px;
+      }
+      .weather-top-val .live-clock {
+        font-size: 1.55rem;
+      }
+      .weather-top-val .weather-temp {
+        font-size: 1.45rem;
+      }
+      .commit-item {
+        padding: 10px 12px;
+        gap: 8px;
+      }
+      .commit-repo-badge {
+        font-size: 0.64rem;
+      }
+      .commit-msg {
+        font-size: 0.78rem;
+      }
+      .commit-time {
+        font-size: 0.64rem;
+      }
+      .donate-modal-backdrop {
+        padding: 12px;
+        align-items: flex-end;
+      }
+      .donate-modal-card {
+        padding: 18px 16px;
+        border-radius: 20px 20px 16px 16px;
+        max-height: 88vh;
+        overflow-y: auto;
+      }
+      .crypto-addr {
+        max-width: 150px;
+      }
       footer {
         flex-direction: column;
         text-align: center;
-        gap: 10px;
+        gap: 12px;
+        padding: 20px 0;
+      }
+      .footer-links {
+        justify-content: center;
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .hero-actions {
+        grid-template-columns: 1fr;
+      }
+      .hero-actions .discord-copy-btn {
+        grid-column: span 1;
+      }
+      .crypto-addr {
+        max-width: 120px;
       }
     }
   </style>
@@ -2332,7 +2429,8 @@
       const isSnow = type === 'snow';
       const isNight = type === 'clear-night' || type === 'night' || type === 'night-cloudy';
 
-      const count = isRain ? 75 : (isSnow ? 50 : (isNight ? 55 : 0));
+      const isMobile = window.innerWidth <= 768;
+      const count = isRain ? (isMobile ? 38 : 75) : (isSnow ? (isMobile ? 24 : 50) : (isNight ? (isMobile ? 28 : 55) : 0));
 
       for (let i = 0; i < count; i++) {
         if (isRain) {
@@ -2489,6 +2587,17 @@
       } else {
         ctx.clearRect(0, 0, width, height);
       }
+
+      // Android / mobile power efficiency: pause animation loop when backgrounded
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          if (animFrameId) cancelAnimationFrame(animFrameId);
+        } else {
+          if (count > 0 || isNight) {
+            animFrameId = requestAnimationFrame(animate);
+          }
+        }
+      });
     }
 
     // Test Weather Presets for ?weather / ?wheather
