@@ -3,26 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>iwtsd — проекты</title>
-  <meta name="description" content="iwtsd — a few things i've worked on">
-  <meta name="theme-color" content="#08090e">
+  <title>iwtsd — профиль</title>
+  <meta name="description" content="iwtsd">
+  <meta name="theme-color" content="#08090d">
   <link rel="canonical" href="https://iwtsd.online/">
   <meta name="robots" content="index, follow">
   <meta name="author" content="iwtsd">
 
-  <!-- Open Graph (telegram, discord, etc) -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="iwtsd">
-  <meta property="og:title" content="iwtsd — проекты">
-  <meta property="og:description" content="несколько вещей, над которыми я работал">
+  <meta property="og:title" content="iwtsd">
+  <meta property="og:description" content="iwtsd">
   <meta property="og:url" content="https://iwtsd.online/">
   <meta property="og:image" content="https://iwtsd.online/dance.gif">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="iwtsd — проекты">
-  <meta name="twitter:description" content="несколько вещей, над которыми я работал">
+  <meta name="twitter:title" content="iwtsd">
+  <meta name="twitter:description" content="iwtsd">
   <meta name="twitter:image" content="https://iwtsd.online/dance.gif">
+
+  <!-- Favicon (GitHub Avatar) -->
+  <link rel="icon" type="image/jpeg" href="https://avatars.githubusercontent.com/u/212236894?v=4">
+  <link rel="apple-touch-icon" href="https://avatars.githubusercontent.com/u/212236894?v=4">
 
   <!-- Fonts: Google Sans Flex, Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,12 +40,11 @@
       --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-      /* Dark Theme (Default) - Linear & Framer Inspired */
+      /* Dark Theme (Default) */
       --bg-base: #08090d;
       --bg-surface: #10121a;
       --bg-surface-elevated: #161924;
       --bg-card: rgba(18, 21, 30, 0.7);
-      --bg-card-hover: rgba(26, 30, 44, 0.85);
 
       --border-subtle: rgba(255, 255, 255, 0.08);
       --border-focus: rgba(255, 255, 255, 0.2);
@@ -62,74 +65,14 @@
 
       --chip-bg: rgba(255, 255, 255, 0.04);
       --chip-border: rgba(255, 255, 255, 0.08);
-      --chip-text: #cbd5e1;
-
-      /* Status tag colors */
-      --status-active-bg: rgba(16, 185, 129, 0.12);
-      --status-active-border: rgba(16, 185, 129, 0.3);
-      --status-active-text: #6ee7b7;
-
-      --status-abandoned-bg: rgba(245, 158, 11, 0.12);
-      --status-abandoned-border: rgba(245, 158, 11, 0.3);
-      --status-abandoned-text: #fcd34d;
-
-      --status-closed-bg: rgba(239, 68, 68, 0.12);
-      --status-closed-border: rgba(239, 68, 68, 0.3);
-      --status-closed-text: #fca5a5;
 
       --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
       --shadow-md: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
-      --shadow-glow: 0 0 36px -10px rgba(59, 130, 246, 0.28);
 
       --radius-sm: 8px;
       --radius-md: 14px;
       --radius-lg: 20px;
       --radius-full: 9999px;
-    }
-
-    [data-theme="light"] {
-      --bg-base: #f9fafb;
-      --bg-surface: #ffffff;
-      --bg-surface-elevated: #f1f5f9;
-      --bg-card: rgba(255, 255, 255, 0.85);
-      --bg-card-hover: #ffffff;
-
-      --border-subtle: rgba(0, 0, 0, 0.07);
-      --border-focus: rgba(0, 0, 0, 0.16);
-      --border-highlight: rgba(59, 130, 246, 0.3);
-
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --text-tertiary: #94a3b8;
-      --text-mono: #334155;
-
-      --accent-primary: #2563eb;
-      --accent-light: #3b82f6;
-      --accent-glow: rgba(37, 99, 235, 0.15);
-      --accent-glow-subtle: rgba(37, 99, 235, 0.04);
-
-      --nav-bg: rgba(255, 255, 255, 0.82);
-      --nav-border: rgba(0, 0, 0, 0.06);
-
-      --chip-bg: rgba(0, 0, 0, 0.03);
-      --chip-border: rgba(0, 0, 0, 0.08);
-      --chip-text: #334155;
-
-      --status-active-bg: rgba(16, 185, 129, 0.1);
-      --status-active-border: rgba(16, 185, 129, 0.25);
-      --status-active-text: #059669;
-
-      --status-abandoned-bg: rgba(245, 158, 11, 0.1);
-      --status-abandoned-border: rgba(245, 158, 11, 0.25);
-      --status-abandoned-text: #d97706;
-
-      --status-closed-bg: rgba(239, 68, 68, 0.08);
-      --status-closed-border: rgba(239, 68, 68, 0.22);
-      --status-closed-text: #dc2626;
-
-      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 10px 30px -4px rgba(0, 0, 0, 0.07);
-      --shadow-glow: 0 0 35px -8px rgba(37, 99, 235, 0.15);
     }
 
     /* Reset & Base */
@@ -190,13 +133,100 @@
       opacity: 0.45;
     }
 
+    /* Dynamic Weather Background Effects */
+    .weather-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .weather-fog {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 1.8s ease;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .weather-fog.active {
+      opacity: 1;
+    }
+
+    .fog-cloud {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.28;
+      background: radial-gradient(circle, rgba(148, 163, 184, 0.45) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+
+    .fog-1 {
+      width: 950px;
+      height: 520px;
+      top: 5%;
+      left: -200px;
+      animation: driftFog1 36s ease-in-out infinite alternate;
+    }
+
+    .fog-2 {
+      width: 880px;
+      height: 480px;
+      top: 35%;
+      right: -180px;
+      animation: driftFog2 44s ease-in-out infinite alternate;
+    }
+
+    @keyframes driftFog1 {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(240px, 60px) scale(1.15); }
+    }
+
+    @keyframes driftFog2 {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(-220px, -50px) scale(1.12); }
+    }
+
+    .bg-mesh-glow.weather-glow-rain {
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, rgba(99, 102, 241, 0.12) 50%, transparent 75%);
+    }
+
+    .bg-mesh-glow.weather-glow-snow {
+      background: radial-gradient(circle, rgba(186, 230, 253, 0.28) 0%, rgba(147, 197, 253, 0.14) 50%, transparent 75%);
+    }
+
+    .bg-mesh-glow.weather-glow-overcast {
+      background: radial-gradient(circle, rgba(100, 116, 139, 0.28) 0%, rgba(71, 85, 105, 0.14) 50%, transparent 75%);
+    }
+
+    .bg-mesh-glow.weather-glow-thunderstorm {
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, rgba(59, 130, 246, 0.16) 50%, transparent 75%);
+    }
+
+    .bg-mesh-glow.weather-glow-clear-day {
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.26) 0%, rgba(245, 158, 11, 0.12) 50%, transparent 75%);
+    }
+
+    .bg-mesh-glow.weather-glow-clear-night {
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.24) 0%, rgba(139, 92, 246, 0.08) 50%, transparent 75%);
+    }
+
     /* Container */
     .site-wrapper {
       position: relative;
       z-index: 1;
       max-width: 980px;
+      min-height: 100vh;
       margin: 0 auto;
-      padding: 0 24px 70px;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
     }
 
     /* Floating Navigation */
@@ -207,7 +237,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      max-width: 900px;
+      max-width: 920px;
       margin: 18px auto 0;
       padding: 9px 18px;
       background: var(--nav-bg);
@@ -217,18 +247,52 @@
       border-radius: var(--radius-full);
       box-shadow: var(--shadow-sm);
       transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
 
     .nav-brand {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 9px;
+      gap: 10px;
       text-decoration: none;
       color: var(--text-primary);
       font-family: var(--font-display);
       font-weight: 700;
       font-size: 1.05rem;
       letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .nav-brand span {
+      display: inline-block;
+      line-height: 1;
+      transform: translateY(-0.5px);
+    }
+
+    .nav-link-btn {
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      text-decoration: none;
+      background: transparent;
+      border: none;
+      padding: 4px 6px;
+      border-radius: var(--radius-sm);
+      transition: color 0.2s ease, opacity 0.2s ease;
+      user-select: none;
+    }
+
+    .nav-link-btn:hover {
+      color: var(--text-primary);
     }
 
     .nav-avatar {
@@ -279,11 +343,6 @@
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     }
 
-    [data-theme="light"] .lang-btn.active {
-      background: #ffffff;
-      color: var(--accent-primary);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-    }
 
     .icon-btn {
       display: inline-flex;
@@ -303,7 +362,6 @@
       color: var(--text-primary);
       background: var(--bg-surface-elevated);
       border-color: var(--border-focus);
-      transform: translateY(-1px);
     }
 
     .icon-btn svg {
@@ -317,30 +375,367 @@
       transition: transform 0.4s ease;
     }
 
-    .icon-btn:hover svg {
-      transform: rotate(20deg);
+    /* Donate Dropdown & Popover */
+    .donate-wrap {
+      position: relative;
     }
 
-    /* Hero Section */
-    .hero-section {
-      min-height: calc(80vh - 80px);
+    .donate-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 36px;
+      padding: 0 12px;
+      background: var(--chip-bg);
+      border: 1px solid var(--chip-border);
+      border-radius: var(--radius-full);
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .donate-btn:hover {
+      color: var(--text-primary);
+      background: var(--bg-surface-elevated);
+      border-color: var(--border-focus);
+    }
+
+    .donate-btn.active {
+      background: var(--bg-surface-elevated);
+      border-color: var(--border-highlight);
+      color: var(--accent-light);
+      box-shadow: 0 0 16px var(--accent-glow-subtle);
+    }
+
+    .donate-btn svg.donate-heart-icon {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: #f43f5e;
+      stroke-width: 2;
+      transition: transform 0.3s ease;
+    }
+
+    .donate-btn:hover svg.donate-heart-icon {
+      transform: scale(1.15);
+      fill: rgba(244, 63, 94, 0.2);
+    }
+
+    /* Fullscreen Frosted Glass Modal & Monolithic Icons */
+    .donate-modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(4, 6, 12, 0.45);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+    }
+
+
+    .donate-modal-backdrop.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .donate-modal-card {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      background: rgba(14, 18, 30, 0.35);
+      backdrop-filter: blur(48px) saturate(220%) brightness(112%);
+      -webkit-backdrop-filter: blur(48px) saturate(220%) brightness(112%);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 24px;
+      box-shadow: 
+        0 32px 70px -16px rgba(0, 0, 0, 0.8),
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        inset 0 1.5px 2px rgba(255, 255, 255, 0.35);
+      padding: 24px;
+      transform: scale(0.92) translateY(16px);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .donate-modal-backdrop.open .donate-modal-card {
+      transform: scale(1) translateY(0);
+    }
+
+    .donate-modal-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    }
+
+
+    .donate-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .donate-modal-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .donate-modal-close {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .donate-modal-close:hover {
+      background: rgba(255, 255, 255, 0.14);
+      color: var(--text-primary);
+      transform: scale(1.08);
+    }
+
+
+    .donate-crypto-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .crypto-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      cursor: pointer;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      user-select: none;
+    }
+
+    .crypto-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--border-highlight);
+      box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .crypto-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .crypto-icon-box {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease;
+    }
+
+    .crypto-icon-box svg {
+      width: 22px;
+      height: 22px;
+      display: block;
+      fill: var(--text-primary);
+    }
+
+    .crypto-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .crypto-name {
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .crypto-addr {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-tertiary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 240px;
+    }
+
+    .crypto-copy-hint {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: var(--chip-bg);
+      border: 1px solid var(--chip-border);
+      border-radius: var(--radius-sm);
+      padding: 4px 8px;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .donate-total-badge {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+    }
+
+
+    .donate-total-label {
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .donate-total-val {
+      font-weight: 700;
+      color: #10b981;
+      letter-spacing: 0.02em;
+    }
+
+    .donate-modal-footer {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-tertiary);
+      text-align: center;
+      padding-top: 4px;
+    }
+
+    /* Floating Toast Notification */
+    .toast-msg {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 150;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: rgba(14, 18, 30, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-full);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--text-primary);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+
+    .toast-msg.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .toast-msg svg {
+      width: 14px;
+      height: 14px;
+      stroke: #10b981;
+      stroke-width: 2.5;
+      fill: none;
+    }
+
+    /* Main Area */
+    main {
+      flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-align: center;
-      padding: 40px 16px 36px;
+      padding: 36px 0;
+    }
+
+    /* Hero Section with Split Layout */
+    .hero-section {
+      width: 100%;
       position: relative;
     }
 
-    /* Mascot */
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.18fr;
+      align-items: center;
+      gap: 44px;
+      width: 100%;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    /* Left Side: Mascot, Name & Links */
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+
     .anime-mascot-wrap {
       position: relative;
       width: 76px;
       height: 76px;
       border-radius: 20px;
       overflow: hidden;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       border: 1.5px solid rgba(255, 255, 255, 0.16);
       background: var(--bg-surface);
       box-shadow: 
@@ -351,12 +746,6 @@
       user-select: none;
     }
 
-    [data-theme="light"] .anime-mascot-wrap {
-      border: 1.5px solid rgba(0, 0, 0, 0.08);
-      box-shadow: 
-        0 10px 24px -4px rgba(0, 0, 0, 0.08),
-        0 0 16px 0 var(--accent-glow-subtle);
-    }
 
     .anime-mascot-wrap:hover {
       transform: translateY(-3px) scale(1.08);
@@ -376,47 +765,34 @@
 
     .hero-headline {
       font-family: var(--font-display);
-      font-size: clamp(3.2rem, 8vw, 5.2rem);
+      font-size: clamp(3.2rem, 6.5vw, 4.8rem);
       font-weight: 800;
       letter-spacing: -0.035em;
       line-height: 1.05;
-      margin-bottom: 16px;
+      margin-bottom: 22px;
       background: linear-gradient(180deg, var(--text-primary) 35%, var(--text-secondary) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1.15rem, 2.5vw, 1.35rem);
-      color: var(--text-secondary);
-      max-width: 540px;
-      line-height: 1.5;
-      margin: 0 auto 34px;
-      font-weight: 400;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      justify-content: center;
-      gap: 14px;
-      margin-bottom: 28px;
+      gap: 12px;
     }
 
-    /* ============================================================
-       APPLE iOS BUTTONS (SF Pro style, tactile press, specular inset)
-       ============================================================ */
+    /* Apple iOS Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 9px;
-      height: 48px;
-      padding: 0 24px;
+      height: 46px;
+      padding: 0 22px;
       border-radius: var(--radius-full);
       font-family: -apple-system, BlinkMacSystemFont, var(--font-body);
-      font-size: 0.9375rem;
+      font-size: 0.925rem;
       font-weight: 500;
       letter-spacing: -0.01em;
       text-decoration: none;
@@ -441,19 +817,19 @@
     }
 
     .btn-primary {
-      background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+      background: linear-gradient(180deg, var(--accent-light) 0%, var(--accent-primary) 100%);
       color: #ffffff;
       border: 1px solid rgba(255, 255, 255, 0.24);
       box-shadow: 
         inset 0 1px 0.5px rgba(255, 255, 255, 0.45),
-        0 4px 14px rgba(37, 99, 235, 0.35);
+        0 4px 14px var(--accent-glow);
     }
 
     .btn-primary:hover {
-      background: linear-gradient(180deg, #60a5fa 0%, #3b82f6 100%);
+      background: linear-gradient(180deg, var(--accent-light) 0%, var(--accent-light) 100%);
       box-shadow: 
         inset 0 1px 0.5px rgba(255, 255, 255, 0.55),
-        0 6px 20px rgba(37, 99, 235, 0.45);
+        0 6px 20px var(--accent-glow);
       transform: translateY(-1px);
     }
 
@@ -466,386 +842,345 @@
       box-shadow: inset 0 1px 0.5px rgba(255, 255, 255, 0.22);
     }
 
-    [data-theme="light"] .btn-secondary {
-      background: rgba(0, 0, 0, 0.05);
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      box-shadow: inset 0 1px 0.5px rgba(255, 255, 255, 0.85);
-    }
-
     .btn-secondary:hover {
       background: rgba(255, 255, 255, 0.14);
       border-color: rgba(255, 255, 255, 0.26);
       transform: translateY(-1px);
     }
 
-    [data-theme="light"] .btn-secondary:hover {
-      background: rgba(0, 0, 0, 0.08);
-      border-color: rgba(0, 0, 0, 0.14);
-    }
-
-    /* 1-Click Copy Handle Chip */
-    .terminal-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 8px 16px;
-      font-family: var(--font-mono);
-      font-size: 0.8125rem;
-      color: var(--text-mono);
-      cursor: pointer;
-      user-select: none;
-      transition: all 0.2s ease;
-      position: relative;
-    }
-
-    .terminal-chip:hover {
-      border-color: var(--border-highlight);
-      background: var(--bg-surface-elevated);
-    }
-
-    .terminal-chip .prefix {
-      color: var(--accent-light);
-      font-weight: 600;
-    }
-
-    .terminal-chip .copy-icon {
-      margin-left: 4px;
-      opacity: 0.6;
-      transition: opacity 0.2s;
-    }
-
-    .terminal-chip:hover .copy-icon {
-      opacity: 1;
-    }
-
-    .copy-tooltip {
-      position: absolute;
-      bottom: calc(100% + 8px);
-      left: 50%;
-      transform: translateX(-50%) translateY(4px);
-      background: var(--text-primary);
-      color: var(--bg-base);
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: var(--radius-sm);
-      pointer-events: none;
-      opacity: 0;
-      transition: all 0.2s ease;
-      white-space: nowrap;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .terminal-chip.copied .copy-tooltip {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    /* Section Header without slashes or numbers */
-    .section-seam {
-      margin-top: clamp(60px, 8vw, 100px);
-      margin-bottom: 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 4px;
-    }
-
-    .section-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 0.8125rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      color: var(--accent-light);
-      text-transform: uppercase;
-      display: inline-flex;
-      align-items: center;
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.6rem, 3.2vw, 2.1rem);
-      font-weight: 700;
-      letter-spacing: -0.025em;
+    button.btn {
+      appearance: none;
+      -webkit-appearance: none;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.08);
       color: var(--text-primary);
+      font-family: inherit;
     }
 
-    .section-desc {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      max-width: 560px;
-    }
 
-    /* Projects Grid */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-      gap: 18px;
-    }
-
-    .project-card {
-      background: var(--bg-card);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 26px;
+    /* Right Side: Stack of Widgets */
+    .hero-right {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      gap: 14px;
+      justify-content: flex-end;
+      width: 100%;
+    }
+
+    /* ============================================================
+       WEATHER & LOCAL TIME WIDGET (ASHGABAT)
+       ============================================================ */
+    .weather-widget {
+      width: 100%;
+      max-width: 480px;
+      background: linear-gradient(135deg, rgba(14, 18, 30, 0.42), var(--accent-glow-subtle));
+      backdrop-filter: blur(36px) saturate(210%) brightness(108%);
+      -webkit-backdrop-filter: blur(36px) saturate(210%) brightness(108%);
+      border: 1px solid var(--border-highlight);
+      border-radius: var(--radius-lg);
+      padding: 16px 20px;
+      box-shadow: 
+        0 24px 48px -12px rgba(0, 0, 0, 0.55),
+        0 0 24px 0 var(--accent-glow-subtle),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.26),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
       position: relative;
       overflow: hidden;
-      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: var(--shadow-sm);
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .project-card::before {
+    .weather-widget:hover {
+      border-color: var(--accent-light);
+      box-shadow: 
+        0 28px 56px -12px rgba(0, 0, 0, 0.65),
+        0 0 32px 0 var(--accent-glow),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.32);
+    }
+
+    .weather-widget::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border-focus), transparent);
-      opacity: 0.35;
-      transition: opacity 0.3s;
-    }
-
-    .project-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--border-highlight);
-      background: var(--bg-card-hover);
-      box-shadow: var(--shadow-md), var(--shadow-glow);
-    }
-
-    .project-card:hover::before {
-      opacity: 1;
       background: linear-gradient(90deg, transparent, var(--accent-light), transparent);
     }
 
-    .project-card-top {
-      margin-bottom: 20px;
+    .weather-col-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      min-width: 0;
     }
 
-    .project-meta-row {
+    .weather-divider {
+      width: 1px;
+      height: 38px;
+      background: var(--border-subtle);
+      opacity: 0.8;
+    }
+
+    .weather-col-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+      text-align: right;
+      min-width: 0;
+    }
+
+    .weather-top-val {
+      height: 32px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      margin-bottom: 14px;
+    }
+
+    .weather-col-right .weather-top-val {
+      justify-content: flex-end;
       gap: 8px;
     }
 
-    .tech-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
+    .live-clock,
+    .weather-temp {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      line-height: 1;
     }
 
-    .tech-tag {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      font-weight: 500;
-      padding: 3px 8px;
-      border-radius: var(--radius-full);
-      background: var(--chip-bg);
-      border: 1px solid var(--chip-border);
-      color: var(--text-mono);
-    }
-
-    /* Status Badges on Cards */
-    .status-pill {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 3px 9px;
-      border-radius: var(--radius-full);
+    .weather-emoji {
+      font-size: 1.4rem;
+      line-height: 1;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25));
+    }
+
+    .weather-bottom-label {
+      height: 18px;
+      margin-top: 5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-tertiary);
       white-space: nowrap;
     }
 
-    .status-pill.active {
-      background: var(--status-active-bg);
-      border: 1px solid var(--status-active-border);
-      color: var(--status-active-text);
+    .weather-col-right .weather-bottom-label {
+      justify-content: flex-end;
     }
 
-    .status-pill.abandoned {
-      background: var(--status-abandoned-bg);
-      border: 1px solid var(--status-abandoned-border);
-      color: var(--status-abandoned-text);
-    }
-
-    .status-pill.closed {
-      background: var(--status-closed-bg);
-      border: 1px solid var(--status-closed-border);
-      color: var(--status-closed-text);
-    }
-
-    .status-pill-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: currentColor;
-    }
-
-    .project-card-title {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--text-primary);
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .project-card-desc {
-      font-size: 0.925rem;
+    .city-name {
       color: var(--text-secondary);
-      line-height: 1.55;
+      font-weight: 500;
     }
 
-    .project-card-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 16px;
-      border-top: 1px solid var(--border-subtle);
+    .sub-sep {
+      opacity: 0.4;
     }
 
-    .project-action-link {
+    .status-indicator {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      font-family: var(--font-mono);
-      font-size: 0.8125rem;
-      font-weight: 600;
-      color: var(--accent-light);
-      text-decoration: none;
-      transition: gap 0.2s ease, color 0.2s ease;
+      gap: 4px;
+      color: #10b981;
+      font-weight: 500;
     }
 
-    .project-action-link svg {
-      width: 15px;
-      height: 15px;
-      transition: transform 0.2s ease;
+    .status-indicator.busy {
+      color: #f59e0b;
     }
 
-    .project-action-link:hover {
-      color: var(--text-primary);
-      gap: 9px;
-    }
-
-    .project-action-link:hover svg {
-      transform: translate(2px, -2px);
+    .weather-desc {
+      color: var(--text-secondary);
+      text-transform: lowercase;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     /* ============================================================
-       COLLAB CTA BANNER (Link to mabvpn.html)
+       GLASSMORPHIC COMMITS WIDGET
        ============================================================ */
-    .collab-cta-card {
-      margin-top: 24px;
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.08) 50%, rgba(236, 72, 153, 0.08) 100%);
-      border: 1px solid rgba(139, 92, 246, 0.28);
+    .glass-widget {
+      width: 100%;
+      max-width: 480px;
+      background: linear-gradient(135deg, rgba(14, 18, 30, 0.42), var(--accent-glow-subtle));
+      backdrop-filter: blur(36px) saturate(210%) brightness(108%);
+      -webkit-backdrop-filter: blur(36px) saturate(210%) brightness(108%);
+      border: 1px solid var(--border-highlight);
       border-radius: var(--radius-lg);
-      padding: 22px 26px;
+      padding: 18px 20px;
+      box-shadow: 
+        0 24px 48px -12px rgba(0, 0, 0, 0.55),
+        0 0 24px 0 var(--accent-glow-subtle),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.26),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      text-align: left;
+    }
+
+    .glass-widget:hover {
+      border-color: var(--accent-light);
+      box-shadow: 
+        0 28px 56px -12px rgba(0, 0, 0, 0.65),
+        0 0 32px 0 var(--accent-glow),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.32);
+    }
+
+    .glass-widget::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-light), transparent);
+    }
+
+    .glass-widget-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      box-shadow: var(--shadow-sm);
-      transition: all 0.28s ease;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-subtle);
     }
 
-    .collab-cta-card:hover {
-      border-color: rgba(236, 72, 153, 0.5);
-      box-shadow: 0 8px 30px -4px rgba(139, 92, 246, 0.25);
-      transform: translateY(-2px);
-    }
-
-    .collab-eyebrow {
+    .glass-widget-title {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.76rem;
       font-weight: 600;
-      background: linear-gradient(90deg, #38bdf8, #c084fc, #f472b6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-transform: uppercase;
       letter-spacing: 0.04em;
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .collab-title {
-      font-family: var(--font-display);
-      font-size: 1.22rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 3px;
-    }
-
-    .collab-desc {
-      font-size: 0.9rem;
+      text-transform: uppercase;
       color: var(--text-secondary);
     }
 
-    .collab-btn {
+    .glass-widget-user {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 11px 22px;
-      border-radius: var(--radius-full);
-      background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
-      color: #ffffff;
+      gap: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--accent-light);
       text-decoration: none;
-      font-family: -apple-system, BlinkMacSystemFont, var(--font-body);
-      font-size: 0.875rem;
       font-weight: 500;
-      letter-spacing: -0.01em;
-      white-space: nowrap;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      box-shadow: 
-        inset 0 1px 0.5px rgba(255, 255, 255, 0.45),
-        0 4px 14px rgba(139, 92, 246, 0.35);
-      transition: transform 0.16s cubic-bezier(0.25, 1, 0.5, 1), filter 0.2s ease, box-shadow 0.2s ease;
-      user-select: none;
+      transition: color 0.2s ease;
     }
 
-    .collab-btn:active {
-      transform: scale(0.96) !important;
+    .glass-widget-user:hover {
+      color: var(--text-primary);
     }
 
-    .collab-btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 22px rgba(236, 72, 153, 0.45);
-      filter: brightness(1.08);
+    .glass-widget-user svg {
+      opacity: 0.7;
+      transition: transform 0.2s ease;
     }
 
-    .collab-btn svg {
-      width: 15px;
-      height: 15px;
-      transition: transform 0.2s;
+    .glass-widget-user:hover svg {
+      transform: translate(1px, -1px);
+      opacity: 1;
     }
 
-    .collab-btn:hover svg {
+    .commits-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .commit-item {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 10px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      color: inherit;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .commit-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: var(--border-highlight);
       transform: translateX(3px);
     }
 
+    .commit-main {
+      flex: 1;
+      min-width: 0;
+    }
 
+    .commit-msg {
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.35;
+      margin-bottom: 3px;
+    }
+
+    .commit-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-tertiary);
+    }
+
+    .commit-repo {
+      color: var(--text-secondary);
+      background: var(--chip-bg);
+      border: 1px solid var(--chip-border);
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    .commit-hash {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent-light);
+      background: rgba(59, 130, 246, 0.1);
+      padding: 1px 6px;
+      border-radius: 4px;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+
+    .commit-side {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 2px;
+      flex-shrink: 0;
+    }
+
+    .commit-time {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-tertiary);
+      white-space: nowrap;
+    }
 
     /* Footer */
     footer {
-      margin-top: clamp(70px, 10vw, 120px);
-      padding-top: 28px;
+      margin-top: auto;
+      padding: 24px 0;
       border-top: 1px solid var(--border-subtle);
       display: flex;
       flex-wrap: wrap;
@@ -872,45 +1207,96 @@
       color: var(--text-primary);
     }
 
-    .footer-link.accent {
-      color: #c084fc;
+    /* Interactive Weather Test Bar (?weather / ?wheather) */
+    .weather-test-bar {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--nav-border);
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-md);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      user-select: none;
     }
 
-    .footer-link.accent:hover {
-      color: #f472b6;
+    .weather-test-bar .test-label {
+      color: var(--text-tertiary);
+      font-size: 0.68rem;
+      margin-right: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
-    /* Mobile */
-    @media (max-width: 640px) {
+    .weather-test-bar .test-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      font-size: 0.95rem;
+      padding: 3px 6px;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .weather-test-bar .test-btn:hover {
+      background: var(--bg-surface-elevated);
+      border-color: var(--border-subtle);
+      transform: scale(1.15);
+    }
+
+    .weather-test-bar .test-btn.active {
+      background: var(--bg-surface-elevated);
+      border-color: var(--border-highlight);
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
       .site-wrapper {
-        padding: 0 16px 50px;
+        padding: 0 16px;
       }
       .nav-bar {
         padding: 8px 14px;
         margin-top: 12px;
       }
-      .hero-section {
-        min-height: auto;
-        padding: 38px 6px 28px;
+      .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        text-align: center;
+      }
+      .hero-left {
+        align-items: center;
+        text-align: center;
+      }
+      .hero-headline {
+        margin-bottom: 18px;
       }
       .hero-actions {
+        justify-content: center;
         width: 100%;
-        flex-direction: column;
       }
       .btn {
         width: 100%;
         justify-content: center;
       }
-      .collab-cta-card {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .collab-btn {
-        width: 100%;
+      .hero-right {
         justify-content: center;
       }
-      .projects-grid {
-        grid-template-columns: 1fr;
+      .weather-widget,
+      .glass-widget {
+        max-width: 100%;
       }
       footer {
         flex-direction: column;
@@ -922,20 +1308,30 @@
 </head>
 <body data-theme="dark" data-lang="ru">
 
-  <!-- Ambient Light Mesh Background -->
+  <!-- Ambient Light Mesh Background with Dynamic Weather Effects -->
   <div class="bg-mesh" aria-hidden="true">
-    <div class="bg-mesh-glow"></div>
+    <div class="bg-mesh-glow" id="meshGlow"></div>
     <div class="bg-mesh-grid"></div>
+    <div class="weather-fog" id="weatherFog">
+      <div class="fog-cloud fog-1"></div>
+      <div class="fog-cloud fog-2"></div>
+    </div>
+    <canvas id="weatherCanvas" class="weather-canvas"></canvas>
   </div>
 
   <div class="site-wrapper">
 
     <!-- Floating Sticky Navbar -->
     <header class="nav-bar">
-      <a href="#" class="nav-brand">
-        <img src="https://avatars.githubusercontent.com/u/212236894?v=4" alt="iwtsd" class="nav-avatar" width="24" height="24">
-        <span>iwtsd</span>
-      </a>
+      <div class="nav-left">
+        <a href="#" class="nav-brand">
+          <img src="https://avatars.githubusercontent.com/u/212236894?v=4" alt="iwtsd" class="nav-avatar" width="24" height="24">
+          <span>iwtsd</span>
+        </a>
+        <a href="socksicle/" class="nav-link-btn" title="Socksicle">
+          <span>socksicle</span>
+        </a>
+      </div>
 
       <div class="nav-controls">
         <!-- Bilingual Switcher -->
@@ -944,182 +1340,109 @@
           <button class="lang-btn" id="langEn" data-lang="en" aria-label="English">EN</button>
         </div>
 
-        <!-- Theme Toggle -->
-        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
-          <svg id="themeIconSun" style="display: none;" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        <!-- Donate Button -->
+        <button class="donate-btn" id="donateBtn" aria-label="Донат / Крипта" title="Support">
+          <svg class="donate-heart-icon" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
           </svg>
-          <svg id="themeIconMoon" viewBox="0 0 24 24">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
+          <span data-key="donateBtn">донат</span>
         </button>
       </div>
     </header>
 
     <!-- Main Content -->
     <main>
-      <!-- Hero Section -->
       <section class="hero-section">
-        <!-- Cute Dancing Anime Girl Mascot -->
-        <div class="anime-mascot-wrap" title="vibe">
-          <img src="dance.gif" alt="anime dancing girl" class="anime-mascot" width="76" height="76">
-        </div>
+        <div class="hero-layout">
 
-        <!-- Headline -->
-        <h1 class="hero-headline" data-key="title">iwtsd</h1>
-
-        <!-- Subtitle: Chill & Grounded -->
-        <p class="hero-subtitle" data-key="subtitle">
-          несколько вещей, над которыми я работал
-        </p>
-
-        <!-- CTAs in iOS Style -->
-        <div class="hero-actions">
-          <a href="https://github.com/iwtsyddd" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-            </svg>
-            <span data-key="githubBtn">github профиль</span>
-          </a>
-
-          <a href="https://t.me/iwtsyddd" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
-            </svg>
-            <span data-key="telegramBtn">telegram</span>
-          </a>
-        </div>
-
-        <!-- 1-Click Copy Handle -->
-        <div class="terminal-chip" id="copyHandleChip" title="Скопировать ник">
-          <span class="prefix">$</span>
-          <span>@iwtsyddd</span>
-          <svg class="copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-          </svg>
-          <span class="copy-tooltip" id="copyTooltip" data-key="copyTooltip">Скопировано!</span>
-        </div>
-      </section>
-
-      <!-- Projects Section -->
-      <section id="projects">
-        <div class="section-seam">
-          <h2 class="section-title" data-key="projectsTitle">проекты</h2>
-        </div>
-
-        <div class="projects-grid">
-          <!-- Card 1: Socksicle -->
-          <article class="project-card">
-            <div class="project-card-top">
-              <div class="project-meta-row">
-                <div class="tech-tags">
-                  <span class="tech-tag">Python</span>
-                  <span class="tech-tag">Qt6 / PySide</span>
-                </div>
-                <span class="status-pill active">
-                  <span class="status-pill-dot"></span>
-                  <span data-key="statusActive">активен</span>
-                </span>
-              </div>
-              <h3 class="project-card-title">Socksicle</h3>
-              <p class="project-card-desc" data-key="socksicleDesc">
-                кроссплатформенный proxy-клиент для Windows и Linux.
-              </p>
+          <!-- Left Column: Mascot, iwtsd headline & buttons -->
+          <div class="hero-left">
+            <div class="anime-mascot-wrap" title="vibe">
+              <img src="dance.gif" alt="anime dancing girl" class="anime-mascot" width="76" height="76">
             </div>
-            <div class="project-card-footer">
-              <a href="https://github.com/iwtsyddd/Socksicle" class="project-action-link" target="_blank" rel="noopener noreferrer">
-                <span data-key="repoLink">→ репозиторий</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="7" y1="17" x2="17" y2="7"></line>
-                  <polyline points="7 7 17 7 17 17"></polyline>
+
+            <h1 class="hero-headline">iwtsd</h1>
+
+            <div class="hero-actions">
+              <a href="https://github.com/iwtsyddd" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
                 </svg>
+                <span data-key="githubBtn">github</span>
               </a>
-            </div>
-          </article>
 
-          <!-- Card 2: DiEmu (заброшен) -->
-          <article class="project-card">
-            <div class="project-card-top">
-              <div class="project-meta-row">
-                <div class="tech-tags">
-                  <span class="tech-tag">Rust</span>
-                  <span class="tech-tag">Game Boy</span>
-                </div>
-                <span class="status-pill abandoned">
-                  <span class="status-pill-dot"></span>
-                  <span data-key="statusAbandoned">заброшен</span>
-                </span>
-              </div>
-              <h3 class="project-card-title">DiEmu</h3>
-              <p class="project-card-desc" data-key="diemuDesc">
-                эмулятор game boy на rust. gbc поддержка сломана, проект заброшен.
-              </p>
-            </div>
-            <div class="project-card-footer">
-              <a href="https://github.com/iwtsyddd/DiEmu" class="project-action-link" target="_blank" rel="noopener noreferrer">
-                <span data-key="repoLink">→ репозиторий</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="7" y1="17" x2="17" y2="7"></line>
-                  <polyline points="7 7 17 7 17 17"></polyline>
+              <a href="https://t.me/ikikikikikikikikikkiki" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
                 </svg>
+                <span data-key="tgPmBtn">tg pm</span>
               </a>
-            </div>
-          </article>
 
-
-          <!-- Card 4: этот сайт -->
-          <article class="project-card">
-            <div class="project-card-top">
-              <div class="project-meta-row">
-                <div class="tech-tags">
-                  <span class="tech-tag">HTML</span>
-                  <span class="tech-tag">CSS</span>
-                </div>
-                <span class="status-pill active">
-                  <span class="status-pill-dot"></span>
-                  <span data-key="statusSite">сайт</span>
-                </span>
-              </div>
-              <h3 class="project-card-title" data-key="thisSiteTitle">этот сайт</h3>
-              <p class="project-card-desc" data-key="thisSiteDesc">
-                личная страница на github pages с тёмной темой и проектами.
-              </p>
-            </div>
-            <div class="project-card-footer">
-              <a href="https://github.com/iwtsyddd/iwtsyddd.github.io" class="project-action-link" target="_blank" rel="noopener noreferrer">
-                <span data-key="sourceLink">→ исходники</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="7" y1="17" x2="17" y2="7"></line>
-                  <polyline points="7 7 17 7 17 17"></polyline>
+              <a href="https://t.me/iwtsdev" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
                 </svg>
+                <span data-key="tgChannelBtn">tg channel</span>
               </a>
-            </div>
-          </article>
-        </div>
 
-        <!-- Collab Banner (iOS Button Style) -->
-        <div class="collab-cta-card">
-          <div>
-            <span class="collab-eyebrow" data-key="collabEyebrow">сотрудничество</span>
-            <h3 class="collab-title" data-key="collabTitle">mabvpn</h3>
-            <p class="collab-desc" data-key="collabDesc">инфраструктура и панель управления для внешнего проекта</p>
+              <button type="button" class="btn btn-secondary discord-copy-btn" id="discordBtn" data-discord="iwtsd">
+                <svg viewBox="0 0 24 24">
+                  <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                </svg>
+                <span>discord: @iwtsd</span>
+              </button>
+            </div>
           </div>
-          <a href="mabvpn.html" class="collab-btn">
-            <span data-key="collabBtn">глянуть что вышло</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
+
+          <!-- Right Column: Weather + Commits Widgets -->
+          <div class="hero-right">
+
+            <!-- Weather & Local Time Widget (Ashgabat) -->
+            <div class="weather-widget">
+              <div class="weather-col-left">
+                <div class="weather-top-val">
+                  <span class="live-clock" id="liveClock">15:22</span>
+                </div>
+                <div class="weather-bottom-label">
+                  <span class="city-name" data-key="weatherCity">Ашхабад</span>
+                  <span class="sub-sep">•</span>
+                  <span class="status-indicator" id="userStatus" data-key="statusAvailable">свободен</span>
+                </div>
+              </div>
+
+              <div class="weather-divider" aria-hidden="true"></div>
+
+              <div class="weather-col-right">
+                <div class="weather-top-val">
+                  <span class="weather-emoji" id="weatherEmoji">🌤️</span>
+                  <span class="weather-temp" id="weatherTemp">+22°C</span>
+                </div>
+                <div class="weather-bottom-label">
+                  <span class="weather-desc" id="weatherDesc" data-key="weatherCond">переменная облачность</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Glassmorphic Commits Widget -->
+            <div class="glass-widget">
+              <div class="glass-widget-header">
+                <div class="glass-widget-title" data-key="commitsHeader">последние коммиты</div>
+                <a href="https://github.com/iwtsyddd" class="glass-widget-user" target="_blank" rel="noopener noreferrer">
+                  <span>@iwtsyddd</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
+              </div>
+
+              <div class="commits-list" id="commitsList">
+                <!-- Rendered dynamically -->
+              </div>
+            </div>
+
+          </div>
+
         </div>
       </section>
     </main>
@@ -1130,72 +1453,235 @@
         iwtsd
       </div>
       <div class="footer-links">
-        <a href="mabvpn.html" class="footer-link accent" data-key="footerCollabs">mabvpn →</a>
+        <a href="socksicle/" class="footer-link">socksicle</a>
         <a href="https://github.com/iwtsyddd" class="footer-link" target="_blank" rel="noopener noreferrer">github</a>
-        <a href="https://t.me/iwtsyddd" class="footer-link" target="_blank" rel="noopener noreferrer">telegram</a>
-        <a href="#" class="footer-link" id="backToTop" data-key="backToTop">наверх ↑</a>
+        <a href="https://t.me/ikikikikikikikikikkiki" class="footer-link" target="_blank" rel="noopener noreferrer">tg pm</a>
+        <a href="https://t.me/iwtsdev" class="footer-link" target="_blank" rel="noopener noreferrer">tg channel</a>
+        <span class="footer-link" style="cursor:pointer;" id="footerDiscord" data-discord="iwtsd">discord: @iwtsd</span>
       </div>
     </footer>
 
   </div>
 
+  <!-- Fullscreen Frosted Glass Donate Modal -->
+  <div class="donate-modal-backdrop" id="donateModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="donateModalTitle">
+    <div class="donate-modal-card">
+      <div class="donate-modal-header">
+        <div class="donate-modal-title" id="donateModalTitle">
+          <svg style="width:18px;height:18px;stroke:#f43f5e;fill:none;stroke-width:2;" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span data-key="donateHeader">крипто-реквизиты</span>
+        </div>
+        <button class="donate-modal-close" id="donateModalClose" aria-label="Закрыть">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="donate-crypto-list">
+        <!-- Solana -->
+        <div class="crypto-item" data-copy="G8sswNw9rVPkbYhfLrWjQqQmM2RibrTzzKwoF3o9pLPA" data-name="Solana">
+          <div class="crypto-left">
+            <div class="crypto-icon-box">
+              <svg viewBox="0 0 32 32">
+                <!-- Authentic Solana Vector Icon -->
+                <path d="M9.925 19.687a.59.59 0 01.415-.17h14.366a.29.29 0 01.207.497l-2.838 2.815a.59.59 0 01-.415.171H7.294a.291.291 0 01-.207-.498l2.838-2.815zm0-10.517A.59.59 0 0110.34 9h14.366c.261 0 .392.314.207.498l-2.838 2.815a.59.59 0 01-.415.17H7.294a.291.291 0 01-.207-.497L9.925 9.17zm12.15 5.225a.59.59 0 00-.415-.17H7.294a.291.291 0 00-.207.498l2.838 2.815c.11.109.26.17.415.17h14.366a.291.291 0 00.207-.498l-2.838-2.815z"/>
+              </svg>
+            </div>
+            <div class="crypto-meta">
+              <span class="crypto-name">Solana (SOL)</span>
+              <span class="crypto-addr">G8sswNw9rVPkbYhfLrWjQqQmM2RibrTzzKwoF3o9pLPA</span>
+            </div>
+          </div>
+          <span class="crypto-copy-hint" data-key="copyHint">копия</span>
+        </div>
+
+        <!-- Bitcoin -->
+        <div class="crypto-item" data-copy="bc1qnrnmvql9lzda8dl96ydtdmxy8cl7jkxdz280aw" data-name="Bitcoin">
+          <div class="crypto-left">
+            <div class="crypto-icon-box">
+              <svg viewBox="0 0 32 32">
+                <!-- Authentic Bitcoin Vector Icon -->
+                <path fill-rule="nonzero" d="M23.189 14.02c.314-2.096-1.283-3.223-3.465-3.975l.708-2.84-1.728-.43-.69 2.765c-.454-.114-.92-.22-1.385-.326l.695-2.783L15.596 6l-.708 2.839c-.376-.086-.746-.17-1.104-.26l.002-.009-2.384-.595-.46 1.846s1.283.294 1.256.312c.7.175.826.638.805 1.006l-.806 3.235c.048.012.11.03.18.057l-.183-.045-1.13 4.532c-.086.212-.303.531-.793.41.018.025-1.256-.313-1.256-.313l-.858 1.978 2.25.561c.418.105.828.215 1.231.318l-.715 2.872 1.727.43.708-2.84c.472.127.93.245 1.378.357l-.706 2.828 1.728.43.715-2.866c2.948.558 5.164.333 6.097-2.333.752-2.146-.037-3.385-1.588-4.192 1.13-.26 1.98-1.003 2.207-2.538zm-3.95 5.538c-.533 2.147-4.148.986-5.32.695l.95-3.805c1.172.293 4.929.872 4.37 3.11zm.535-5.569c-.487 1.953-3.495.96-4.47.717l.86-3.45c.975.243 4.118.696 3.61 2.733z"/>
+              </svg>
+            </div>
+            <div class="crypto-meta">
+              <span class="crypto-name">Bitcoin (BTC)</span>
+              <span class="crypto-addr">bc1qnrnmvql9lzda8dl96ydtdmxy8cl7jkxdz280aw</span>
+            </div>
+          </div>
+          <span class="crypto-copy-hint" data-key="copyHint">копия</span>
+        </div>
+
+        <!-- Ethereum -->
+        <div class="crypto-item" data-copy="0xf71C94c6b8DDA12A9FD846F0BB28CA546B2b4295" data-name="Ethereum">
+          <div class="crypto-left">
+            <div class="crypto-icon-box">
+              <svg viewBox="0 0 32 32">
+                <!-- Authentic Ethereum Vector Icon -->
+                <g fill-rule="nonzero">
+                  <path fill-opacity=".6" d="M16.498 4v8.87l7.497 3.35z"/>
+                  <path d="M16.498 4L9 16.22l7.498-3.35z"/>
+                  <path fill-opacity=".6" d="M16.498 21.968v6.027L24 17.616z"/>
+                  <path d="M16.498 27.995v-6.028L9 17.616z"/>
+                  <path fill-opacity=".25" d="M16.498 20.573l7.497-4.353-7.497-3.348z"/>
+                  <path fill-opacity=".6" d="M9 16.22l7.498 4.353v-7.701z"/>
+                </g>
+              </svg>
+            </div>
+            <div class="crypto-meta">
+              <span class="crypto-name">Ethereum (ETH)</span>
+              <span class="crypto-addr">0xf71C94c6b8DDA12A9FD846F0BB28CA546B2b4295</span>
+            </div>
+          </div>
+          <span class="crypto-copy-hint" data-key="copyHint">копия</span>
+        </div>
+
+        <!-- BEP-20 (BNB Smart Chain) -->
+        <div class="crypto-item" data-copy="0x7C3dE8EB01709943f29c0A467Af8a780B43C3bF8" data-name="BEP-20">
+          <div class="crypto-left">
+            <div class="crypto-icon-box">
+              <svg viewBox="0 0 32 32">
+                <!-- Authentic Binance BNB Vector Icon -->
+                <path d="M12.116 14.404L16 10.52l3.886 3.886 2.26-2.26L16 6l-6.144 6.144 2.26 2.26zM6 16l2.26-2.26L10.52 16l-2.26 2.26L6 16zm6.116 1.596L16 21.48l3.886-3.886 2.26 2.259L16 26l-6.144-6.144-.003-.003 2.263-2.257zM21.48 16l2.26-2.26L26 16l-2.26 2.26L21.48 16zm-3.188-.002h.002V16L16 18.294l-2.291-2.29-.004-.004.004-.003.401-.402.195-.195L16 13.706l2.293 2.293z"/>
+              </svg>
+            </div>
+            <div class="crypto-meta">
+              <span class="crypto-name">BEP-20 (BSC / USDT)</span>
+              <span class="crypto-addr">0x7C3dE8EB01709943f29c0A467Af8a780B43C3bF8</span>
+            </div>
+          </div>
+          <span class="crypto-copy-hint" data-key="copyHint">копия</span>
+        </div>
+      </div>
+
+      <!-- Total Raised Progress/Badge -->
+      <div class="donate-total-badge">
+        <div class="donate-total-label">
+          <span>⚡</span>
+          <span data-key="donateTotalLabel">всего собрано:</span>
+        </div>
+        <div class="donate-total-val" id="donateTotalVal">$0.13</div>
+      </div>
+
+      <div class="donate-modal-footer">
+        <span data-key="donateFooterHint">нажмите на адрес, чтобы скопировать</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Copy Toast -->
+  <div class="toast-msg" id="toastMsg" role="status" aria-live="polite">
+    <svg viewBox="0 0 24 24">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    <span id="toastText" data-key="toastFallback">Скопировано в буфер!</span>
+  </div>
+
   <!-- Interactive Scripts -->
   <script>
-    // Bilingual Localization without // and numbers
     const i18n = {
       ru: {
-        title: "iwtsd",
-        subtitle: "несколько вещей, над которыми я работал",
-        githubBtn: "github профиль",
+        pageTitle: "iwtsd — профиль",
+        githubBtn: "github",
+        tgPmBtn: "tg pm",
+        tgChannelBtn: "tg channel",
         telegramBtn: "telegram",
-        copyTooltip: "Скопировано!",
-        projectsTitle: "проекты",
-        socksicleDesc: "кроссплатформенный proxy-клиент для Windows и Linux.",
-        diemuDesc: "эмулятор game boy на rust. gbc поддержка сломана, проект заброшен.",
-        thisSiteTitle: "этот сайт",
-        thisSiteDesc: "личная страница на github pages с тёмной темой и проектами.",
-        repoLink: "→ репозиторий",
-        launchTool: "→ запустить утилиту",
-        sourceLink: "→ исходники",
-        statusActive: "активен",
-        statusAbandoned: "заброшен",
-        statusClosed: "закрыт",
-        statusSite: "сайт",
-        collabEyebrow: "сотрудничество",
-        collabTitle: "mabvpn",
-        collabDesc: "инфраструктура и панель управления для внешнего проекта",
-        collabBtn: "глянуть что вышло",
-        footerNotice: "iwtsd",
-        footerCollabs: "mabvpn →",
-        backToTop: "наверх ↑"
+        donateBtn: "донат",
+        donateHeader: "крипто-реквизиты",
+        donateTotalLabel: "всего собрано:",
+        donateFooterHint: "нажмите на адрес, чтобы скопировать",
+        copyHint: "копия",
+        copiedText: "Скопировано в буфер!",
+        toastFallback: "Скопировано в буфер!",
+        commitsHeader: "последние коммиты",
+        weatherCity: "Ашхабад",
+        statusAvailable: "свободен",
+        statusBusy: "занят",
+        footerNotice: "iwtsd"
       },
       en: {
-        title: "iwtsd",
-        subtitle: "a few things i've worked on",
-        githubBtn: "github profile",
+        pageTitle: "iwtsd — profile",
+        githubBtn: "github",
+        tgPmBtn: "tg pm",
+        tgChannelBtn: "tg channel",
         telegramBtn: "telegram",
-        copyTooltip: "Copied!",
-        projectsTitle: "projects",
-        socksicleDesc: "cross-platform proxy client for Windows and Linux.",
-        diemuDesc: "game boy emulator in rust. gbc support is broken, project abandoned.",
-        twinsockDesc: "shadowsocks url generator in browser. project is closed.",
-        thisSiteTitle: "this site",
-        thisSiteDesc: "personal page on github pages with dark mode and projects.",
-        repoLink: "→ repository",
-        launchTool: "→ launch tool",
-        sourceLink: "→ source code",
-        statusActive: "active",
-        statusAbandoned: "abandoned",
-        statusClosed: "closed",
-        statusSite: "site",
-        collabEyebrow: "collaboration",
-        collabTitle: "mabvpn",
-        collabDesc: "infrastructure and dashboard work for an external project",
-        collabBtn: "take a look",
-        footerNotice: "iwtsd",
-        footerCollabs: "mabvpn →",
-        backToTop: "back to top ↑"
+        donateBtn: "tip",
+        donateHeader: "crypto addresses",
+        donateTotalLabel: "total raised:",
+        donateFooterHint: "click on address to copy",
+        copyHint: "copy",
+        copiedText: "Copied to clipboard!",
+        toastFallback: "Copied to clipboard!",
+        commitsHeader: "latest commits",
+        weatherCity: "Ashgabat",
+        statusAvailable: "available",
+        statusBusy: "busy",
+        footerNotice: "iwtsd"
       }
+    };
+
+    let currentCommits = [
+      {
+        sha: "04533e9",
+        repo: "iwtsyddd",
+        msg: "Remove DiEmu and website links from README",
+        date: "2026-10-12T09:53:41Z",
+        url: "https://github.com/iwtsyddd/iwtsyddd/commit/04533e96084c62718f917c7d122b4fa7c06a236a"
+      },
+      {
+        sha: "d28bd55",
+        repo: "iwtsyddd",
+        msg: "Fix snake workflow action version to v4",
+        date: "2026-10-12T09:42:34Z",
+        url: "https://github.com/iwtsyddd/iwtsyddd/commit/d28bd559003049ca20e4990733f681d386586c28"
+      },
+      {
+        sha: "229cd3c",
+        repo: "iwtsyddd",
+        msg: "Remove test files",
+        date: "2026-10-12T09:34:26Z",
+        url: "https://github.com/iwtsyddd/iwtsyddd/commit/229cd3c1c5b5cd85364a1fcd5ac1078cf614db50"
+      },
+      {
+        sha: "8efc521",
+        repo: "iwtsyddd",
+        msg: "Scale down widgets, add minimal stats and snake contribution action",
+        date: "2026-10-12T09:33:57Z",
+        url: "https://github.com/iwtsyddd/iwtsyddd/commit/8efc5213dddcb47acbda304f9b0b78cba4ceada0"
+      }
+    ];
+
+    let currentWeatherData = {
+      temp: "+22°C",
+      emoji: "🌤️",
+      code: 2,
+      isDay: 1
+    };
+
+    const weatherMap = {
+      0: { ru: "ясно", en: "clear sky", day: "☀️", night: "🌙" },
+      1: { ru: "в основном ясно", en: "mainly clear", day: "🌤️", night: "🌤️" },
+      2: { ru: "переменная облачность", en: "partly cloudy", day: "⛅", night: "⛅" },
+      3: { ru: "пасмурно", en: "overcast", day: "☁️", night: "☁️" },
+      45: { ru: "туман", en: "fog", day: "🌫️", night: "🌫️" },
+      48: { ru: "иней / туман", en: "rime fog", day: "🌫️", night: "🌫️" },
+      51: { ru: "легкая морось", en: "light drizzle", day: "🌦️", night: "🌦️" },
+      53: { ru: "морось", en: "drizzle", day: "🌧️", night: "🌧️" },
+      55: { ru: "сильная морось", en: "heavy drizzle", day: "🌧️", night: "🌧️" },
+      61: { ru: "небольшой дождь", en: "slight rain", day: "🌦️", night: "🌦️" },
+      63: { ru: "умеренный дождь", en: "moderate rain", day: "🌧️", night: "🌧️" },
+      65: { ru: "сильный дождь", en: "heavy rain", day: "🌧️", night: "🌧️" },
+      71: { ru: "небольшой снег", en: "slight snow", day: "🌨️", night: "🌨️" },
+      73: { ru: "умеренный снег", en: "moderate snow", day: "❄️", night: "❄️" },
+      75: { ru: "сильный снегопад", en: "heavy snow", day: "❄️", night: "❄️" },
+      80: { ru: "ливень", en: "rain showers", day: "🌦️", night: "🌧️" },
+      81: { ru: "умеренный ливень", en: "moderate showers", day: "🌧️", night: "🌧️" },
+      82: { ru: "сильный ливень", en: "heavy showers", day: "⛈️", night: "⛈️" },
+      95: { ru: "гроза", en: "thunderstorm", day: "⛈️", night: "⛈️" }
     };
 
     function storage() {
@@ -1210,43 +1696,219 @@
     }
     const store = storage();
 
-    // Theme Controller
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function timeAgo(dateString, lang) {
+      const diffSec = Math.max(1, Math.floor((Date.now() - new Date(dateString).getTime()) / 1000));
+      if (diffSec < 60) return lang === 'ru' ? 'только что' : 'just now';
+      const diffMin = Math.floor(diffSec / 60);
+      if (diffMin < 60) return lang === 'ru' ? `${diffMin} мин назад` : `${diffMin}m ago`;
+      const diffHours = Math.floor(diffMin / 60);
+      if (diffHours < 24) return lang === 'ru' ? `${diffHours} ч назад` : `${diffHours}h ago`;
+      const diffDays = Math.floor(diffHours / 24);
+      if (diffDays < 30) return lang === 'ru' ? `${diffDays} д назад` : `${diffDays}d ago`;
+      const d = new Date(dateString);
+      return d.toLocaleDateString(lang === 'ru' ? 'ru-RU' : 'en-US', { day: 'numeric', month: 'short' });
+    }
+
+    function renderCommits(commits) {
+      const container = document.getElementById('commitsList');
+      if (!container || !commits || !commits.length) return;
+      const curLang = document.documentElement.getAttribute('lang') || 'ru';
+
+      container.innerHTML = commits.map(c => `
+        <a href="${c.url}" class="commit-item" target="_blank" rel="noopener noreferrer" title="${escapeHtml(c.msg)}">
+          <div class="commit-main">
+            <div class="commit-msg">${escapeHtml(c.msg)}</div>
+            <div class="commit-meta">
+              <span class="commit-repo">${escapeHtml(c.repo)}</span>
+              <span class="commit-hash">${escapeHtml(c.sha)}</span>
+            </div>
+          </div>
+          <div class="commit-side">
+            <span class="commit-time">${timeAgo(c.date, curLang)}</span>
+          </div>
+        </a>
+      `).join('');
+
+      if (!container.dataset.sfxBound) {
+        container.dataset.sfxBound = '1';
+        container.addEventListener('click', (e) => {
+          if (e.target.closest('.commit-item')) sfx.pop();
+        });
+      }
+    }
+
+    function renderWeather() {
+      const curLang = document.documentElement.getAttribute('lang') || 'ru';
+      const tempEl = document.getElementById('weatherTemp');
+      const emojiEl = document.getElementById('weatherEmoji');
+      const descEl = document.getElementById('weatherDesc');
+
+      if (tempEl) tempEl.textContent = currentWeatherData.temp;
+      if (emojiEl) emojiEl.textContent = currentWeatherData.emoji;
+      if (descEl) {
+        const info = weatherMap[currentWeatherData.code] || weatherMap[2];
+        descEl.textContent = info[curLang] || info.ru;
+      }
+    }
+
+    function updateClock() {
+      const now = new Date();
+      const timeFormatter = new Intl.DateTimeFormat('ru-RU', {
+        timeZone: 'Asia/Ashgabat',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+      });
+      const parts = timeFormatter.formatToParts(now);
+      const hourPart = parts.find(p => p.type === 'hour');
+      const minutePart = parts.find(p => p.type === 'minute');
+
+      if (hourPart && minutePart) {
+        const hour = parseInt(hourPart.value, 10);
+        const minute = minutePart.value;
+        const clockEl = document.getElementById('liveClock');
+        if (clockEl) {
+          clockEl.textContent = `${String(hour).padStart(2, '0')}:${minute}`;
+        }
+
+        // From 02:00 to 13:00 -> busy (занят)
+        const isBusy = hour >= 2 && hour < 13;
+        const statusEl = document.getElementById('userStatus');
+        const curLang = document.documentElement.getAttribute('lang') || 'ru';
+        if (statusEl) {
+          statusEl.classList.toggle('busy', isBusy);
+          if (isBusy) {
+            statusEl.textContent = i18n[curLang].statusBusy;
+          } else {
+            statusEl.textContent = i18n[curLang].statusAvailable;
+          }
+        }
+      }
+    }
+
+    // Permanent Dark Theme
     const htmlEl = document.documentElement;
     const bodyEl = document.body;
-    const themeBtn = document.getElementById('themeToggle');
-    const sunIcon = document.getElementById('themeIconSun');
-    const moonIcon = document.getElementById('themeIconMoon');
+    htmlEl.setAttribute('data-theme', 'dark');
+    bodyEl.setAttribute('data-theme', 'dark');
 
-    function applyTheme(theme) {
-      htmlEl.setAttribute('data-theme', theme);
-      bodyEl.setAttribute('data-theme', theme);
-      const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-      if (metaThemeColor) {
-        metaThemeColor.setAttribute('content', theme === 'dark' ? '#08090d' : '#f9fafb');
-      }
+    // Sound Effects Engine (Web Audio API Synthesizer - 0 external files needed)
+    let sfxAudioCtx = null;
+    let sfxEnabled = false;
 
-      if (theme === 'dark') {
-        sunIcon.style.display = 'block';
-        moonIcon.style.display = 'none';
-      } else {
-        sunIcon.style.display = 'none';
-        moonIcon.style.display = 'block';
+    function initAudioContext() {
+      if (!sfxAudioCtx) {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (AudioCtx) sfxAudioCtx = new AudioCtx();
       }
-      if (store) store.setItem('site_theme', theme);
+      if (sfxAudioCtx && sfxAudioCtx.state === 'suspended') {
+        sfxAudioCtx.resume();
+      }
     }
 
-    let initialTheme = 'dark';
-    if (store && store.getItem('site_theme')) {
-      initialTheme = store.getItem('site_theme');
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-      initialTheme = 'light';
-    }
-    applyTheme(initialTheme);
+    const sfx = {
+      // Crisp mechanical/glass click
+      click() {
+        if (!sfxEnabled) return;
+        initAudioContext();
+        if (!sfxAudioCtx) return;
+        try {
+          const osc = sfxAudioCtx.createOscillator();
+          const gain = sfxAudioCtx.createGain();
+          const t = sfxAudioCtx.currentTime;
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(1400, t);
+          osc.frequency.exponentialRampToValueAtTime(320, t + 0.038);
+          gain.gain.setValueAtTime(0.09, t);
+          gain.gain.exponentialRampToValueAtTime(0.001, t + 0.038);
+          osc.connect(gain);
+          gain.connect(sfxAudioCtx.destination);
+          osc.start(t);
+          osc.stop(t + 0.038);
+        } catch (e) {}
+      },
+      // Subtle pop on button tap
+      pop() {
+        if (!sfxEnabled) return;
+        initAudioContext();
+        if (!sfxAudioCtx) return;
+        try {
+          const osc = sfxAudioCtx.createOscillator();
+          const gain = sfxAudioCtx.createGain();
+          const t = sfxAudioCtx.currentTime;
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(480, t);
+          osc.frequency.exponentialRampToValueAtTime(760, t + 0.05);
+          gain.gain.setValueAtTime(0.08, t);
+          gain.gain.exponentialRampToValueAtTime(0.001, t + 0.05);
+          osc.connect(gain);
+          gain.connect(sfxAudioCtx.destination);
+          osc.start(t);
+          osc.stop(t + 0.05);
+        } catch (e) {}
+      },
+      // Theme shift chord (smooth dual-tone)
+      toggle(isDark) {
+        if (!sfxEnabled) return;
+        initAudioContext();
+        if (!sfxAudioCtx) return;
+        try {
+          const t = sfxAudioCtx.currentTime;
+          const f1 = isDark ? 680 : 420;
+          const f2 = isDark ? 420 : 680;
+          [f1, f2].forEach((freq, i) => {
+            const osc = sfxAudioCtx.createOscillator();
+            const gain = sfxAudioCtx.createGain();
+            const startTime = t + i * 0.04;
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, startTime);
+            osc.frequency.exponentialRampToValueAtTime(freq * 0.9, startTime + 0.09);
+            gain.gain.setValueAtTime(0.07, startTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.09);
+            osc.connect(gain);
+            gain.connect(sfxAudioCtx.destination);
+            osc.start(startTime);
+            osc.stop(startTime + 0.09);
+          });
+        } catch (e) {}
+      },
+      // Mascot bubbly boing chirp
+      mascot() {
+        if (!sfxEnabled) return;
+        initAudioContext();
+        if (!sfxAudioCtx) return;
+        try {
+          const osc = sfxAudioCtx.createOscillator();
+          const gain = sfxAudioCtx.createGain();
+          const t = sfxAudioCtx.currentTime;
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(420, t);
+          osc.frequency.exponentialRampToValueAtTime(880, t + 0.07);
+          osc.frequency.exponentialRampToValueAtTime(620, t + 0.12);
+          gain.gain.setValueAtTime(0.12, t);
+          gain.gain.exponentialRampToValueAtTime(0.001, t + 0.13);
+          osc.connect(gain);
+          gain.connect(sfxAudioCtx.destination);
+          osc.start(t);
+          osc.stop(t + 0.13);
+        } catch (e) {}
+      }
+    };
 
-    themeBtn.addEventListener('click', () => {
-      const cur = htmlEl.getAttribute('data-theme') || 'dark';
-      applyTheme(cur === 'dark' ? 'light' : 'dark');
-    });
+    // SFX is always active
+    sfxEnabled = true;
+
+
 
     // Language Controller
     const langRuBtn = document.getElementById('langRu');
@@ -1255,6 +1917,10 @@
     function applyLang(lang) {
       htmlEl.setAttribute('lang', lang);
       bodyEl.setAttribute('data-lang', lang);
+
+      if (i18n[lang] && i18n[lang].pageTitle) {
+        document.title = i18n[lang].pageTitle;
+      }
 
       document.querySelectorAll('[data-key]').forEach(el => {
         const key = el.getAttribute('data-key');
@@ -1267,6 +1933,11 @@
       langEnBtn.classList.toggle('active', lang === 'en');
 
       if (store) store.setItem('site_lang', lang);
+      if (currentCommits && currentCommits.length) {
+        renderCommits(currentCommits);
+      }
+      renderWeather();
+      updateClock();
     }
 
     let initialLang = 'ru';
@@ -1275,43 +1946,735 @@
     } else if (navigator.language && !navigator.language.startsWith('ru')) {
       initialLang = 'en';
     }
-    applyLang(initialLang);
 
-    langRuBtn.addEventListener('click', () => applyLang('ru'));
-    langEnBtn.addEventListener('click', () => applyLang('en'));
+    langRuBtn.addEventListener('click', () => {
+      sfx.click();
+      applyLang('ru');
+    });
+    langEnBtn.addEventListener('click', () => {
+      sfx.click();
+      applyLang('en');
+    });
 
-    // Copy Nick
-    const copyChip = document.getElementById('copyHandleChip');
-    let copyTimeout = null;
+    // Mascot Interaction (bounce + SFX)
+    const mascotWrap = document.querySelector('.anime-mascot-wrap');
+    if (mascotWrap) {
+      mascotWrap.addEventListener('click', () => {
+        sfx.mascot();
+        mascotWrap.animate([
+          { transform: 'scale(1) rotate(0deg)' },
+          { transform: 'scale(1.22) rotate(-8deg)' },
+          { transform: 'scale(0.92) rotate(6deg)' },
+          { transform: 'scale(1.08) rotate(-3deg)' },
+          { transform: 'scale(1) rotate(0deg)' }
+        ], {
+          duration: 480,
+          easing: 'cubic-bezier(0.34, 1.56, 0.64, 1)'
+        });
+      });
+    }
 
-    copyChip.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText('iwtsyddd');
-        copyChip.classList.add('copied');
-        clearTimeout(copyTimeout);
-        copyTimeout = setTimeout(() => {
-          copyChip.classList.remove('copied');
-        }, 2000);
-      } catch (err) {
-        const textarea = document.createElement('textarea');
-        textarea.value = 'iwtsyddd';
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
-        copyChip.classList.add('copied');
-        clearTimeout(copyTimeout);
-        copyTimeout = setTimeout(() => {
-          copyChip.classList.remove('copied');
-        }, 2000);
+    // Interactive button audio triggers
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('click', () => sfx.pop());
+    });
+
+    // Weather test bar buttons audio
+    document.querySelectorAll('.test-btn').forEach(btn => {
+      btn.addEventListener('click', () => sfx.click());
+    });
+
+    // Toast Controller
+    let toastTimeout = null;
+    const toastEl = document.getElementById('toastMsg');
+    const toastTextEl = document.getElementById('toastText');
+
+    function showToast(msg) {
+      if (!toastEl) return;
+      if (toastTextEl) toastTextEl.textContent = msg;
+      toastEl.classList.add('show');
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toastEl.classList.remove('show');
+      }, 2400);
+    }
+
+    // Fullscreen Donate Modal Controller & Crypto Copy
+    const donateBtn = document.getElementById('donateBtn');
+    const donateModalBackdrop = document.getElementById('donateModalBackdrop');
+    const donateModalClose = document.getElementById('donateModalClose');
+
+    function openDonateModal() {
+      if (!donateModalBackdrop) return;
+      sfx.pop();
+      donateModalBackdrop.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDonateModal() {
+      if (!donateModalBackdrop) return;
+      sfx.pop();
+      donateModalBackdrop.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    if (donateBtn) {
+      donateBtn.addEventListener('click', openDonateModal);
+    }
+
+    if (donateModalClose) {
+      donateModalClose.addEventListener('click', closeDonateModal);
+    }
+
+    if (donateModalBackdrop) {
+      // Close on backdrop click outside card
+      donateModalBackdrop.addEventListener('click', (e) => {
+        if (e.target === donateModalBackdrop) {
+          closeDonateModal();
+        }
+      });
+      // Close on Esc key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && donateModalBackdrop.classList.contains('open')) {
+          closeDonateModal();
+        }
+      });
+
+      // Click on crypto item to copy address
+      donateModalBackdrop.querySelectorAll('.crypto-item').forEach(item => {
+        item.addEventListener('click', async (e) => {
+          e.stopPropagation();
+          const addr = item.getAttribute('data-copy');
+          const name = item.getAttribute('data-name') || 'Address';
+          const curLang = document.documentElement.getAttribute('lang') || 'ru';
+          sfx.click();
+
+          try {
+            await navigator.clipboard.writeText(addr);
+            showToast(`${name}: ${i18n[curLang].copiedText || 'Скопировано!'}`);
+          } catch (err) {
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = addr;
+            textArea.style.position = 'fixed';
+            textArea.style.opacity = '0';
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            showToast(`${name}: ${i18n[curLang].copiedText || 'Скопировано!'}`);
+          }
+
+          // Subtle feedback on the item hint
+          const hint = item.querySelector('.crypto-copy-hint');
+          if (hint) {
+            const originalText = hint.textContent;
+            hint.textContent = '✓';
+            hint.style.color = '#10b981';
+            hint.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+            setTimeout(() => {
+              hint.textContent = originalText;
+              hint.style.color = '';
+              hint.style.borderColor = '';
+            }, 1500);
+          }
+        });
+      });
+    }
+
+    // Discord copy handler
+    function setupDiscordCopy() {
+      const copyDiscord = async (btn) => {
+        const username = btn.getAttribute('data-discord') || 'iwtsd';
+        const curLang = document.documentElement.getAttribute('lang') || 'ru';
+        if (window.sfx && sfx.click) sfx.click();
+
+        try {
+          await navigator.clipboard.writeText(username);
+          showToast(`Discord @${username}: ${i18n[curLang].copiedText || 'Скопировано!'}`);
+        } catch (err) {
+          const textArea = document.createElement('textarea');
+          textArea.value = username;
+          textArea.style.position = 'fixed';
+          textArea.style.opacity = '0';
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textArea);
+          showToast(`Discord @${username}: ${i18n[curLang].copiedText || 'Скопировано!'}`);
+        }
+      };
+
+      const discordBtn = document.getElementById('discordBtn');
+      if (discordBtn) {
+        discordBtn.addEventListener('click', () => copyDiscord(discordBtn));
       }
-    });
 
-    // Back to top
-    document.getElementById('backToTop').addEventListener('click', (e) => {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+      const footerDiscord = document.getElementById('footerDiscord');
+      if (footerDiscord) {
+        footerDiscord.addEventListener('click', () => copyDiscord(footerDiscord));
+      }
+    }
+    setupDiscordCopy();
+
+    // Dynamic Live Donation Balance Fetcher (GitHub Actions synced + Live RPC)
+    async function fetchLiveDonations() {
+      const totalValEl = document.getElementById('donateTotalVal');
+      if (!totalValEl) return;
+
+      // 1. Fetch official donations.json synced by GitHub Actions
+      try {
+        const res = await fetch('donations.json?t=' + Date.now());
+        if (res.ok) {
+          const data = await res.json();
+          if (data && typeof data.totalUSD === 'number') {
+            totalValEl.textContent = `$${data.totalUSD.toFixed(2)}`;
+            return;
+          }
+        }
+      } catch (e) {}
+
+      // 2. Direct fallback: query BSC RPC and Binance ticker
+      try {
+        const bscAddr = '0x7C3dE8EB01709943f29c0A467Af8a780B43C3bF8';
+        const bscUsdtContract = '0x55d398326f99059fF775485246999027B3197955';
+
+        const [bnbRes, usdtRes, priceRes] = await Promise.allSettled([
+          fetch('https://bsc-dataseed.binance.org', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ jsonrpc: '2.0', method: 'eth_getBalance', params: [bscAddr, 'latest'], id: 1 })
+          }).then(r => r.json()),
+          fetch('https://bsc-dataseed.binance.org', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              jsonrpc: '2.0',
+              method: 'eth_call',
+              params: [{ to: bscUsdtContract, data: '0x70a08231000000000000000000000000' + bscAddr.slice(2).toLowerCase() }, 'latest'],
+              id: 2
+            })
+          }).then(r => r.json()),
+          fetch('https://api.binance.com/api/v3/ticker/price?symbol=BNBUSDT').then(r => r.json())
+        ]);
+
+        let bnbBalance = 0;
+        let usdtBalance = 0;
+        let bnbPrice = 750;
+
+        if (bnbRes.status === 'fulfilled' && bnbRes.value && bnbRes.value.result) {
+          bnbBalance = Number(BigInt(bnbRes.value.result)) / 1e18;
+        }
+        if (usdtRes.status === 'fulfilled' && usdtRes.value && usdtRes.value.result) {
+          usdtBalance = Number(BigInt(usdtRes.value.result)) / 1e18;
+        }
+        if (priceRes.status === 'fulfilled' && priceRes.value && priceRes.value.price) {
+          bnbPrice = parseFloat(priceRes.value.price) || 750;
+        }
+
+        const totalUSD = (bnbBalance * bnbPrice) + usdtBalance;
+        if (totalUSD > 0) {
+          totalValEl.textContent = `$${totalUSD.toFixed(2)}`;
+        }
+      } catch (e) {}
+    }
+
+    // Initial render
+    applyLang(initialLang);
+    setInterval(updateClock, 1000);
+
+    // Dynamic Weather Background Controller
+    let weatherParticles = [];
+    let meteors = [];
+    let nextMeteorTick = 0;
+    let animFrameId = null;
+    let activeWeatherType = null;
+
+    function isAshgabatNight() {
+      const now = new Date();
+      const timeFormatter = new Intl.DateTimeFormat('ru-RU', {
+        timeZone: 'Asia/Ashgabat',
+        hour: '2-digit',
+        hour12: false
+      });
+      const hour = parseInt(timeFormatter.format(now), 10);
+      return hour >= 19 || hour < 7;
+    }
+
+    function getWeatherType(code, isDay) {
+      const night = !isDay || isAshgabatNight();
+
+      if ([95, 96, 99].includes(code)) return 'thunderstorm';
+      if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) return 'rain';
+      if ([71, 73, 75, 77, 85, 86].includes(code)) return 'snow';
+      if ([3, 45, 48].includes(code)) return night ? 'night-cloudy' : 'overcast';
+      if ([1, 2].includes(code)) return night ? 'night-cloudy' : 'partly-cloudy';
+      return night ? 'clear-night' : 'clear-day';
+    }
+
+    function setupWeatherBackground(type) {
+      if (type === activeWeatherType) return;
+      activeWeatherType = type;
+
+      const canvas = document.getElementById('weatherCanvas');
+      const glow = document.getElementById('meshGlow');
+      const fog = document.getElementById('weatherFog');
+      if (!canvas) return;
+
+      const ctx = canvas.getContext('2d');
+      let width = (canvas.width = window.innerWidth);
+      let height = (canvas.height = window.innerHeight);
+
+      function handleResize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+      window.removeEventListener('resize', handleResize);
+      window.addEventListener('resize', handleResize);
+
+      // Dynamic Weather Accent Color Palettes
+      const weatherAccents = {
+        'rain': {
+          primary: '#0284c7',
+          light: '#38bdf8',
+          glow: 'rgba(56, 189, 248, 0.35)',
+          glowSubtle: 'rgba(56, 189, 248, 0.12)',
+          borderHighlight: 'rgba(56, 189, 248, 0.35)'
+        },
+        'snow': {
+          primary: '#38bdf8',
+          light: '#bae6fd',
+          glow: 'rgba(186, 230, 253, 0.4)',
+          glowSubtle: 'rgba(186, 230, 253, 0.15)',
+          borderHighlight: 'rgba(186, 230, 253, 0.38)'
+        },
+        'overcast': {
+          primary: '#64748b',
+          light: '#94a3b8',
+          glow: 'rgba(148, 163, 184, 0.3)',
+          glowSubtle: 'rgba(148, 163, 184, 0.1)',
+          borderHighlight: 'rgba(148, 163, 184, 0.28)'
+        },
+        'partly-cloudy': {
+          primary: '#475569',
+          light: '#94a3b8',
+          glow: 'rgba(148, 163, 184, 0.3)',
+          glowSubtle: 'rgba(148, 163, 184, 0.1)',
+          borderHighlight: 'rgba(148, 163, 184, 0.28)'
+        },
+        'thunderstorm': {
+          primary: '#7c3aed',
+          light: '#a78bfa',
+          glow: 'rgba(167, 139, 250, 0.38)',
+          glowSubtle: 'rgba(167, 139, 250, 0.14)',
+          borderHighlight: 'rgba(167, 139, 250, 0.35)'
+        },
+        'clear-day': {
+          primary: '#d97706',
+          light: '#f59e0b',
+          glow: 'rgba(245, 158, 11, 0.35)',
+          glowSubtle: 'rgba(245, 158, 11, 0.12)',
+          borderHighlight: 'rgba(245, 158, 11, 0.35)'
+        },
+        'clear-night': {
+          primary: '#6366f1',
+          light: '#818cf8',
+          glow: 'rgba(129, 140, 248, 0.35)',
+          glowSubtle: 'rgba(129, 140, 248, 0.12)',
+          borderHighlight: 'rgba(129, 140, 248, 0.35)'
+        },
+        'night': {
+          primary: '#6366f1',
+          light: '#818cf8',
+          glow: 'rgba(129, 140, 248, 0.35)',
+          glowSubtle: 'rgba(129, 140, 248, 0.12)',
+          borderHighlight: 'rgba(129, 140, 248, 0.35)'
+        },
+        'night-cloudy': {
+          primary: '#4f46e5',
+          light: '#818cf8',
+          glow: 'rgba(129, 140, 248, 0.3)',
+          glowSubtle: 'rgba(129, 140, 248, 0.1)',
+          borderHighlight: 'rgba(129, 140, 248, 0.3)'
+        }
+      };
+
+      const pal = weatherAccents[type] || weatherAccents['clear-night'];
+      const rootStyle = document.documentElement.style;
+      rootStyle.setProperty('--accent-primary', pal.primary);
+      rootStyle.setProperty('--accent-light', pal.light);
+      rootStyle.setProperty('--accent-glow', pal.glow);
+      rootStyle.setProperty('--accent-glow-subtle', pal.glowSubtle);
+      rootStyle.setProperty('--border-highlight', pal.borderHighlight || pal.glow);
+
+      // Ambient glow tint
+      if (glow) {
+        glow.className = 'bg-mesh-glow';
+        if (type === 'rain') glow.classList.add('weather-glow-rain');
+        else if (type === 'snow') glow.classList.add('weather-glow-snow');
+        else if (type === 'overcast' || type === 'partly-cloudy') glow.classList.add('weather-glow-overcast');
+        else if (type === 'thunderstorm') glow.classList.add('weather-glow-thunderstorm');
+        else if (type === 'clear-day') glow.classList.add('weather-glow-clear-day');
+        else if (type === 'clear-night' || type === 'night' || type === 'night-cloudy') glow.classList.add('weather-glow-clear-night');
+      }
+
+      // Overcast / fog clouds
+      if (fog) {
+        fog.classList.toggle('active', type === 'overcast' || type === 'partly-cloudy' || type === 'night-cloudy' || type === 'rain' || type === 'thunderstorm');
+      }
+
+      weatherParticles = [];
+      meteors = [];
+      nextMeteorTick = 30;
+
+      const isThunder = type === 'thunderstorm';
+      const isRain = type === 'rain' || isThunder;
+      const isSnow = type === 'snow';
+      const isNight = type === 'clear-night' || type === 'night' || type === 'night-cloudy';
+
+      const count = isRain ? 75 : (isSnow ? 50 : (isNight ? 55 : 0));
+
+      for (let i = 0; i < count; i++) {
+        if (isRain) {
+          weatherParticles.push({
+            x: Math.random() * (width + 100),
+            y: Math.random() * height,
+            speed: 13 + Math.random() * 8,
+            len: 16 + Math.random() * 16,
+            alpha: 0.15 + Math.random() * 0.25
+          });
+        } else if (isSnow) {
+          weatherParticles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            speed: 0.6 + Math.random() * 1.1,
+            r: 1.5 + Math.random() * 2.4,
+            sway: Math.random() * Math.PI * 2,
+            swaySpeed: 0.015 + Math.random() * 0.015,
+            alpha: 0.25 + Math.random() * 0.4
+          });
+        } else if (isNight) {
+          weatherParticles.push({
+            x: Math.random() * width,
+            y: Math.random() * (height * 0.8),
+            r: 0.7 + Math.random() * 1.5,
+            alpha: 0.2 + Math.random() * 0.55,
+            twinkleSpeed: 0.02 + Math.random() * 0.03
+          });
+        }
+      }
+
+      if (animFrameId) cancelAnimationFrame(animFrameId);
+
+      let tick = 0;
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        tick++;
+
+        if (isRain) {
+          ctx.strokeStyle = 'rgba(147, 197, 253, 0.42)';
+          ctx.lineWidth = 1.2;
+          ctx.beginPath();
+          for (const p of weatherParticles) {
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p.x - 2, p.y + p.len);
+            p.y += p.speed;
+            p.x -= 1.4;
+            if (p.y > height) {
+              p.y = -p.len;
+              p.x = Math.random() * (width + 120);
+            }
+          }
+          ctx.stroke();
+        } else if (isSnow) {
+          for (const p of weatherParticles) {
+            p.y += p.speed;
+            p.sway += p.swaySpeed;
+            const currentX = p.x + Math.sin(p.sway) * 22;
+
+            ctx.fillStyle = `rgba(224, 242, 254, ${p.alpha})`;
+            ctx.beginPath();
+            ctx.arc(currentX, p.y, p.r, 0, Math.PI * 2);
+            ctx.fill();
+
+            if (p.y > height + 6) {
+              p.y = -6;
+              p.x = Math.random() * width;
+            }
+          }
+        } else if (isNight) {
+          // Static twinkling stars
+          for (const p of weatherParticles) {
+            const currentAlpha = p.alpha + Math.sin(tick * p.twinkleSpeed) * 0.25;
+            ctx.fillStyle = `rgba(255, 255, 255, ${Math.max(0.1, currentAlpha)})`;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          // Shooting Stars and Meteors
+          if (tick >= nextMeteorTick) {
+            const isBolide = Math.random() < 0.25; // 25% chance of large radiant meteor
+            const startX = Math.random() * (width * 1.1) - 60;
+            const startY = Math.random() * (height * 0.4) - 40;
+            const speed = isBolide ? (19 + Math.random() * 8) : (14 + Math.random() * 7);
+            const angle = 0.78 + (Math.random() - 0.5) * 0.25; // ~45 deg diagonal
+            const len = isBolide ? (170 + Math.random() * 90) : (75 + Math.random() * 55);
+
+            meteors.push({
+              x: startX,
+              y: startY,
+              vx: Math.cos(angle) * speed,
+              vy: Math.sin(angle) * speed,
+              len: len,
+              width: isBolide ? 2.5 : 1.3,
+              alpha: 1,
+              decay: isBolide ? 0.012 : 0.022,
+              isBolide: isBolide
+            });
+
+            nextMeteorTick = tick + Math.floor(65 + Math.random() * 110); // every ~1.2 - 2.8 sec
+          }
+
+          for (let i = meteors.length - 1; i >= 0; i--) {
+            const m = meteors[i];
+            m.x += m.vx;
+            m.y += m.vy;
+            m.alpha -= m.decay;
+
+            if (m.alpha <= 0 || m.x > width + 220 || m.y > height + 220) {
+              meteors.splice(i, 1);
+              continue;
+            }
+
+            const dist = Math.hypot(m.vx, m.vy);
+            const tailX = m.x - (m.vx / dist) * m.len;
+            const tailY = m.y - (m.vy / dist) * m.len;
+
+            const grad = ctx.createLinearGradient(tailX, tailY, m.x, m.y);
+            grad.addColorStop(0, 'rgba(255, 255, 255, 0)');
+            grad.addColorStop(0.65, m.isBolide ? `rgba(186, 230, 253, ${m.alpha * 0.65})` : `rgba(224, 231, 255, ${m.alpha * 0.45})`);
+            grad.addColorStop(1, `rgba(255, 255, 255, ${m.alpha})`);
+
+            ctx.strokeStyle = grad;
+            ctx.lineWidth = m.width;
+            ctx.lineCap = 'round';
+            ctx.beginPath();
+            ctx.moveTo(tailX, tailY);
+            ctx.lineTo(m.x, m.y);
+            ctx.stroke();
+
+            // Head flare spark
+            ctx.fillStyle = `rgba(255, 255, 255, ${m.alpha})`;
+            ctx.beginPath();
+            ctx.arc(m.x, m.y, m.width * 1.3, 0, Math.PI * 2);
+            ctx.fill();
+
+            if (m.isBolide) {
+              ctx.fillStyle = `rgba(147, 197, 253, ${m.alpha * 0.4})`;
+              ctx.beginPath();
+              ctx.arc(m.x, m.y, m.width * 3.5, 0, Math.PI * 2);
+              ctx.fill();
+            }
+          }
+        }
+
+        if (count > 0 || meteors.length > 0) {
+          animFrameId = requestAnimationFrame(animate);
+        }
+      }
+
+      if (count > 0 || isNight) {
+        animate();
+      } else {
+        ctx.clearRect(0, 0, width, height);
+      }
+    }
+
+    // Test Weather Presets for ?weather / ?wheather
+    const testWeatherPresets = {
+      rain: { temp: "+14°C", emoji: "🌧️", code: 63, isDay: 1, type: "rain" },
+      snow: { temp: "-3°C", emoji: "❄️", code: 73, isDay: 1, type: "snow" },
+      overcast: { temp: "+17°C", emoji: "☁️", code: 3, isDay: 1, type: "overcast" },
+      clouds: { temp: "+19°C", emoji: "⛅", code: 2, isDay: 1, type: "partly-cloudy" },
+      thunder: { temp: "+15°C", emoji: "⛈️", code: 95, isDay: 0, type: "thunderstorm" },
+      thunderstorm: { temp: "+15°C", emoji: "⛈️", code: 95, isDay: 0, type: "thunderstorm" },
+      sun: { temp: "+26°C", emoji: "☀️", code: 0, isDay: 1, type: "clear-day" },
+      clear: { temp: "+26°C", emoji: "☀️", code: 0, isDay: 1, type: "clear-day" },
+      day: { temp: "+26°C", emoji: "☀️", code: 0, isDay: 1, type: "clear-day" },
+      night: { temp: "+15°C", emoji: "🌙", code: 0, isDay: 0, type: "clear-night" }
+    };
+
+    function applyWeatherOverride(key) {
+      if (!key) return false;
+      const preset = testWeatherPresets[key.toLowerCase()];
+      if (preset) {
+        currentWeatherData = {
+          temp: preset.temp,
+          emoji: preset.emoji,
+          code: preset.code,
+          isDay: preset.isDay
+        };
+        renderWeather();
+        setupWeatherBackground(preset.type);
+        return true;
+      }
+      return false;
+    }
+
+    function createWeatherTestBar(currentType) {
+      if (document.getElementById('weatherTestBar')) return;
+      const bar = document.createElement('div');
+      bar.id = 'weatherTestBar';
+      bar.className = 'weather-test-bar';
+      bar.innerHTML = `
+        <span class="test-label">тест:</span>
+        <button class="test-btn" data-type="sun" title="Ясно (день)">☀️</button>
+        <button class="test-btn" data-type="overcast" title="Пасмурно">☁️</button>
+        <button class="test-btn" data-type="rain" title="Дождь">🌧️</button>
+        <button class="test-btn" data-type="snow" title="Снег">❄️</button>
+        <button class="test-btn" data-type="thunder" title="Гроза">⛈️</button>
+        <button class="test-btn" data-type="night" title="Ночь">🌙</button>
+      `;
+      document.body.appendChild(bar);
+
+      bar.querySelectorAll('.test-btn').forEach(btn => {
+        if (currentType && (btn.dataset.type === currentType || currentType.startsWith(btn.dataset.type))) {
+          btn.classList.add('active');
+        }
+        btn.addEventListener('click', () => {
+          sfx.click();
+          bar.querySelectorAll('.test-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          applyWeatherOverride(btn.dataset.type);
+        });
+      });
+    }
+
+    // Fetch Weather (Ashgabat: lat 37.95, lon 58.38)
+    async function fetchWeather() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const hasTestParam = urlParams.has('weather') || urlParams.has('wheather');
+      const testVal = urlParams.get('weather') || urlParams.get('wheather');
+
+      if (hasTestParam) {
+        if (testVal && applyWeatherOverride(testVal)) {
+          createWeatherTestBar(testVal);
+          return;
+        }
+        createWeatherTestBar('overcast');
+      }
+
+      const CACHE_KEY = 'iwtsd_ashgabat_weather';
+      const CACHE_TTL = 10 * 60 * 1000; // 10 min cache
+
+      try {
+        const cached = store ? store.getItem(CACHE_KEY) : null;
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          if (Date.now() - parsed.ts < CACHE_TTL && parsed.data) {
+            currentWeatherData = parsed.data;
+            renderWeather();
+            setupWeatherBackground(getWeatherType(currentWeatherData.code, currentWeatherData.isDay === 1));
+            return;
+          }
+        }
+      } catch (e) {}
+
+      try {
+        const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=37.95&longitude=58.38&current_weather=true');
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.current_weather) {
+            const cw = data.current_weather;
+            const roundTemp = Math.round(cw.temperature);
+            const sign = roundTemp > 0 ? '+' : '';
+            const code = cw.weathercode;
+            const isDay = cw.is_day === 1;
+            const info = weatherMap[code] || weatherMap[2];
+            const emoji = isDay ? (info.day || '🌤️') : (info.night || '🌙');
+
+            currentWeatherData = {
+              temp: `${sign}${roundTemp}°C`,
+              emoji: emoji,
+              code: code,
+              isDay: cw.is_day
+            };
+
+            if (store) store.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data: currentWeatherData }));
+            renderWeather();
+            setupWeatherBackground(getWeatherType(code, isDay));
+          }
+        }
+      } catch (e) {}
+    }
+
+    // Fetch GitHub Commits
+    async function fetchCommits() {
+      const CACHE_KEY = 'iwtsd_github_commits';
+      const CACHE_TTL = 3 * 60 * 1000; // 3 min cache
+
+      try {
+        const cached = store ? store.getItem(CACHE_KEY) : null;
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          if (Date.now() - parsed.ts < CACHE_TTL && Array.isArray(parsed.items) && parsed.items.length) {
+            currentCommits = parsed.items;
+            renderCommits(currentCommits);
+            return;
+          }
+        }
+      } catch (e) {}
+
+      // Method 1: Search commits across all user repos
+      try {
+        const res = await fetch('https://api.github.com/search/commits?q=author:iwtsyddd&sort=author-date&order=desc&per_page=4', {
+          headers: { 'Accept': 'application/vnd.github.cloak-preview' }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.items && data.items.length) {
+            currentCommits = data.items.map(item => ({
+              sha: item.sha.substring(0, 7),
+              repo: item.repository.name,
+              msg: item.commit.message.split('\n')[0],
+              date: item.commit.author.date,
+              url: item.html_url
+            }));
+            if (store) store.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), items: currentCommits }));
+            renderCommits(currentCommits);
+            return;
+          }
+        }
+      } catch (e) {}
+
+      // Method 2: Fallback to profile repo commits
+      try {
+        const res = await fetch('https://api.github.com/repos/iwtsyddd/iwtsyddd/commits?per_page=4');
+        if (res.ok) {
+          const list = await res.json();
+          if (Array.isArray(list) && list.length) {
+            currentCommits = list.map(item => ({
+              sha: item.sha.substring(0, 7),
+              repo: 'iwtsyddd',
+              msg: item.commit.message.split('\n')[0],
+              date: item.commit.author.date,
+              url: item.html_url
+            }));
+            if (store) store.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), items: currentCommits }));
+            renderCommits(currentCommits);
+            return;
+          }
+        }
+      } catch (e) {}
+
+      renderCommits(currentCommits);
+    }
+
+    setupWeatherBackground(getWeatherType(currentWeatherData.code, currentWeatherData.isDay === 1));
+    fetchWeather();
+    fetchCommits();
+    fetchLiveDonations();
   </script>
 </body>
 </html>
