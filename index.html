@@ -89,6 +89,8 @@
       scroll-behavior: smooth;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
     }
 
     body {
@@ -96,10 +98,17 @@
       color: var(--text-primary);
       font-family: var(--font-body);
       min-height: 100vh;
+      min-height: 100dvh;
       line-height: 1.6;
       overflow-x: hidden;
       position: relative;
       transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s ease;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    img {
+      max-width: 100%;
     }
 
     /* Ambient Background Light Mesh */
@@ -1267,57 +1276,91 @@
 
     /* Responsive & Mobile Optimizations (Android / Small Screens) */
     @media (max-width: 768px) {
+      .bg-mesh-glow {
+        width: 440px;
+        height: 300px;
+        top: -80px;
+        filter: blur(60px);
+      }
+      .bg-mesh-grid {
+        background-size: 32px 32px;
+      }
+      .fog-1,
+      .fog-2 {
+        width: 620px;
+        height: 340px;
+      }
+      .fog-cloud {
+        filter: blur(70px);
+        opacity: 0.2;
+      }
       .site-wrapper {
         padding: 0 16px;
         padding-top: env(safe-area-inset-top, 0px);
-        padding-bottom: env(safe-area-inset-bottom, 16px);
+        padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 16px);
       }
       .nav-bar {
-        padding: 8px 12px;
+        position: sticky;
+        top: calc(env(safe-area-inset-top, 0px) + 10px);
+        padding: 8px 8px 8px 12px;
         margin-top: 10px;
         gap: 8px;
       }
       .nav-left {
-        gap: 12px;
+        gap: 10px;
+        min-width: 0;
+        flex: 1 1 auto;
+        overflow: hidden;
       }
       .nav-brand {
-        font-size: 0.98rem;
+        font-size: 0.95rem;
         gap: 8px;
+        white-space: nowrap;
       }
       .nav-avatar {
         width: 22px;
         height: 22px;
       }
       .nav-link-btn {
-        font-size: 0.74rem;
-        padding: 3px 5px;
+        display: none;
       }
       .nav-controls {
         gap: 6px;
+        flex-shrink: 0;
       }
       .donate-btn {
-        height: 32px;
-        padding: 0 9px;
+        height: 36px;
+        padding: 0 12px;
         font-size: 0.72rem;
       }
       .segmented-lang {
         padding: 2px;
       }
       .lang-btn {
-        padding: 3px 7px;
-        font-size: 0.68rem;
+        padding: 6px 10px;
+        min-height: 32px;
+        font-size: 0.7rem;
+      }
+      main {
+        padding: 24px 0 28px;
+        justify-content: flex-start;
       }
       .hero-layout {
         grid-template-columns: 1fr;
-        gap: 24px;
+        gap: 26px;
         text-align: center;
       }
       .hero-left {
         align-items: center;
         text-align: center;
       }
+      .anime-mascot-wrap {
+        width: 68px;
+        height: 68px;
+        margin-bottom: 14px;
+      }
       .hero-headline {
-        font-size: 2.1rem;
+        font-size: clamp(2rem, 11vw, 2.6rem);
         margin-bottom: 16px;
       }
       .hero-actions {
@@ -1326,11 +1369,14 @@
         gap: 10px;
         width: 100%;
       }
+      .hero-actions .btn-primary {
+        grid-column: span 2;
+      }
       .hero-actions .btn {
         width: 100%;
-        min-height: 44px;
+        min-height: 48px;
         padding: 0 14px;
-        font-size: 0.85rem;
+        font-size: 0.88rem;
       }
       .hero-actions .discord-copy-btn {
         grid-column: span 2;
@@ -1345,16 +1391,27 @@
       }
       .weather-widget {
         padding: 14px 16px;
+        gap: 12px;
       }
-      .weather-top-val .live-clock {
-        font-size: 1.55rem;
-      }
+      .weather-top-val .live-clock,
       .weather-top-val .weather-temp {
-        font-size: 1.45rem;
+        font-size: 1.4rem;
+      }
+      .weather-emoji {
+        font-size: 1.25rem;
+      }
+      .weather-bottom-label {
+        font-size: 0.68rem;
+      }
+      .weather-desc {
+        max-width: 110px;
       }
       .commit-item {
         padding: 10px 12px;
         gap: 8px;
+      }
+      .commit-meta {
+        flex-wrap: wrap;
       }
       .commit-repo-badge {
         font-size: 0.64rem;
@@ -1365,15 +1422,43 @@
       .commit-time {
         font-size: 0.64rem;
       }
+      .toast-msg {
+        left: 16px;
+        right: 16px;
+        bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+        justify-content: center;
+        text-align: center;
+      }
+      .weather-test-bar {
+        max-width: calc(100vw - 32px);
+        overflow-x: auto;
+        bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+        padding: 6px 10px;
+        gap: 4px;
+        scrollbar-width: none;
+      }
+      .weather-test-bar::-webkit-scrollbar {
+        display: none;
+      }
+      .weather-test-bar .test-label {
+        display: none;
+      }
       .donate-modal-backdrop {
         padding: 12px;
+        padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
         align-items: flex-end;
       }
       .donate-modal-card {
         padding: 18px 16px;
-        border-radius: 20px 20px 16px 16px;
-        max-height: 88vh;
+        border-radius: 20px;
+        max-height: 92vh;
+        max-height: 92dvh;
         overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+      }
+      .crypto-item {
+        min-height: 56px;
       }
       .crypto-addr {
         max-width: 150px;
@@ -1391,14 +1476,30 @@
     }
 
     @media (max-width: 380px) {
+      .nav-brand {
+        font-size: 0.9rem;
+      }
+      .donate-btn {
+        height: 34px;
+        padding: 0 10px;
+      }
       .hero-actions {
         grid-template-columns: 1fr;
       }
+      .hero-actions .btn-primary,
       .hero-actions .discord-copy-btn {
         grid-column: span 1;
       }
+      .weather-widget {
+        gap: 10px;
+        padding: 12px 14px;
+      }
+      .weather-top-val .live-clock,
+      .weather-top-val .weather-temp {
+        font-size: 1.25rem;
+      }
       .crypto-addr {
-        max-width: 120px;
+        max-width: 110px;
       }
     }
   </style>

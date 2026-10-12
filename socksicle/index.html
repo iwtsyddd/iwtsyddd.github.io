@@ -2,7 +2,7 @@
 <html lang="ru" data-theme="dark">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Socksicle - iwtsd</title>
   <meta name="description" content="Socksicle. старый репозиторий закрыт, разработка перенесена в github.com/socksicle. идет полный редизайн и переписывание практически с нуля. скоро на android.">
   <meta name="theme-color" content="#000000">
@@ -63,6 +63,8 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       background-color: var(--bg-base);
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
     }
 
     body {
@@ -70,10 +72,17 @@
       color: var(--text-main);
       font-family: var(--font-body);
       min-height: 100vh;
+      min-height: 100dvh;
       line-height: 1.55;
       overflow-x: hidden;
       display: flex;
       flex-direction: column;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    img {
+      max-width: 100%;
     }
 
     .container {
@@ -81,9 +90,11 @@
       max-width: 960px;
       margin: 0 auto;
       padding: 0 24px;
+      padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 0px);
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      min-height: 100dvh;
     }
 
     /* Topbar matching main site */
@@ -559,14 +570,118 @@
     }
 
     @media (max-width: 768px) {
+      .container {
+        padding: 0 16px;
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+      .nav-bar {
+        top: calc(env(safe-area-inset-top, 0px) + 10px);
+        margin-top: 10px;
+        padding: 8px 8px 8px 12px;
+        gap: 8px;
+      }
+      .nav-brand {
+        font-size: 0.95rem;
+        white-space: nowrap;
+      }
+      .nav-controls {
+        gap: 6px;
+        flex-shrink: 0;
+      }
+      .back-btn {
+        font-size: 0.7rem;
+        padding: 6px 10px;
+        min-height: 32px;
+      }
+      .lang-btn {
+        padding: 6px 10px;
+        min-height: 32px;
+      }
+      main {
+        padding: 24px 0 40px;
+        gap: 36px;
+      }
+      .hero-header {
+        gap: 12px;
+      }
+      .hero-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 15px;
+      }
+      .hero-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+      }
+      .hero-buttons .btn {
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 14px;
+      }
+      .hero-buttons .btn-github {
+        grid-column: span 2;
+      }
+      .note-card {
+        padding: 16px;
+      }
+      .note-line {
+        font-size: 0.88rem;
+      }
       .shots-row {
         grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .shot-box {
+        padding: 14px;
       }
       .shot-img-container img {
         max-height: 420px;
       }
+      .shots-row.mobile .shot-img-container img {
+        max-height: 480px;
+      }
       .hero-title {
-        font-size: 1.85rem;
+        font-size: clamp(1.6rem, 8vw, 1.85rem);
+      }
+      .lightbox {
+        padding: 12px;
+        padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+      }
+      .lightbox img {
+        max-width: calc(100vw - 24px);
+        max-height: 82vh;
+        max-height: 82dvh;
+      }
+      .lightbox-close {
+        top: calc(12px + env(safe-area-inset-top, 0px));
+        right: 12px;
+        width: 44px;
+        height: 44px;
+      }
+      footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+        padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+      }
+      .footer-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .back-btn {
+        font-size: 0.66rem;
+        padding: 6px 8px;
+      }
+      .hero-buttons {
+        grid-template-columns: 1fr;
+      }
+      .hero-buttons .btn-github {
+        grid-column: span 1;
       }
     }
   </style>
