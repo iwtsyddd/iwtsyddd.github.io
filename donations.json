@@ -1,27 +1,27 @@
 {
-  "updatedAt": "2026-10-12T12:22:26.789Z",
+  "updatedAt": "2026-10-13T00:06:03.694Z",
   "totalUSD": 0.13,
   "formattedTotal": "$0.13",
   "breakdown": {
     "btc": {
       "balance": 0,
-      "priceUSD": 83190.02,
+      "priceUSD": 65000,
       "usd": 0
     },
     "sol": {
       "balance": 0,
-      "priceUSD": 110.84,
+      "priceUSD": 150,
       "usd": 0
     },
     "eth": {
       "balance": 0,
-      "priceUSD": 2539.99,
+      "priceUSD": 2600,
       "usd": 0
     },
     "bep20": {
       "bnb": 0.000156959739818697,
-      "bnbPriceUSD": 748.92,
-      "bnbUSD": 0.1176,
+      "bnbPriceUSD": 750,
+      "bnbUSD": 0.1177,
       "usdt": 0.01,
       "usdtUSD": 0.01
     }
