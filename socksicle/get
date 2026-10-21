@@ -5,6 +5,7 @@ REPO="Socksicle/desktop"
 BIN_DIR="${HOME}/.local/bin"
 DATA_DIR="${HOME}/.local/share/socksicle"
 VERSION_FILE="${DATA_DIR}/version"
+VARIANT_FILE="${DATA_DIR}/variant"
 DESKTOP_DIR="${HOME}/.local/share/applications"
 ICON_DIR="${HOME}/.local/share/icons/hicolor/scalable/apps"
 TMP_DIR="$(mktemp -d)"
@@ -296,12 +297,12 @@ resolve_version() {
     | head -1 | cut -d'"' -f4
 }
 
-asset_url_by_suffix() {
+asset_url_by_name() {
   release_json
-  local url
+  local name=$1 url
   url=$(grep -o '"browser_download_url": *"[^"]*"' <<<"$RELEASE_JSON" \
-        | cut -d'"' -f4 | grep -E "$1$" | head -1) \
-    || fail "Asset matching '${1}' was not found in the release"
+        | cut -d'"' -f4 | grep -F "/${name}" | head -1) \
+    || fail "Asset '${name}' was not found in the release"
   printf '%s\n' "$url"
 }
 
@@ -361,12 +362,22 @@ menu() {
   done
 }
 
+choose_variant() {
+  local choice
+  choice=$(menu "Select package variant" \
+    "Standard (sing-box only)" \
+    "With Xray (sing-box + Xray)")
+  if [[ "$choice" == "2" ]]; then
+    printf 'xray'
+  else
+    printf 'default'
+  fi
+}
+
 [[ $(uname -m) == "x86_64" ]] \
   || fail "Only x86_64 builds are currently available (detected: $(uname -m))"
 
 command -v curl >/dev/null 2>&1 || fail "curl is not installed. Please install it first."
-
-APPIMAGE_SUFFIX="AppImage$"
 
 do_uninstall() {
   header "Uninstalling Socksicle"
@@ -374,7 +385,8 @@ do_uninstall() {
   for f in "${BIN_DIR}/socksicle" \
            "${DESKTOP_DIR}/socksicle.desktop" \
            "${ICON_DIR}/socksicle.svg" \
-           "$VERSION_FILE"; do
+           "$VERSION_FILE" \
+           "$VARIANT_FILE"; do
     if [[ -e "$f" ]]; then
       rm -f -- "$f"
       removed=1
@@ -391,14 +403,20 @@ do_uninstall() {
 }
 
 do_install_appimage() {
-  local mode="${1:-install}"
+  local mode="${1:-install}" variant="${2:-}"
+
+  if [[ -z "$variant" ]]; then
+    variant="$(cat "$VARIANT_FILE" 2>/dev/null || true)"
+  fi
+  [[ "$variant" == "xray" ]] || variant="default"
+
   if [[ "$mode" == "update" ]]; then
     header "Updating Socksicle"
   else
     header "Installing Socksicle"
   fi
 
-  local ver current_ver url target appimage
+  local ver current_ver url target appimage asset_name
   current_ver="$(get_installed_version)"
   ver="${WANTED_VERSION:-$(resolve_version)}"
 
@@ -413,7 +431,12 @@ do_install_appimage() {
     step "Target version: ${C_BOLD}${C_CYAN}${ver}${C_RESET}"
   fi
 
-  url=$(asset_url_by_suffix "$APPIMAGE_SUFFIX")
+  if [[ "$variant" == "xray" ]]; then
+    asset_name="Socksicle-${ver#v}-With-Xray-x86_64.AppImage"
+  else
+    asset_name="Socksicle-${ver#v}-x86_64.AppImage"
+  fi
+  url=$(asset_url_by_name "$asset_name")
   appimage="${TMP_DIR}/Socksicle.AppImage"
   fetch "$url" "$appimage"
   [[ -s "$appimage" ]] || fail "Downloaded file is empty"
@@ -441,6 +464,7 @@ do_install_appimage() {
   mv -f "$appimage" "$target"
   chmod +x "$target"
   echo "$ver" > "$VERSION_FILE"
+  echo "$variant" > "$VARIANT_FILE"
   ok "Installed binary to ${target/#$HOME/\~}"
 
   cat > "${DESKTOP_DIR}/socksicle.desktop" <<EOF
@@ -512,7 +536,7 @@ if [[ -n "$INSTALLED_VER" ]]; then
     "Exit")
   case "$choice" in
     1) do_install_appimage "update" ;;
-    2) do_install_appimage "install" ;;
+    2) do_install_appimage "install" "$(choose_variant)" ;;
     3) do_uninstall ;;
     4) exit 0 ;;
   esac
@@ -521,7 +545,7 @@ else
     "Install Socksicle to ~/.local/bin" \
     "Exit")
   case "$choice" in
-    1) do_install_appimage "install" ;;
+    1) do_install_appimage "install" "$(choose_variant)" ;;
     2) exit 0 ;;
   esac
 fi
