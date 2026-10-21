@@ -8,9 +8,13 @@ VERSION_FILE="${DATA_DIR}/version"
 DESKTOP_DIR="${HOME}/.local/share/applications"
 ICON_DIR="${HOME}/.local/share/icons/hicolor/scalable/apps"
 TMP_DIR="$(mktemp -d)"
+BAR_ACTIVE=0
 
 cleanup() {
   rm -rf "$TMP_DIR"
+  if (( BAR_ACTIVE == 1 )); then
+    printf '\r\e[2K\n' >&2
+  fi
   printf '%s' "${SHOW:-}" >&2
 }
 trap cleanup EXIT
@@ -177,22 +181,26 @@ last_content_length() {
 # $1 downloaded bytes, $2 total bytes (0 if unknown), $3 bytes/s, $4 frame index
 progress_render() {
   local cur=$1 total=$2 speed=$3 frame=$4
-  local width=$(( TERM_COLS - 42 )) pct filled empty bar_filled bar_empty
-  (( width >= 10 )) || width=10
-  (( width <= 60 )) || width=60
-
+  local width pct filled empty bar_filled bar_empty sizes total_text speed_text
   if (( total > 0 )); then
     pct=$(( cur * 100 / total ))
     (( pct <= 100 )) || pct=100
+    total_text="$(human_size "$total")"
+    sizes="$(human_size "$cur")/${total_text}"
+    speed_text="$(human_size "$speed")/s"
+    # keep the line width stable while the downloaded-size text grows
+    width=$(( TERM_COLS - 26 - ${#total_text} * 2 ))
+    (( width >= 10 )) || width=10
+    (( width <= 60 )) || width=60
     filled=$(( width * pct / 100 ))
     empty=$(( width - filled ))
     printf -v bar_filled '%*s' "$filled" ''
     printf -v bar_empty '%*s' "$empty" ''
-    printf '\r\e[2K  %s%s%s%s%s  %s%3d%%%s  %s%s/%s%s  %s%s/s%s' \
+    printf '\r\e[2K  %s%s%s%s%s  %s%3d%%%s  %s%s%s  %s%s%s' \
       "$C_CYAN" "${bar_filled// /█}" "$C_BORDER" "${bar_empty// /░}" "$C_RESET" \
       "$C_BOLD" "$pct" "$C_RESET" \
-      "$C_SUBTEXT" "$(human_size "$cur")" "$(human_size "$total")" "$C_RESET" \
-      "$C_MAGENTA" "$(human_size "$speed")" "$C_RESET" >&2
+      "$C_SUBTEXT" "$sizes" "$C_RESET" \
+      "$C_MAGENTA" "$speed_text" "$C_RESET" >&2
   else
     printf '\r\e[2K  %s%s%s  %s%s%s  %s%s/s%s' \
       "$C_CYAN" "${SPINNER_FRAMES[$((frame % ${#SPINNER_FRAMES[@]}))]}" "$C_RESET" \
@@ -218,6 +226,7 @@ fetch() {
   : > "$headers"
   curl "${CURL_OPTS[@]}" -sS -D "$headers" -o "$dest" "$url" &
   pid=$!
+  BAR_ACTIVE=1
   start=$(date +%s%N)
   while kill -0 "$pid" 2>/dev/null; do
     cur=$(stat -c%s "$dest" 2>/dev/null || printf 0)
@@ -228,12 +237,16 @@ fetch() {
     (( elapsed > 0 )) || elapsed=1
     speed=$(( cur * 1000 / elapsed ))
     if (( cur > 0 || total > 0 )); then
+      if (( frame == 0 )); then
+        printf '\n' >&2
+      fi
       progress_render "$cur" "$total" "$speed" "$frame"
       frame=$((frame + 1))
     fi
     sleep 0.1
   done
   printf '\r\e[2K' >&2
+  BAR_ACTIVE=0
   wait "$pid" || fail "Failed to download ${url}"
 }
 
@@ -242,12 +255,8 @@ api_get() {
 }
 
 get_installed_version() {
-  if [[ -f "$VERSION_FILE" ]]; then
+  if [[ -f "$VERSION_FILE" && -x "${BIN_DIR}/socksicle" ]]; then
     cat "$VERSION_FILE" 2>/dev/null || true
-  elif [[ -x "${BIN_DIR}/socksicle" ]]; then
-    echo "unknown"
-  else
-    echo ""
   fi
 }
 
@@ -393,7 +402,7 @@ do_install_appimage() {
   current_ver="$(get_installed_version)"
   ver="${WANTED_VERSION:-$(resolve_version)}"
 
-  if [[ "$mode" == "update" && -n "$current_ver" && "$current_ver" != "unknown" ]]; then
+  if [[ "$mode" == "update" && -n "$current_ver" ]]; then
     if [[ "$current_ver" == "$ver" ]]; then
       ok "Socksicle is already up to date (${C_BOLD}${C_CYAN}${ver}${C_RESET})"
       printf '\n' >&2
