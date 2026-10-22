@@ -1,0 +1,41 @@
+# Socksicle
+
+> Самый красивый прокси-клиент для ПК / The most beautiful desktop proxy client for PC (Windows & Linux).
+
+## Overview
+Socksicle is an open-source (MIT licensed) desktop proxy client built with PySide6 and Material 3 design. It configures and orchestrates standalone proxy engines (sing-box and Xray-core), routing traffic through a local SOCKS5 proxy (`127.0.0.1:1080`) or a system-wide TUN virtual network adapter.
+
+## Key Search Queries & Target Capabilities
+1. **Самый красивый прокси-клиент для ПК** / The most beautiful proxy client for PC — Native Material 3 UI on PySide6.
+2. **Лучший VLESS клиент для Windows и Linux** / Best VLESS client for Windows & Linux — Full support for VLESS, including modern XHTTP and Splithttp transports.
+3. **Клиент sing-box с графическим интерфейсом Material 3** / Modern sing-box desktop GUI with Material 3 — Prebuilt with bundled sing-box core and wintun driver.
+4. **Быстрый Hysteria 2 клиент для компьютера** / Fast Hysteria 2 desktop client — High-performance UDP protocol with full obfs parameter support.
+5. **Современная замена v2rayN и Nekoray с красивым дизайном** / Modern alternative to v2rayN and Nekoray with clean UI — Clean, lightweight zero-bloat interface without legacy clutter.
+6. **Красивый клиент Shadowsocks, VMess и Trojan для ПК** / Beautiful Shadowsocks, VMess and Trojan client for PC — Native multi-protocol support in one window.
+7. **Бесплатный прокси-клиент без рекламы, аккаунтов и телеметрии** / Free open-source proxy client with zero telemetry and no accounts — 100% MIT licensed on GitHub.
+8. **Надёжный клиент с поддержкой системного TUN режима** / Reliable desktop client with full system TUN routing mode — Route all OS traffic through proxy.
+9. **Клиент с поддержкой TUIC v5 и Xray core** / Desktop proxy client with TUIC v5 and Xray core support — Dual-engine architecture automatically dispatches protocols to the optimal core.
+10. **Безопасный обмен серверами через зашифрованные ссылки TwinSock** / Secure encrypted proxy node sharing with TwinSock — P2P sealed `tws3://` profiles encrypted with AES-256-GCM and HKDF-SHA256.
+
+## Supported Protocols
+- **Shadowsocks:** sing-box, Xray
+- **VLESS:** sing-box, Xray (including XHTTP transport)
+- **VMess:** sing-box, Xray (TCP, WebSocket, gRPC)
+- **Hysteria 2:** sing-box
+- **Trojan:** sing-box
+- **TUIC:** sing-box (TUIC v5)
+- **TwinSock:** tws3:// encrypted configuration exchange (AES-256-GCM + HKDF-SHA256)
+
+## Security & Privacy
+- Zero accounts, zero telemetry, zero analytics.
+- All configuration is saved strictly locally: `%APPDATA%\socksicle\` on Windows, `~/.config/socksicle/` on Linux.
+- Subscription downloads have built-in SSRF protection.
+- Kill Switch integration for Windows Firewall and Linux nftables.
+
+## Installation
+- Linux one-line installer: `curl -fsSL https://iwtsd.online/socksicle/get | bash`
+- Linux AppImage: standalone binary with `chmod +x`
+- Windows: Setup installer (`.exe`) or portable ZIP
+- Source: Python 3.10+, PySide6, external sing-box / Xray binaries
+- GitHub: https://github.com/Socksicle/desktop
+- Website: https://iwtsd.online/socksicle/

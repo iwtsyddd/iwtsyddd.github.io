@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /socksicle/
+Allow: /socksicle/*
+
+# AI Crawlers & LLMs
+User-agent: GPTBot
+Allow: /socksicle/
+
+User-agent: ChatGPT-User
+Allow: /socksicle/
+
+User-agent: Google-Extended
+Allow: /socksicle/
+
+User-agent: ClaudeBot
+Allow: /socksicle/
+
+User-agent: PerplexityBot
+Allow: /socksicle/
+
+User-agent: Applebot-Extended
+Allow: /socksicle/
+
+User-agent: Bytespider
+Allow: /socksicle/
+
+Sitemap: https://iwtsd.online/socksicle/sitemap.xml

@@ -1,1043 +1,600 @@
 <!doctype html>
-<html lang="ru" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Socksicle - iwtsd</title>
-  <meta name="description" content="Socksicle. старый репозиторий закрыт, разработка перенесена в github.com/socksicle. идет полный редизайн и переписывание практически с нуля. скоро на android.">
-  <meta name="theme-color" content="#000000">
-  <link rel="canonical" href="https://iwtsd.online/socksicle/">
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="iwtsd">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="iwtsd">
-  <meta property="og:title" content="Socksicle">
-  <meta property="og:description" content="Socksicle. старый репозиторий закрыт, разработка перенесена в github.com/socksicle. идет полный редизайн и переписывание практически с нуля. скоро на android.">
-  <meta property="og:url" content="https://iwtsd.online/socksicle/">
-  <meta property="og:image" content="https://iwtsd.online/assets/main.png">
-
-  <!-- Favicon (GitHub Avatar) -->
-  <link rel="icon" type="image/jpeg" href="https://avatars.githubusercontent.com/u/212236894?v=4">
-  <link rel="apple-touch-icon" href="https://avatars.githubusercontent.com/u/212236894?v=4">
-
-  <!-- Fonts: Google Sans Flex, Inter & JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --font-display: 'Google Sans Flex', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
-
-      /* Pitch Black / Monolithic OLED Dark */
-      --bg-base: #000000;
-      --bg-card: #09090b;
-      --bg-card-subtle: #111114;
-      --bg-pill: #16161a;
-
-      --border: rgba(255, 255, 255, 0.08);
-      --border-hover: rgba(255, 255, 255, 0.2);
-
-      --text-main: #f4f4f5;
-      --text-muted: #8e8e93;
-      --text-dim: #52525b;
-
-      --radius-sm: 10px;
-      --radius-md: 18px;
-      --radius-lg: 26px;
-      --radius-full: 9999px;
-    }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      background-color: var(--bg-base);
-      -webkit-text-size-adjust: 100%;
-      text-size-adjust: 100%;
-    }
-
-    body {
-      background-color: var(--bg-base);
-      color: var(--text-main);
-      font-family: var(--font-body);
-      min-height: 100vh;
-      min-height: 100dvh;
-      line-height: 1.55;
-      overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
-      -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
-    }
-
-    img {
-      max-width: 100%;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 24px;
-      padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 0px);
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      min-height: 100dvh;
-    }
-
-    /* Topbar matching main site */
-    .nav-bar {
-      position: sticky;
-      top: 18px;
-      z-index: 50;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 920px;
-      margin: 18px auto 0;
-      padding: 9px 18px;
-      background: rgba(12, 14, 20, 0.72);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-full);
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-      width: 100%;
-    }
-
-    .nav-brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: var(--text-main);
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 1.05rem;
-      letter-spacing: -0.02em;
-      line-height: 1;
-    }
-
-    .nav-brand span {
-      display: inline-block;
-      line-height: 1;
-      transform: translateY(-0.5px);
-    }
-
-    .nav-avatar {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-      border: 1px solid var(--border);
-      flex-shrink: 0;
-      vertical-align: middle;
-    }
-
-    .nav-controls {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: var(--font-mono);
-      font-size: 0.76rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      padding: 5px 12px;
-      border-radius: var(--radius-full);
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      transition: all 0.2s ease;
-    }
-
-    .back-btn:hover {
-      color: var(--text-main);
-      border-color: var(--border-hover);
-      background: var(--bg-card-subtle);
-    }
-
-    .segmented-lang {
-      display: inline-flex;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-full);
-      padding: 3px;
-      gap: 2px;
-    }
-
-    .lang-btn {
-      background: transparent;
-      border: none;
-      color: var(--text-dim);
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: var(--radius-full);
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .lang-btn:hover {
-      color: var(--text-main);
-    }
-
-    .lang-btn.active {
-      background: #161924;
-      color: var(--text-main);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Content Area */
-    main {
-      flex: 1;
-      padding: 40px 0 70px;
-      display: flex;
-      flex-direction: column;
-      gap: 56px;
-    }
-
-    /* Hero */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 20px;
-      width: 100%;
-    }
-
-    .hero-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .hero-icon {
-      width: 58px;
-      height: 58px;
-      border-radius: 18px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .hero-icon svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    .hero-title-group {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: 2.2rem;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1.1;
-      color: var(--text-main);
-    }
-
-    .hero-version {
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      color: var(--text-dim);
-    }
-
-    /* Clean Statement Note without any glowing dots */
-    .note-card {
-      width: 100%;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 20px 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transition: border-color 0.2s ease;
-    }
-
-    .note-card:hover {
-      border-color: var(--border-hover);
-    }
-
-    .note-line {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    .note-line strong {
-      color: var(--text-main);
-      font-weight: 600;
-    }
-
-    .note-line em {
-      color: var(--text-main);
-      font-style: italic;
-    }
-
-    .note-line a {
-      color: var(--text-main);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      text-decoration-color: rgba(255, 255, 255, 0.35);
-      transition: all 0.2s ease;
-    }
-
-    .note-line a:hover {
-      text-decoration-color: #ffffff;
-      color: #ffffff;
-    }
-
-    .note-sub {
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      font-family: var(--font-mono);
-    }
-
-    /* Links Row */
-    .hero-buttons {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 18px;
-      border-radius: var(--radius-full);
-      font-family: var(--font-mono);
-      font-size: 0.82rem;
-      font-weight: 500;
-      text-decoration: none;
-      cursor: pointer;
-      border: 1px solid var(--border);
-      background: var(--bg-card);
-      color: var(--text-main);
-      transition: all 0.2s ease;
-      user-select: none;
-    }
-
-    .btn:hover {
-      background: var(--bg-card-subtle);
-      border-color: var(--border-hover);
-      transform: translateY(-1px);
-    }
-
-    .btn-github {
-      background: #ffffff;
-      color: #000000;
-      border-color: #ffffff;
-    }
-
-    .btn-github:hover {
-      background: #e4e4e7;
-      border-color: #e4e4e7;
-      color: #000000;
-    }
-
-    .btn svg {
-      width: 15px;
-      height: 15px;
-      fill: currentColor;
-    }
-
-    /* Screenshots Section */
-    .section-block {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .section-header {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .section-desc {
-      font-size: 0.86rem;
-      color: var(--text-dim);
-    }
-
-    /* 3 Device Columns */
-    .shots-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      width: 100%;
-    }
-
-    .shot-box {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-      cursor: zoom-in;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-    }
-
-    .shot-box:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-3px);
-      background: var(--bg-card-subtle);
-    }
-
-    .shot-img-container {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 18px;
-      background: #000000;
-      overflow: hidden;
-      padding: 4px;
-    }
-
-    .shot-img-container img {
-      width: 100%;
-      height: auto;
-      max-height: 480px;
-      object-fit: contain;
-      display: block;
-      border-radius: 14px;
-      transition: transform 0.25s ease;
-    }
-
-    .shots-row.mobile .shot-img-container img {
-      max-height: 520px;
-    }
-
-    .shot-box:hover .shot-img-container img {
-      transform: scale(1.02);
-    }
-
-    .shot-info {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-      text-align: center;
-    }
-
-    .shot-name {
-      font-family: var(--font-display);
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text-main);
-    }
-
-    .shot-caption {
-      font-size: 0.78rem;
-      color: var(--text-dim);
-      line-height: 1.4;
-    }
-
-    /* Lightbox Modal */
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 200;
-      background: rgba(0, 0, 0, 0.94);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.22s ease;
-      cursor: zoom-out;
-    }
-
-    .lightbox.open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .lightbox img {
-      max-width: 92vw;
-      max-height: 88vh;
-      object-fit: contain;
-      border-radius: 20px;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      transform: scale(0.96);
-      transition: transform 0.22s ease;
-    }
-
-    .lightbox.open img {
-      transform: scale(1);
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: 24px;
-      right: 24px;
-      width: 40px;
-      height: 40px;
-      border-radius: var(--radius-full);
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      font-size: 1rem;
-    }
-
-    .lightbox-close:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: scale(1.08);
-    }
-
-    /* Footer */
-    footer {
-      margin-top: auto;
-      padding: 24px 0 32px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      font-size: 0.82rem;
-      color: var(--text-dim);
-      flex-wrap: wrap;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 16px;
-      align-items: center;
-    }
-
-    .footer-link {
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .footer-link:hover {
-      color: var(--text-main);
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        padding: 0 16px;
-        padding-top: env(safe-area-inset-top, 0px);
-      }
-      .nav-bar {
-        top: calc(env(safe-area-inset-top, 0px) + 10px);
-        margin-top: 10px;
-        padding: 8px 8px 8px 12px;
-        gap: 8px;
-        row-gap: 8px;
-        flex-wrap: wrap;
-        border-radius: 22px;
-        max-width: 100%;
-      }
-      .nav-brand {
-        font-size: 0.95rem;
-        white-space: nowrap;
-        min-width: 0;
-      }
-      .nav-controls {
-        gap: 6px;
-        flex-shrink: 0;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        min-width: 0;
-      }
-      .back-btn {
-        font-size: 0.7rem;
-        padding: 6px 10px;
-        min-height: 32px;
-        white-space: nowrap;
-        max-width: 100%;
-      }
-      .lang-btn {
-        padding: 6px 10px;
-        min-height: 32px;
-      }
-      main {
-        padding: 24px 0 40px;
-        gap: 36px;
-      }
-      .hero-header {
-        gap: 12px;
-      }
-      .hero-icon {
-        width: 48px;
-        height: 48px;
-        border-radius: 15px;
-      }
-      .hero-buttons {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        width: 100%;
-      }
-      .hero-buttons .btn {
-        justify-content: center;
-        min-width: 0;
-        min-height: 48px;
-        padding: 0 14px;
-        overflow: hidden;
-      }
-      .hero-buttons .btn svg {
-        flex-shrink: 0;
-      }
-      .hero-buttons .btn span {
-        min-width: 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .hero-buttons .btn-github {
-        grid-column: span 2;
-      }
-      .note-card {
-        padding: 16px;
-      }
-      .note-line {
-        font-size: 0.88rem;
-      }
-      .shots-row {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-      .shot-box {
-        padding: 14px;
-      }
-      .shot-img-container img {
-        max-height: 420px;
-      }
-      .shots-row.mobile .shot-img-container img {
-        max-height: 480px;
-      }
-      .hero-title {
-        font-size: clamp(1.6rem, 8vw, 1.85rem);
-      }
-      .lightbox {
-        padding: 12px;
-        padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
-      }
-      .lightbox img {
-        max-width: calc(100vw - 24px);
-        max-height: 82vh;
-        max-height: 82dvh;
-      }
-      .lightbox-close {
-        top: calc(12px + env(safe-area-inset-top, 0px));
-        right: 12px;
-        width: 44px;
-        height: 44px;
-      }
-      footer {
-        flex-direction: column;
-        text-align: center;
-        gap: 12px;
-        padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
-      }
-      .footer-links {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-    }
-
-    @media (max-width: 380px) {
-      .nav-bar {
-        padding: 6px 6px 6px 10px;
-        gap: 6px;
-        border-radius: 20px;
-      }
-      .nav-brand {
-        font-size: 0.88rem;
-      }
-      .back-btn {
-        font-size: 0.66rem;
-        padding: 6px 8px;
-      }
-      .back-btn .back-text {
-        display: none;
-      }
-      .hero-buttons {
-        grid-template-columns: 1fr;
-      }
-      .hero-buttons .btn-github {
-        grid-column: span 1;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Socksicle: proxy client for Windows and Linux</title>
+<meta name="description" content="A desktop proxy client for Windows and Linux. Six protocols, sing-box and Xray, TwinSock encrypted node exchange and a Material 3 interface.">
+<meta name="theme-color" content="#12131b">
+<link rel="canonical" href="https://iwtsd.online/socksicle/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="keywords" content="самый красивый прокси клиент для пк, лучший vless клиент для windows и linux, клиент sing-box с графическим интерфейсом material 3, быстрый hysteria 2 клиент для компьютера, замена v2rayn и nekoray с красивым дизайном, красивый клиент shadowsocks vmess trojan для пк, бесплатный прокси клиент без рекламы, клиент с поддержкой системного tun режима, прокси клиент tuic v5 и xray, безопасный обмен серверами twinsock, most beautiful proxy client for pc, best vless client windows linux, modern sing-box desktop gui material 3, fast hysteria 2 pc client">
+<meta property="og:title" content="Socksicle: proxy client for Windows and Linux">
+<meta property="og:description" content="Six protocols, dual engine orchestration, TwinSock encrypted sharing in one Material 3 window.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://iwtsd.online/socksicle/">
+<meta property="og:site_name" content="Socksicle">
+<meta property="og:image" content="https://iwtsd.online/socksicle/assets/main.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Socksicle: proxy client for Windows and Linux">
+<meta name="twitter:description" content="Six protocols, dual engine orchestration, TwinSock encrypted sharing in one Material 3 window.">
+<meta name="twitter:image" content="https://iwtsd.online/socksicle/assets/main.png">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Socksicle",
+      "alternateName": [
+        "Самый красивый прокси-клиент для ПК",
+        "Лучший VLESS клиент для Windows и Linux",
+        "Клиент sing-box с графическим интерфейсом Material 3",
+        "Быстрый Hysteria 2 клиент для компьютера",
+        "Современная замена v2rayN и Nekoray с красивым дизайном",
+        "Красивый клиент Shadowsocks, VMess и Trojan для ПК",
+        "Бесплатный прокси-клиент без рекламы, аккаунтов и телеметрии",
+        "Надёжный клиент с поддержкой системного TUN режима",
+        "Клиент с поддержкой TUIC v5 и Xray core",
+        "Безопасный обмен серверами через зашифрованные ссылки TwinSock"
+      ],
+      "keywords": "самый красивый прокси клиент для пк, лучший vless клиент для windows и linux, sing-box material 3 gui, hysteria 2 desktop client, v2rayn nekoray alternative, shadowsocks vmess trojan client, free open source proxy client no telemetry, system tun mode, tuic v5 xray, twinsock p2p, most beautiful proxy client for pc, best vless client windows linux",
+      "applicationCategory": "NetworkingApplication",
+      "operatingSystem": "Windows 10, Windows 11, Linux",
+      "description": "Desktop proxy client for Windows and Linux built with PySide6 and Material 3. Supports Shadowsocks, VLESS, VMess, Hysteria 2, TUIC, and system TUN with sing-box and Xray orchestration.",
+      "url": "https://iwtsd.online/socksicle/",
+      "downloadUrl": "https://github.com/Socksicle/desktop/releases",
+      "license": "https://github.com/Socksicle/desktop/blob/main/LICENSE",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "iwtsd"
+      },
+      "featureList": [
+        "Shadowsocks, VLESS, VMess, Hysteria 2, Trojan, TUIC",
+        "System TUN and Local SOCKS5 routing",
+        "sing-box and Xray dual-engine orchestration",
+        "Real-time TCP/QUIC handshake latency probing",
+        "TwinSock AES-256-GCM encrypted profile exchange",
+        "Built-in Kill Switch firewall integration",
+        "Zero telemetry and strict local configuration storage"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is Socksicle free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Socksicle is MIT licensed and completely free with full open source code on GitHub. There is no paid tier, no subscription, and no account required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Socksicle work with subscriptions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. It supports HTTPS subscription links returning plain text, Base64, or SIP008 JSON, automatically refreshing nodes on schedule with SSRF protection."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I have to install sing-box or Xray separately?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Release builds bundle sing-box and wintun driver out-of-the-box. Xray is optional for specialized protocols like XHTTP."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does TUN mode require?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Administrator privileges on Windows (wintun.dll included) and pkexec on Linux to configure the virtual network adapter. Local SOCKS5 mode requires no elevated permissions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is user data stored?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Locally only: %APPDATA%\\socksicle\\ on Windows and ~/.config/socksicle/ on Linux. Nothing is uploaded to remote servers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a macOS build?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not currently. Socksicle is explicitly designed for Windows and Linux."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script>
+  (function () {
+    var savedLang = null;
+    try {
+      savedLang = localStorage.getItem('socksicle-lang');
+    } catch (e) {}
+    if (!savedLang && navigator.language && navigator.language.toLowerCase().startsWith('ru')) {
+      savedLang = 'ru';
+    }
+    document.documentElement.lang = savedLang || 'en';
+    document.documentElement.classList.add('js');
+  })();
+</script>
 </head>
 <body>
 
-  <div class="container">
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.6-5.9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M20 4v4.5h-4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m11 11 9 9m-3.5-2.5 2-2m-4.5-1.5 2-2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v11m0 0 4.5-4.5M12 14l-4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16.5V18a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-windows" viewBox="0 0 24 24"><path d="M3.5 5.6 10.6 4.6v7H3.5v-6Zm0 12.8 7.1 1v-6.9H3.5v5.9Zm8.3 1.2 8.7 1.2v-8.3h-8.7v7.1Zm0-14.6v7.2h8.7V3.6l-8.7 1.4Z" fill="currentColor"/></symbol>
+  <symbol id="i-linux" viewBox="0 0 24 24"><path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489a.424.424 0 00-.11.135c-.26.268-.45.6-.663.839-.199.199-.485.267-.797.4-.313.136-.658.269-.864.68-.09.189-.136.394-.132.602 0 .199.027.4.055.536.058.399.116.728.04.97-.249.68-.28 1.145-.106 1.484.174.334.535.47.94.601.81.2 1.91.135 2.774.6.926.466 1.866.67 2.616.47.526-.116.97-.464 1.208-.946.587-.003 1.23-.269 2.26-.334.699-.058 1.574.267 2.577.2.025.134.063.198.114.333l.003.003c.391.778 1.113 1.132 1.884 1.071.771-.06 1.592-.536 2.257-1.306.631-.765 1.683-1.084 2.378-1.503.348-.199.629-.469.649-.853.023-.4-.2-.811-.714-1.376v-.097l-.003-.003c-.17-.2-.25-.535-.338-.926-.085-.401-.182-.786-.492-1.046h-.003c-.059-.054-.123-.067-.188-.135a.357.357 0 00-.19-.064c.431-1.278.264-2.55-.173-3.694-.533-1.41-1.465-2.638-2.175-3.483-.796-1.005-1.576-1.957-1.56-3.368.026-2.152.236-6.133-3.544-6.139zm.529 3.405h.013c.213 0 .396.062.584.198.19.135.33.332.438.533.105.259.158.459.166.724 0-.02.006-.04.006-.06v.105a.086.086 0 01-.004-.021l-.004-.024a1.807 1.807 0 01-.15.706.953.953 0 01-.213.335.71.71 0 00-.088-.042c-.104-.045-.198-.064-.284-.133a1.312 1.312 0 00-.22-.066c.05-.06.146-.133.183-.198.053-.128.082-.264.088-.402v-.02a1.21 1.21 0 00-.061-.4c-.045-.134-.101-.2-.183-.333-.084-.066-.167-.132-.267-.132h-.016c-.093 0-.176.03-.262.132a.8.8 0 00-.205.334 1.18 1.18 0 00-.09.4v.019c.002.089.008.179.02.267-.193-.067-.438-.135-.607-.202a1.635 1.635 0 01-.018-.2v-.02a1.772 1.772 0 01.15-.768c.082-.22.232-.406.43-.533a.985.985 0 01.594-.2zm-2.962.059h.036c.142 0 .27.048.399.135.146.129.264.288.344.465.09.199.14.4.153.667v.004c.007.134.006.2-.002.266v.08c-.03.007-.056.018-.083.024-.152.055-.274.135-.393.2.012-.09.013-.18.003-.267v-.015c-.012-.133-.04-.2-.082-.333a.613.613 0 00-.166-.267.248.248 0 00-.183-.064h-.021c-.071.006-.13.04-.186.132a.552.552 0 00-.12.27.944.944 0 00-.023.33v.015c.012.135.037.2.08.334.046.134.098.2.166.268.01.009.02.018.034.024-.07.057-.117.07-.176.136a.304.304 0 01-.131.068 2.62 2.62 0 01-.275-.402 1.772 1.772 0 01-.155-.667 1.759 1.759 0 01.08-.668 1.43 1.43 0 01.283-.535c.128-.133.26-.2.418-.2zm1.37 1.706c.332 0 .733.065 1.216.399.293.2.523.269 1.052.468h.003c.255.136.405.266.478.399v-.131a.571.571 0 01.016.47c-.123.31-.516.643-1.063.842v.002c-.268.135-.501.333-.775.465-.276.135-.588.292-1.012.267a1.139 1.139 0 01-.448-.067 3.566 3.566 0 01-.322-.198c-.195-.135-.363-.332-.612-.465v-.005h-.005c-.4-.246-.616-.512-.686-.71-.07-.268-.005-.47.193-.6.224-.135.38-.271.483-.336.104-.074.143-.102.176-.131h.002v-.003c.169-.202.436-.47.839-.601.139-.036.294-.065.466-.065zm2.8 2.142c.358 1.417 1.196 3.475 1.735 4.473.286.534.855 1.659 1.102 3.024.156-.005.33.018.513.064.646-1.671-.546-3.467-1.089-3.966-.22-.2-.232-.335-.123-.335.59.534 1.365 1.572 1.646 2.757.13.535.16 1.104.021 1.67.067.028.135.06.205.067 1.032.534 1.413.938 1.23 1.537v-.043c-.06-.003-.12 0-.18 0h-.016c.151-.467-.182-.825-1.065-1.224-.915-.4-1.646-.336-1.77.465-.008.043-.013.066-.018.135-.068.023-.139.053-.209.064-.43.268-.662.669-.793 1.187-.13.533-.17 1.156-.205 1.869v.003c-.02.334-.17.838-.319 1.35-1.5 1.072-3.58 1.538-5.348.334a2.645 2.645 0 00-.402-.533 1.45 1.45 0 00-.275-.333c.182 0 .338-.03.465-.067a.615.615 0 00.314-.334c.108-.267 0-.697-.345-1.163-.345-.467-.931-.995-1.788-1.521-.63-.4-.986-.87-1.15-1.396-.165-.534-.143-1.085-.015-1.645.245-1.07.873-2.11 1.274-2.763.107-.065.037.135-.408.974-.396.751-1.14 2.497-.122 3.854a8.123 8.123 0 01.647-2.876c.564-1.278 1.743-3.504 1.836-5.268.048.036.217.135.289.202.218.133.38.333.59.465.21.201.477.335.876.335.039.003.075.006.11.006.412 0 .73-.134.997-.268.29-.134.52-.334.74-.4h.005c.467-.135.835-.402 1.044-.7zm2.185 8.958c.037.6.343 1.245.882 1.377.588.134 1.434-.333 1.791-.765l.211-.01c.315-.007.577.01.847.268l.003.003c.208.199.305.53.391.876.085.4.154.78.409 1.066.486.527.645.906.636 1.14l.003-.007v.018l-.003-.012c-.015.262-.185.396-.498.595-.63.401-1.746.712-2.457 1.57-.618.737-1.37 1.14-2.036 1.191-.664.053-1.237-.2-1.574-.898l-.005-.003c-.21-.4-.12-1.025.056-1.69.176-.668.428-1.344.463-1.897.037-.714.076-1.335.195-1.814.12-.465.308-.797.641-.984l.045-.022zm-10.814.049h.01c.053 0 .105.005.157.014.376.055.706.333 1.023.752l.91 1.664.003.003c.243.533.754 1.064 1.189 1.637.434.598.77 1.131.729 1.57v.006c-.057.744-.48 1.148-1.125 1.294-.645.135-1.52.002-2.395-.464-.968-.536-2.118-.469-2.857-.602-.369-.066-.61-.2-.723-.4-.11-.2-.113-.602.123-1.23v-.004l.002-.003c.117-.334.03-.752-.027-1.118-.055-.401-.083-.71.043-.94.16-.334.396-.4.69-.533.294-.135.64-.202.915-.47h.002v-.002c.256-.268.445-.601.668-.838.19-.201.38-.336.663-.336zm7.159-9.074c-.435.201-.945.535-1.488.535-.542 0-.97-.267-1.28-.466-.154-.134-.28-.268-.373-.335-.164-.134-.144-.333-.074-.333.109.016.129.134.199.2.096.066.215.2.36.333.292.2.68.467 1.167.467.485 0 1.053-.267 1.398-.466.195-.135.445-.334.648-.467.156-.136.149-.267.279-.267.128.016.034.134-.147.332a8.097 8.097 0 01-.69.468zm-1.082-1.583V5.64c-.006-.02.013-.042.029-.05.074-.043.18-.027.26.004.063 0 .16.067.15.135-.006.049-.085.066-.135.066-.055 0-.092-.043-.141-.068-.052-.018-.146-.008-.163-.065zm-.551 0c-.02.058-.113.049-.166.066-.047.025-.086.068-.14.068-.05 0-.13-.02-.136-.068-.01-.066.088-.133.15-.133.08-.031.184-.047.259-.005.019.009.036.03.03.05v.02h.003z" fill="currentColor"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z" fill="currentColor"/></symbol>
+  <symbol id="i-telegram" viewBox="0 0 24 24"><path d="M11.94 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0h-.06Zm4.97 7.22c.1 0 .32.03.46.14a.5.5 0 0 1 .17.33c.02.1.04.3.02.47-.18 1.9-.96 6.5-1.36 8.63-.17.9-.5 1.2-.82 1.23-.7.06-1.22-.46-1.9-.9-1.05-.7-1.65-1.13-2.68-1.8-1.18-.78-.41-1.21.26-1.91.18-.19 3.25-2.98 3.31-3.23 0-.03.01-.15-.06-.21s-.17-.05-.25-.03c-.1.03-1.79 1.14-5.06 3.35-.48.33-.91.49-1.3.48-.43 0-1.25-.24-1.86-.44-.76-.24-1.35-.37-1.3-.79.03-.21.33-.44.9-.66 3.5-1.52 5.83-2.53 7-3.01 3.33-1.39 4.02-1.63 4.47-1.64Z" fill="currentColor"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-8.5 8.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M18.5 14v4a2.5 2.5 0 0 1-2.5 2.5H6A2.5 2.5 0 0 1 3.5 18V8A2.5 2.5 0 0 1 6 5.5h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m0 0-5.5-5.5M19 12l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+  <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m7.5 9.5 2.5 2.5-2.5 2.5M12.5 15H17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
 
-    <!-- Navbar -->
-    <header class="nav-bar">
-      <a href="../" class="nav-brand">
-        <img src="https://avatars.githubusercontent.com/u/212236894?v=4" alt="iwtsd" class="nav-avatar" width="24" height="24">
-        <span>iwtsd</span>
+<a class="skip" href="#main" data-i18n="nav.skip">Skip to content</a>
+
+<header class="appbar" id="appbar">
+  <div class="appbar__inner">
+    <a class="brand" href="#top" aria-label="Socksicle home">
+      <img class="brand__mark" src="assets/logo-mark.svg" alt="" width="30" height="30">
+      <span class="brand__name">Socksicle</span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="#protocols" data-i18n="nav.protocols">Protocols</a>
+      <a href="#screens" data-i18n="nav.screens">Screens</a>
+      <a href="#install" data-i18n="nav.install">Install</a>
+      <a href="#download" data-i18n="nav.download">Download</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="#donate" data-i18n="nav.donate">Donate</a>
+      <a href="https://github.com/Socksicle/desktop" target="_blank" rel="noopener">GitHub<svg class="i i--14" aria-hidden="true"><use href="#i-external"/></svg></a>
+    </nav>
+
+    <div class="appbar__actions">
+      <!-- Language switcher -->
+      <div class="lang-switch" data-lang="en" role="group" aria-label="Language selector">
+        <span class="lang-switch__slider" aria-hidden="true"></span>
+        <button class="lang-switch__btn" type="button" data-lang-btn="en" aria-pressed="true">EN</button>
+        <button class="lang-switch__btn" type="button" data-lang-btn="ru" aria-pressed="false">RU</button>
+      </div>
+
+      <a class="icon-btn github-btn" href="https://github.com/Socksicle/desktop" target="_blank" rel="noopener" aria-label="Socksicle on GitHub">
+        <svg class="i i--20" aria-hidden="true"><use href="#i-github"/></svg>
       </a>
+      <a class="btn btn--filled btn--sm" href="#install" data-i18n="nav.btn_install">Install</a>
+      <button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+        <svg class="i i--22" aria-hidden="true"><use href="#i-menu"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
 
-      <div class="nav-controls">
-        <a href="../" class="back-btn"><span aria-hidden="true">←</span> <span class="back-text" data-key="navBackText">на главную</span></a>
+<main id="main">
+  <a id="top"></a>
 
-        <div class="segmented-lang">
-          <button class="lang-btn active" id="langRu">RU</button>
-          <button class="lang-btn" id="langEn">EN</button>
-        </div>
-      </div>
-    </header>
-
-    <!-- Main Content -->
-    <main>
-
-      <!-- Hero Header -->
-      <section class="hero">
-        <div class="hero-header">
-          <div class="hero-icon">
-            <svg viewBox="0 0 1024 1024">
-              <path d="M521.13 692.97C502.28 678.47 483.42 663.97 464.57 649.47C466.44 645.27 470.19 641.76 473.09 638.12C478.32 631.52 483.77 625.1 489.08 618.57C505.96 597.81 522.62 576.73 540.13 556.51C548.24 547.13 555.65 537.13 563.65 527.65C581.63 506.35 599.56 484.91 616.93 463.1C646.44 426.05 678.12 390.7 707.58 353.63C714.46 344.97 722.06 336.88 728.97 328.26C742.85 310.95 756.93 293.85 770.86 276.59C775.17 271.25 779.22 265.71 783.66 260.45C787.35 256.09 791.32 252.44 790.92 246.41C787.33 245.39 784.61 247.81 781.79 250.15C775.54 255.36 769.2 260.67 763.23 266.19C739.43 288.22 714.19 308.97 689.5 329.99C616.64 392 545.03 455.53 472.13 517.49C450.91 535.52 429.87 553.79 408.96 572.18C400.02 580.05 390.8 587.66 381.77 595.42C377.44 599.14 372.73 602.63 369.23 607.11C364.19 604.17 357.8 602.97 352.3 601.03C341.4 597.19 330.46 593.52 319.51 589.87C283.26 577.79 247.37 564.73 211.25 552.3C198.59 547.94 185.48 544.29 173.16 539.03C168.71 537.13 162.47 534.34 161.82 528.83C161.19 523.51 165.37 520.2 169.47 517.76C177.58 512.91 186.16 508.91 194.51 504.51C205.82 498.55 217.42 493.19 228.8 487.37C254.99 473.97 281.06 460.22 307.46 447.28C330.33 436.08 352.87 424.11 375.47 412.38C414.54 392.11 453.98 372.46 493.15 352.34C549.45 323.43 606.04 295.03 662.52 266.47C679.1 258.09 695.91 250.15 712.33 241.49C744.89 224.3 777.92 207.57 811.02 191.47C822.36 185.95 836.19 175.45 848.61 184.2C860.54 192.61 852 209.13 849.22 220.25C840.44 255.34 830.64 290.19 821.32 325.11C800.92 401.53 780.05 477.91 760.71 554.61C749.45 599.29 736.32 643.49 725.2 688.21C717.69 718.41 709.46 748.49 701.48 778.57C699 787.91 696.54 806.39 687.57 811.48C682.14 814.56 675.65 813.44 670.55 810.31C660.03 803.87 650.64 795.08 640.96 787.47C612.36 765.02 584.5 741.46 555.43 719.64C547.83 713.94 540.4 707.84 533.04 701.83C529.44 698.88 525.46 694.66 521.13 692.97Z" fill="#ffffff"/>
-              <path d="M521.13 692.97C518.14 696.38 514.08 698.89 510.58 701.81C500.2 710.48 489.39 718.65 478.87 727.14C455.93 745.65 433.15 764.37 409.99 782.6C401.82 789.03 393.85 795.76 385.7 802.24C381.06 805.93 377.09 809.9 370.79 808.39C367.61 804.29 368.52 798.49 368.51 793.48C368.48 781.95 368.43 770.41 368.5 758.88C368.72 723.66 368.55 688.43 368.5 653.21C368.49 642.92 368.51 632.64 368.56 622.35C368.58 617.59 367.59 611.59 369.23 607.11C372.73 602.63 377.44 599.14 381.77 595.42C390.8 587.66 400.02 580.05 408.96 572.18C429.87 553.79 450.91 535.52 472.13 517.49C545.03 455.53 616.64 392 689.5 329.99C714.19 308.97 739.43 288.22 763.23 266.19C769.2 260.67 775.54 255.36 781.79 250.15C784.61 247.81 787.33 245.39 790.92 246.41C791.32 252.44 787.35 256.09 783.66 260.45C779.22 265.71 775.17 271.25 770.86 276.59C756.93 293.85 742.85 310.95 728.97 328.26C722.06 336.88 714.46 344.97 707.58 353.63C678.12 390.7 646.44 426.05 616.93 463.1C599.56 484.91 581.63 506.35 563.65 527.65C555.65 537.13 548.24 547.13 540.13 556.51C522.62 576.73 505.96 597.81 489.08 618.57C483.77 625.1 478.32 631.52 473.09 638.12C470.19 641.76 466.44 645.27 464.57 649.47C483.42 663.97 502.28 678.47 521.13 692.97Z" fill="#a1a1aa"/>
-            </svg>
-          </div>
-          <div class="hero-title-group">
-            <h1 class="hero-title">Socksicle</h1>
-            <div class="hero-version">desktop &amp; mobile client</div>
-          </div>
-        </div>
-
-        <!-- Clean Statement Note -->
-        <div class="note-card">
-          <p class="note-line" data-key="noteRepo">
-            старый репозиторий закрыт, следующие версии будут выходить в <a href="https://github.com/socksicle" target="_blank" rel="noopener noreferrer">github.com/socksicle</a>.
-          </p>
-          <p class="note-line" data-key="noteRewrite">
-            сейчас идет <strong>полный редизайн</strong> и переписывание <em>практически с нуля</em>.
-          </p>
-          <p class="note-sub" data-key="noteMobileSpoiler">
-            android версия уже в разработке
-          </p>
-        </div>
-
-        <!-- Buttons -->
-        <div class="hero-buttons">
-          <a href="https://github.com/socksicle" class="btn btn-github" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-            </svg>
-            <span data-key="repoBtn">github org</span>
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div class="hero__copy">
+        <h1 data-i18n-html="hero.title">A proxy client for <span class="accent">Windows and Linux.</span></h1>
+        <p class="lede" data-i18n="hero.lede">
+          Desktop GUI built on PySide6 with native Material 3. Supports Shadowsocks, VLESS, VMess, Hysteria 2, TUIC and system TUN. Connects directly to your own nodes without accounts or third-party servers.
+        </p>
+        <div class="hero__cta">
+          <a class="btn btn--filled btn--lg" href="#install">
+            <svg class="i i--20" aria-hidden="true"><use href="#i-terminal"/></svg>
+            <span data-i18n="hero.cta_install">Terminal Install</span>
           </a>
-
-          <a href="../" class="btn">
-            <span data-key="backBtn">← на главную</span>
+          <a class="btn btn--outlined btn--lg" href="https://github.com/Socksicle/desktop/releases/latest" data-detect-os>
+            <svg class="i i--20" aria-hidden="true"><use href="#i-download"/></svg>
+            <span data-os-label>Download</span>
+          </a>
+          <a class="btn btn--ghost btn--lg" href="https://github.com/Socksicle/desktop" target="_blank" rel="noopener">
+            <svg class="i i--20" aria-hidden="true"><use href="#i-github"/></svg>
+            <span data-i18n="hero.cta_source">GitHub</span>
           </a>
         </div>
-      </section>
-
-      <!-- Section 1: PC Version Screenshots -->
-      <section class="section-block">
-        <div class="section-header">
-          <div class="section-title" data-key="pcTitle">пк версия</div>
-          <div class="section-desc" data-key="pcDesc">скриншоты десктопного клиента</div>
-        </div>
-
-        <div class="shots-row">
-          <!-- Main PC -->
-          <div class="shot-box" data-src="../assets/main.png">
-            <div class="shot-img-container">
-              <img src="../assets/main.png" alt="Socksicle PC main" loading="lazy">
-            </div>
-            <div class="shot-info">
-              <div class="shot-name" data-key="pcShot1Title">главное окно</div>
-              <div class="shot-caption" data-key="pcShot1Desc">подключение и выбор узлов</div>
-            </div>
-          </div>
-
-          <!-- Settings PC -->
-          <div class="shot-box" data-src="../assets/settings.png">
-            <div class="shot-img-container">
-              <img src="../assets/settings.png" alt="Socksicle PC settings" loading="lazy">
-            </div>
-            <div class="shot-info">
-              <div class="shot-name" data-key="pcShot2Title">настройки</div>
-              <div class="shot-caption" data-key="pcShot2Desc">параметры ядра и сети</div>
-            </div>
-          </div>
-
-          <!-- About PC -->
-          <div class="shot-box" data-src="../assets/about.png">
-            <div class="shot-img-container">
-              <img src="../assets/about.png" alt="Socksicle PC about" loading="lazy">
-            </div>
-            <div class="shot-info">
-              <div class="shot-name" data-key="pcShot3Title">о программе</div>
-              <div class="shot-caption" data-key="pcShot3Desc">версия и twinSock ключ</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Section 2: Mobile / Android Version Screenshots -->
-      <section class="section-block">
-        <div class="section-header">
-          <div class="section-title" data-key="mobileTitle">мобильная версия (android)</div>
-          <div class="section-desc" data-key="mobileDesc">ранний взгляд на мобильный интерфейс</div>
-        </div>
-
-        <div class="shots-row mobile">
-          <!-- Main Mobile -->
-          <div class="shot-box" data-src="../assets/main_mobile.jpg">
-            <div class="shot-img-container">
-              <img src="../assets/main_mobile.jpg" alt="Socksicle mobile main" loading="lazy">
-            </div>
-            <div class="shot-info">
-              <div class="shot-name" data-key="mobShot1Title">home (mobile)</div>
-              <div class="shot-caption" data-key="mobShot1Desc">быстрое подключение и пинг серверов</div>
-            </div>
-          </div>
-
-          <!-- Settings Mobile -->
-          <div class="shot-box" data-src="../assets/settings_mobile.jpg">
-            <div class="shot-img-container">
-              <img src="../assets/settings_mobile.jpg" alt="Socksicle mobile settings" loading="lazy">
-            </div>
-            <div class="shot-info">
-              <div class="shot-name" data-key="mobShot2Title">settings (mobile)</div>
-              <div class="shot-caption" data-key="mobShot2Desc">маршрутизация, туннель и подписки</div>
-            </div>
-          </div>
-
-          <!-- About Mobile -->
-          <div class="shot-box" data-src="../assets/about_mobile.jpg">
-            <div class="shot-img-container">
-              <img src="../assets/about_mobile.jpg" alt="Socksicle mobile about" loading="lazy">
-            </div>
-            <div class="shot-info">
-              <div class="shot-name" data-key="mobShot3Title">about (mobile)</div>
-              <div class="shot-caption" data-key="mobShot3Desc">информация о сборке под android</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer>
-      <div>iwtsd</div>
-      <div class="footer-links">
-        <a href="../" class="footer-link" data-key="footerHome">главная</a>
-        <a href="https://github.com/socksicle" class="footer-link" target="_blank" rel="noopener noreferrer">socksicle</a>
-        <a href="https://github.com/iwtsyddd" class="footer-link" target="_blank" rel="noopener noreferrer">github</a>
-        <a href="https://t.me/iwtsyddd" class="footer-link" target="_blank" rel="noopener noreferrer">telegram</a>
+        <p class="hero__note" data-i18n="hero.note">Open source under MIT license.</p>
       </div>
-    </footer>
 
+      <div class="hero__visual">
+        <div class="hero__visual-wrap">
+          <img class="hero__shot" src="assets/main.png" width="440" height="800" alt="Socksicle main window, connected, with the server list below" fetchpriority="high">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="protocols">
+    <div class="wrap">
+      <div class="section__head">
+        <h2 data-i18n="proto.head">Supported protocols</h2>
+        <p data-i18n="proto.subhead">Links are parsed, validated and dispatched to the engine best suited for them.</p>
+      </div>
+
+      <table class="proto">
+        <thead>
+          <tr>
+            <th scope="col" data-i18n="proto.th_protocol">Protocol</th>
+            <th scope="col" data-i18n="proto.th_engine">Engine</th>
+            <th scope="col" data-i18n="proto.th_notes">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Shadowsocks</th>
+            <td class="mono">sing-box, Xray</td>
+            <td data-i18n="proto.n_ss">SIP003 plugins are parsed but not forwarded to cores</td>
+          </tr>
+          <tr>
+            <th scope="row">VLESS</th>
+            <td class="mono">sing-box, Xray</td>
+            <td data-i18n="proto.n_vless">XHTTP transport requires Xray</td>
+          </tr>
+          <tr>
+            <th scope="row">VMess</th>
+            <td class="mono">sing-box, Xray</td>
+            <td data-i18n="proto.n_vmess">TCP, WebSocket and gRPC</td>
+          </tr>
+          <tr>
+            <th scope="row">Hysteria 2</th>
+            <td class="mono">sing-box</td>
+            <td data-i18n="proto.n_hy2">Obfs needs both the type and the password</td>
+          </tr>
+          <tr>
+            <th scope="row">Trojan</th>
+            <td class="mono">sing-box</td>
+            <td data-i18n="proto.n_trojan">Standard TLS transport</td>
+          </tr>
+          <tr>
+            <th scope="row">TUIC</th>
+            <td class="mono">sing-box</td>
+            <td data-i18n="proto.n_tuic">TUIC v5</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="formats">
+        <span data-i18n="proto.accepted">Accepted links</span>
+        <span class="mono">ss:// vless:// vmess:// hysteria2:// hy2:// trojan:// trojan-go:// tuic:// tws3://</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="screens">
+    <div class="wrap">
+      <div class="section__head">
+        <h2 data-i18n="screens.head">The app</h2>
+        <p data-i18n="screens.subhead">Home, settings and about.</p>
+      </div>
+
+      <div class="screens">
+        <figure class="screen reveal">
+          <img src="assets/main.png" width="440" height="800" loading="lazy" alt="Home screen with the power button, routing filter and server list">
+          <figcaption>
+            <span data-i18n="screens.main_title">Home</span>
+            <span data-i18n="screens.main_desc">Power, mode and the active server.</span>
+          </figcaption>
+        </figure>
+        <figure class="screen reveal" style="--d:.08s">
+          <img src="assets/settings.png" width="440" height="800" loading="lazy" alt="Settings screen with connection, tunnel, ping and appearance options">
+          <figcaption>
+            <span data-i18n="screens.settings_title">Settings</span>
+            <span data-i18n="screens.settings_desc">Grouped by what you are trying to change.</span>
+          </figcaption>
+        </figure>
+        <figure class="screen reveal" style="--d:.16s">
+          <img src="assets/about.png" width="440" height="800" loading="lazy" alt="About screen with version, core version and the TwinSock key">
+          <figcaption>
+            <span data-i18n="screens.about_title">About</span>
+            <span data-i18n="screens.about_desc">Version, core and your TwinSock key.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Installation Section -->
+  <section class="section" id="install">
+    <div class="wrap">
+      <div class="section__head">
+        <h2 data-i18n="install.head">How to install</h2>
+        <p data-i18n="install.subhead">Fast and simple setup across Linux and Windows.</p>
+      </div>
+
+      <div class="install-card">
+        <div class="install-tabs" role="tablist" aria-label="Installation operating systems">
+          <button class="install-tab is-active" id="install-tab-linux" type="button" role="tab" aria-selected="true" aria-controls="install-panel-linux" data-tab-btn="linux">
+            <svg class="i i--18" aria-hidden="true"><use href="#i-linux"/></svg>
+            <span data-i18n="install.tab_linux">Linux (Recommended)</span>
+          </button>
+          <button class="install-tab" id="install-tab-windows" type="button" role="tab" aria-selected="false" aria-controls="install-panel-windows" data-tab-btn="windows">
+            <svg class="i i--18" aria-hidden="true"><use href="#i-windows"/></svg>
+            <span>Windows</span>
+          </button>
+          <button class="install-tab" id="install-tab-source" type="button" role="tab" aria-selected="false" aria-controls="install-panel-source" data-tab-btn="source">
+            <svg class="i i--18" aria-hidden="true"><use href="#i-terminal"/></svg>
+            <span data-i18n="install.tab_source">From Source</span>
+          </button>
+        </div>
+
+        <!-- Linux Panel -->
+        <div class="install-panel is-active" id="install-panel-linux" role="tabpanel" aria-labelledby="install-tab-linux" tabindex="0" data-panel-name="linux">
+          <div class="install-panel__content">
+            <h3 data-i18n="install.linux_curl_title">One-line automated installer</h3>
+            <p data-i18n="install.linux_curl_desc">Downloads the binary, sets up desktop integration, and configures permissions automatically:</p>
+            
+            <div class="code-box">
+              <code class="code-box__text mono">curl -fsSL https://iwtsd.online/socksicle/get | bash</code>
+              <button class="copy-btn btn btn--sm btn--filled" type="button" aria-label="Copy install command" data-copy-cmd="curl -fsSL https://iwtsd.online/socksicle/get | bash">
+                <svg class="i i--16 i-copy" aria-hidden="true"><use href="#i-copy"/></svg>
+                <svg class="i i--16 i-check" aria-hidden="true"><use href="#i-check"/></svg>
+                <span class="copy-label" data-i18n="install.copy">Copy</span>
+              </button>
+            </div>
+
+            <div class="install-alt">
+              <span class="install-alt__label" data-i18n="install.alt_or">or download standalone AppImage:</span>
+              <div class="install-alt__actions">
+                <a class="btn btn--outlined btn--sm" href="https://github.com/Socksicle/desktop/releases/download/v0.1.1/Socksicle-0.1.1-x86_64.AppImage" data-link-linux-appimage>
+                  <svg class="i i--16" aria-hidden="true"><use href="#i-download"/></svg>
+                  <span data-i18n="install.download_appimage">Download AppImage</span>
+                </a>
+                <span class="mono fine-code">chmod +x Socksicle-*-x86_64.AppImage &amp;&amp; ./Socksicle-*-x86_64.AppImage</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Windows Panel -->
+        <div class="install-panel" id="install-panel-windows" role="tabpanel" aria-labelledby="install-tab-windows" tabindex="0" hidden data-panel-name="windows">
+          <div class="install-panel__content">
+            <h3 data-i18n="install.windows_title">Windows Installer &amp; Portable</h3>
+            <p data-i18n="install.windows_desc">Requires Windows 10/11 x64. Bundles sing-box and wintun driver for system-wide TUN support.</p>
+            <div class="windows-dl-buttons">
+              <a class="btn btn--filled btn--lg" href="https://github.com/Socksicle/desktop/releases/download/v0.1.1/Socksicle-Setup-0.1.1-x64.exe" data-link-win-setup>
+                <svg class="i i--20" aria-hidden="true"><use href="#i-download"/></svg>
+                <span data-i18n="install.win_setup">Download Setup (.exe)</span>
+              </a>
+              <a class="btn btn--outlined btn--lg" href="https://github.com/Socksicle/desktop/releases/download/v0.1.1/Socksicle-0.1.1-Windows-Portable-x64.zip" data-link-win-portable>
+                <svg class="i i--20" aria-hidden="true"><use href="#i-download"/></svg>
+                <span data-i18n="install.win_portable">Portable (.zip)</span>
+              </a>
+            </div>
+            <p class="install-note" data-i18n="install.win_note">Administrator privileges are required only for enabling TUN mode.</p>
+          </div>
+        </div>
+
+        <!-- Source Panel -->
+        <div class="install-panel" id="install-panel-source" role="tabpanel" aria-labelledby="install-tab-source" tabindex="0" hidden data-panel-name="source">
+          <div class="install-panel__content">
+            <h3 data-i18n="install.source_title">Build and run from source</h3>
+            <p data-i18n="install.source_desc">Requires Python 3.10+ and external sing-box or Xray binaries:</p>
+            <div class="code-box code-box--multiline">
+              <pre class="code-box__text mono"><code>git clone https://github.com/socksicle/desktop.git
+cd desktop
+python -m venv .venv
+source .venv/bin/activate       # Windows: .venv\Scripts\Activate.ps1
+pip install -e ".[dev]"
+python main.py</code></pre>
+              <button class="copy-btn btn btn--sm btn--filled" type="button" aria-label="Copy source instructions" data-copy-cmd="git clone https://github.com/socksicle/desktop.git && cd desktop && python -m venv .venv && source .venv/bin/activate && pip install -e &quot;.[dev]&quot; && python main.py">
+                <svg class="i i--16 i-copy" aria-hidden="true"><use href="#i-copy"/></svg>
+                <svg class="i i--16 i-check" aria-hidden="true"><use href="#i-check"/></svg>
+                <span class="copy-label" data-i18n="install.copy">Copy</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download Section -->
+  <section class="section" id="download">
+    <div class="wrap">
+      <div class="section__head">
+        <h2 data-i18n="dl.head">Download</h2>
+        <p>
+          <span data-i18n="dl.subhead_prefix">Version</span> <span data-release-version>0.1.1</span> <span data-i18n="dl.subhead_suffix">for Windows x64 and Linux x86_64. Prebuilt releases bundle sing-box.</span>
+        </p>
+      </div>
+
+      <div class="dl-grid">
+        <article class="dl-card">
+          <div class="dl-card__head">
+            <span class="set-icon set-icon--lg" aria-hidden="true"><svg class="i i--22"><use href="#i-windows"/></svg></span>
+            <div>
+              <h3 data-i18n="dl.win_title">Windows</h3>
+              <p data-i18n="dl.win_desc">Installer or portable, both x64.</p>
+            </div>
+          </div>
+          <a class="dl-link" href="https://github.com/Socksicle/desktop/releases/download/v0.1.1/Socksicle-Setup-0.1.1-x64.exe" data-link-win-setup>
+            <span><strong data-i18n="dl.win_inst">Installer</strong><em>Setup .exe</em></span>
+            <span class="mono"><span data-win-setup-size></span><svg class="i i--16" aria-hidden="true"><use href="#i-download"/></svg></span>
+          </a>
+          <a class="dl-link" href="https://github.com/Socksicle/desktop/releases/download/v0.1.1/Socksicle-0.1.1-Windows-Portable-x64.zip" data-link-win-portable>
+            <span><strong data-i18n="dl.win_port">Portable</strong><em>ZIP archive</em></span>
+            <span class="mono"><span data-win-portable-size></span><svg class="i i--16" aria-hidden="true"><use href="#i-download"/></svg></span>
+          </a>
+        </article>
+
+        <article class="dl-card">
+          <div class="dl-card__head">
+            <span class="set-icon set-icon--lg" aria-hidden="true"><svg class="i i--22"><use href="#i-linux"/></svg></span>
+            <div>
+              <h3 data-i18n="dl.linux_title">Linux</h3>
+              <p data-i18n="dl.linux_desc">AppImage, no install step.</p>
+            </div>
+          </div>
+          <a class="dl-link" href="https://github.com/Socksicle/desktop/releases/download/v0.1.1/Socksicle-0.1.1-x86_64.AppImage" data-link-linux-appimage>
+            <span><strong data-i18n="dl.linux_appimage">AppImage</strong><em>chmod +x, then run</em></span>
+            <span class="mono"><span data-linux-appimage-size></span><svg class="i i--16" aria-hidden="true"><use href="#i-download"/></svg></span>
+          </a>
+          <a class="dl-link" href="https://github.com/Socksicle/desktop/releases" target="_blank" rel="noopener">
+            <span><strong data-i18n="dl.all_releases">All releases</strong><em data-i18n="dl.all_releases_sub">Older builds and changelogs</em></span>
+            <span class="mono"><svg class="i i--16" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+          </a>
+        </article>
+
+        <article class="dl-card">
+          <div class="dl-card__head">
+            <span class="set-icon set-icon--lg" aria-hidden="true"><svg class="i i--22"><use href="#i-terminal"/></svg></span>
+            <div>
+              <h3 data-i18n="dl.source_title">From source</h3>
+              <p data-i18n="dl.source_desc">Python 3.10 or newer.</p>
+            </div>
+          </div>
+          <a class="dl-link" href="https://github.com/Socksicle/desktop#running-from-source" target="_blank" rel="noopener">
+            <span><strong data-i18n="dl.source_guide">Read the guide</strong><em>git clone, pip install -e &quot;.[dev]&quot;</em></span>
+            <span class="mono"><svg class="i i--16" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+          </a>
+        </article>
+      </div>
+
+      <p class="fine" data-i18n="dl.fine">
+        TUN mode needs Administrator on Windows (wintun.dll ships with the build) and pkexec on Linux. Xray is optional: put it in bin/xray/ or your PATH.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ Section with smooth animated accordion -->
+  <section class="section" id="faq">
+    <div class="wrap wrap--narrow">
+      <div class="section__head">
+        <h2 data-i18n="faq.head">Frequently Asked Questions</h2>
+        <p data-i18n="faq.subhead">Everything you need to know about Socksicle.</p>
+      </div>
+
+      <div class="faq">
+        <details class="faq__item">
+          <summary class="faq__summary"><span data-i18n="faq.q1">Is it free?</span></summary>
+          <div class="faq__content">
+            <p data-i18n="faq.a1">Yes. Socksicle is MIT licensed and the source is on GitHub. There is no paid tier and no account. sing-box and Xray are separate projects with their own licences.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__summary"><span data-i18n="faq.q2">Does it work with my subscription?</span></summary>
+          <div class="faq__content">
+            <p data-i18n="faq.a2">If your provider gives you an HTTPS URL that returns plain text, Base64 or SIP008 JSON, yes. Import it once and Socksicle refreshes nodes on a schedule with SSRF protection.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__summary"><span data-i18n="faq.q3">Do I have to install sing-box or Xray?</span></summary>
+          <div class="faq__content">
+            <p data-i18n="faq.a3">No. Release builds bundle sing-box. Xray is optional: install it into bin/xray/ or your PATH if you need XHTTP or want to compare engines.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__summary"><span data-i18n="faq.q4">What does TUN mode require?</span></summary>
+          <div class="faq__content">
+            <p data-i18n="faq.a4">Administrator privileges on Windows and pkexec on Linux, because the app has to create a virtual network adapter. SOCKS5 mode needs neither.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__summary"><span data-i18n="faq.q5">Where is my data stored?</span></summary>
+          <div class="faq__content">
+            <p data-i18n="faq.a5">Locally. %APPDATA%\socksicle\ on Windows and ~/.config/socksicle/ on Linux. Nothing is uploaded. The privacy policy ships with the app and lives in the repository.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__summary"><span data-i18n="faq.q6">Is there a macOS build?</span></summary>
+          <div class="faq__content">
+            <p data-i18n="faq.a6">Not yet. macOS is explicitly unsupported in this repository, and there is no build for it.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Donate Section -->
+  <section class="section" id="donate">
+    <div class="wrap wrap--narrow">
+      <div class="section__head">
+        <h2 data-i18n="donate.head">Donate</h2>
+        <p data-i18n="donate.subhead">Support Socksicle development with any coin.</p>
+      </div>
+
+      <div class="donate-grid">
+        <div class="donate-item">
+          <iframe src="https://hiddenswap.com/pay/QHzQqT5t/embed" title="Donate from $1" width="340" height="440" style="border:0;border-radius:16px;max-width:100%" loading="lazy"></iframe>
+          <span class="donate-item__caption" data-i18n="donate.from_1">From $1</span>
+        </div>
+        <div class="donate-item">
+          <iframe src="https://hiddenswap.com/pay/BgHAxRJU/embed" title="Donate from $10" width="340" height="440" style="border:0;border-radius:16px;max-width:100%" loading="lazy"></iframe>
+          <span class="donate-item__caption" data-i18n="donate.from_10">From $10</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="#top">
+        <img class="brand__mark" src="assets/logo-mark.svg" alt="" width="30" height="30">
+        <span class="brand__name">Socksicle</span>
+      </a>
+      <p data-i18n="footer.desc">A desktop proxy client for Windows and Linux.</p>
+      <p class="footer__meta mono"><span data-release-version>0.1.1</span> · MIT</p>
+    </div>
+    <nav class="footer__col" aria-label="Product">
+      <h4 data-i18n="footer.product">Product</h4>
+      <a href="#protocols" data-i18n="nav.protocols">Protocols</a>
+      <a href="#screens" data-i18n="nav.screens">Screens</a>
+      <a href="#install" data-i18n="nav.install">Install</a>
+      <a href="#download" data-i18n="nav.download">Download</a>
+      <a href="#donate" data-i18n="nav.donate">Donate</a>
+    </nav>
+    <nav class="footer__col" aria-label="Resources">
+      <h4 data-i18n="footer.resources">Resources</h4>
+      <a href="https://github.com/Socksicle/desktop" target="_blank" rel="noopener" data-i18n="footer.source">Source</a>
+      <a href="https://github.com/Socksicle/desktop/releases" target="_blank" rel="noopener" data-i18n="footer.releases">Releases</a>
+      <a href="https://github.com/Socksicle/desktop/issues" target="_blank" rel="noopener" data-i18n="footer.issues">Issues</a>
+      <a href="https://github.com/Socksicle/desktop/blob/main/LICENSE" target="_blank" rel="noopener" data-i18n="footer.licence">Licence</a>
+    </nav>
+    <nav class="footer__col" aria-label="Community">
+      <h4 data-i18n="footer.community">Community</h4>
+      <a href="https://t.me/iwtsddev" target="_blank" rel="noopener"><svg class="i i--16" aria-hidden="true"><use href="#i-telegram"/></svg>Telegram</a>
+      <a href="https://github.com/Socksicle/desktop" target="_blank" rel="noopener"><svg class="i i--16" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>
+    </nav>
   </div>
-
-  <!-- Minimal Dark Lightbox -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
-    <button class="lightbox-close" id="lightboxClose" aria-label="закрыть">✕</button>
-    <img src="" alt="Fullscreen screenshot" id="lightboxImg">
+  <div class="wrap footer__bottom">
+    <span>© <span data-year>2026</span> Socksicle. Built by iwtsd.</span>
+    <span data-i18n="footer.copy">sing-box and Xray are separate projects under their own licences.</span>
   </div>
+</footer>
 
-  <script>
-    const i18n = {
-      ru: {
-        pageTitle: "Socksicle - iwtsd",
-        navBackText: "на главную",
-        noteRepo: "старый репозиторий закрыт, следующие версии будут выходить в <a href=\"https://github.com/socksicle\" target=\"_blank\" rel=\"noopener noreferrer\">github.com/socksicle</a>.",
-        noteRewrite: "сейчас идет <strong>полный редизайн</strong> и переписывание <em>практически с нуля</em>.",
-        noteMobileSpoiler: "android версия уже в разработке",
-        repoBtn: "github org",
-        backBtn: "← на главную",
-        pcTitle: "пк версия",
-        pcDesc: "скриншоты десктопного клиента",
-        pcShot1Title: "главное окно",
-        pcShot1Desc: "подключение и выбор узлов",
-        pcShot2Title: "настройки",
-        pcShot2Desc: "параметры ядра и сети",
-        pcShot3Title: "о программе",
-        pcShot3Desc: "версия и twinSock ключ",
-        mobileTitle: "мобильная версия (android)",
-        mobileDesc: "ранний взгляд на мобильный интерфейс",
-        mobShot1Title: "home (mobile)",
-        mobShot1Desc: "быстрое подключение и пинг серверов",
-        mobShot2Title: "settings (mobile)",
-        mobShot2Desc: "маршрутизация, туннель и подписки",
-        mobShot3Title: "about (mobile)",
-        mobShot3Desc: "информация о сборке под android",
-        footerHome: "главная"
-      },
-      en: {
-        pageTitle: "Socksicle - iwtsd",
-        navBackText: "back to home",
-        noteRepo: "the old repository is closed, upcoming versions will be published at <a href=\"https://github.com/socksicle\" target=\"_blank\" rel=\"noopener noreferrer\">github.com/socksicle</a>.",
-        noteRewrite: "currently undergoing a <strong>complete redesign</strong> and rewrite <em>almost from scratch</em>.",
-        noteMobileSpoiler: "android version is in development",
-        repoBtn: "github org",
-        backBtn: "← back to home",
-        pcTitle: "desktop version",
-        pcDesc: "desktop client screenshots",
-        pcShot1Title: "main window",
-        pcShot1Desc: "connection and node selection",
-        pcShot2Title: "settings",
-        pcShot2Desc: "core settings and network params",
-        pcShot3Title: "about",
-        pcShot3Desc: "version and twinSock key",
-        mobileTitle: "mobile version (android)",
-        mobileDesc: "early look at mobile interface",
-        mobShot1Title: "home (mobile)",
-        mobShot1Desc: "quick connection and server ping",
-        mobShot2Title: "settings (mobile)",
-        mobShot2Desc: "routing, tunnel modes, and subscriptions",
-        mobShot3Title: "about (mobile)",
-        mobShot3Desc: "android build information",
-        footerHome: "home"
-      }
-    };
-
-    function storage() {
-      try {
-        const test = '__t__';
-        localStorage.setItem(test, test);
-        localStorage.removeItem(test);
-        return localStorage;
-      } catch (e) {
-        return null;
-      }
-    }
-    const store = storage();
-
-    const htmlEl = document.documentElement;
-    const bodyEl = document.body;
-    const langRuBtn = document.getElementById('langRu');
-    const langEnBtn = document.getElementById('langEn');
-
-    function applyLang(lang) {
-      htmlEl.setAttribute('lang', lang);
-      bodyEl.setAttribute('data-lang', lang);
-
-      if (i18n[lang] && i18n[lang].pageTitle) {
-        document.title = i18n[lang].pageTitle;
-      }
-
-      document.querySelectorAll('[data-key]').forEach(el => {
-        const key = el.getAttribute('data-key');
-        if (i18n[lang] && i18n[lang][key]) {
-          if (key === 'noteRepo' || key === 'noteRewrite') {
-            el.innerHTML = i18n[lang][key];
-          } else {
-            el.textContent = i18n[lang][key];
-          }
-        }
-      });
-
-      if (langRuBtn && langEnBtn) {
-        langRuBtn.classList.toggle('active', lang === 'ru');
-        langEnBtn.classList.toggle('active', lang === 'en');
-      }
-
-      if (store) store.setItem('site_lang', lang);
-    }
-
-    let initialLang = 'ru';
-    if (store && store.getItem('site_lang')) {
-      initialLang = store.getItem('site_lang');
-    } else if (navigator.language && !navigator.language.startsWith('ru')) {
-      initialLang = 'en';
-    }
-    applyLang(initialLang);
-
-    if (langRuBtn && langEnBtn) {
-      langRuBtn.addEventListener('click', () => applyLang('ru'));
-      langEnBtn.addEventListener('click', () => applyLang('en'));
-    }
-
-    // Lightbox modal logic
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const lightboxClose = document.getElementById('lightboxClose');
-
-    document.querySelectorAll('.shot-box').forEach(box => {
-      box.addEventListener('click', () => {
-        const src = box.getAttribute('data-src');
-        if (src && lightbox && lightboxImg) {
-          lightboxImg.src = src;
-          lightbox.classList.add('open');
-        }
-      });
-    });
-
-    if (lightbox) {
-      lightbox.addEventListener('click', (e) => {
-        if (e.target !== lightboxImg) {
-          lightbox.classList.remove('open');
-        }
-      });
-    }
-
-    if (lightboxClose) {
-      lightboxClose.addEventListener('click', () => {
-        lightbox.classList.remove('open');
-      });
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lightbox && lightbox.classList.contains('open')) {
-        lightbox.classList.remove('open');
-      }
-    });
-  </script>
+<script src="app.js"></script>
 </body>
 </html>
