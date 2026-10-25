@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-10-24T20:09:10.051Z",
-  "totalUSD": 0.13,
-  "formattedTotal": "$0.13",
+  "updatedAt": "2026-10-25T03:01:53.043Z",
+  "totalUSD": 0,
+  "formattedTotal": "$0.00",
   "breakdown": {
     "btc": {
       "balance": 0,
@@ -19,11 +19,11 @@
       "usd": 0
     },
     "bep20": {
-      "bnb": 0.000156959739818697,
+      "bnb": 0,
       "bnbPriceUSD": 750,
-      "bnbUSD": 0.1177,
-      "usdt": 0.01,
-      "usdtUSD": 0.01
+      "bnbUSD": 0,
+      "usdt": 0,
+      "usdtUSD": 0
     }
   }
 }
